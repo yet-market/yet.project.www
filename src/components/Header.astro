@@ -1,0 +1,38 @@
+---
+const navLinks = [
+  { href: '/#features', label: 'Features' },
+  { href: '/#how-it-works', label: 'How It Works' },
+  { href: '/#pricing', label: 'Pricing' },
+  { href: '/docs', label: 'Docs' },
+];
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+  <div class="max-w-6xl mx-auto px-6 py-4">
+    <nav class="flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
+          <span class="text-white font-bold text-sm">Y</span>
+        </div>
+        <span class="font-semibold text-xl">Yet.Project</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8">
+        {navLinks.map(link => (
+          <a href={link.href} class="text-gray-600 hover:text-gray-900 transition-colors text-sm">
+            {link.label}
+          </a>
+        ))}
+      </div>
+
+      <div class="flex items-center gap-4">
+        <a href="https://yetwork-project.web.app/auth/signin" class="text-gray-600 hover:text-gray-900 transition-colors text-sm">
+          Sign In
+        </a>
+        <a href="https://yetwork-project.web.app/auth/register" class="bg-primary-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary-700 transition-colors">
+          Get Started
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>

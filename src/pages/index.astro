@@ -1,0 +1,290 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const features = [
+  {
+    icon: '🤖',
+    title: 'AI-Native Design',
+    description: 'Built from the ground up for AI agents. Claude Code, Cursor, and other AI tools can manage your projects directly via API, CLI, or MCP.',
+  },
+  {
+    icon: '📋',
+    title: 'Full Project Management',
+    description: 'Projects, tasks, Kanban boards, Gantt charts, milestones, time tracking, and team workload - everything you need in one place.',
+  },
+  {
+    icon: '🔑',
+    title: 'API Keys & Permissions',
+    description: 'Generate API keys with granular permissions. Control what AI agents and integrations can read, write, or manage.',
+  },
+  {
+    icon: '🧠',
+    title: 'Knowledge Base',
+    description: 'Store project context, architecture decisions, and learnings. AI agents use this memory to make smarter decisions.',
+  },
+  {
+    icon: '⚡',
+    title: 'REST API',
+    description: '45+ endpoints covering everything. Tasks, projects, comments, time logs, exports - all accessible programmatically.',
+  },
+  {
+    icon: '💻',
+    title: 'CLI Tool',
+    description: 'Manage projects from your terminal. Create tasks, update progress, log time - without leaving your editor.',
+  },
+];
+
+const steps = [
+  {
+    step: '1',
+    title: 'Create Your Workspace',
+    description: 'Sign up and create a tenant for your team. Invite members and set up your first project.',
+  },
+  {
+    step: '2',
+    title: 'Generate an API Key',
+    description: 'Go to Settings → API Keys. Create a key with the permissions you need (read, write, or admin).',
+  },
+  {
+    step: '3',
+    title: 'Connect Your AI',
+    description: 'Use the CLI, REST API, or upcoming MCP server to let AI agents manage tasks, log progress, and access context.',
+  },
+];
+
+const pricing = [
+  {
+    name: 'Free',
+    price: '$0',
+    period: 'forever',
+    description: 'For individuals and small projects',
+    features: [
+      'Up to 3 projects',
+      'Up to 100 tasks',
+      '1 team member',
+      'REST API access',
+      'CLI tool',
+    ],
+    cta: 'Get Started',
+    highlighted: false,
+  },
+  {
+    name: 'Pro',
+    price: '$12',
+    period: '/user/month',
+    description: 'For teams building with AI',
+    features: [
+      'Unlimited projects',
+      'Unlimited tasks',
+      'Unlimited members',
+      'API keys with permissions',
+      'Knowledge base',
+      'Priority support',
+    ],
+    cta: 'Start Free Trial',
+    highlighted: true,
+  },
+  {
+    name: 'Enterprise',
+    price: 'Custom',
+    period: '',
+    description: 'For organizations at scale',
+    features: [
+      'Everything in Pro',
+      'SSO / SAML',
+      'Audit logs',
+      'Custom integrations',
+      'Dedicated support',
+      'SLA guarantee',
+    ],
+    cta: 'Contact Sales',
+    highlighted: false,
+  },
+];
+---
+
+<Layout title="AI-Native Project Management">
+  <Header />
+
+  <main>
+    <!-- Hero -->
+    <section class="pt-32 pb-20 px-6">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="inline-flex items-center gap-2 bg-primary-50 text-primary-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+          <span class="w-2 h-2 bg-primary-500 rounded-full animate-pulse"></span>
+          Now with REST API & CLI
+        </div>
+
+        <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+          Project Management<br />
+          <span class="text-primary-600">for AI Agents</span>
+        </h1>
+
+        <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+          Let Claude Code, Cursor, and other AI tools manage your projects directly.
+          Create tasks, track progress, and access context - all through API.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="https://yetwork-project.web.app/auth/register" class="w-full sm:w-auto bg-primary-600 text-white px-8 py-4 rounded-xl font-medium hover:bg-primary-700 transition-colors text-lg">
+            Start for Free
+          </a>
+          <a href="/docs" class="w-full sm:w-auto bg-gray-100 text-gray-700 px-8 py-4 rounded-xl font-medium hover:bg-gray-200 transition-colors text-lg">
+            Read the Docs
+          </a>
+        </div>
+
+        <p class="text-gray-400 text-sm mt-6">No credit card required</p>
+      </div>
+    </section>
+
+    <!-- Code Example -->
+    <section class="py-16 px-6 bg-gray-900">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-gray-800 rounded-2xl p-6 overflow-x-auto">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+            <span class="text-gray-400 text-sm ml-4">Terminal</span>
+          </div>
+          <pre class="text-sm"><code class="text-gray-300"><span class="text-gray-500"># Login with your API key</span>
+<span class="text-green-400">$</span> yet login --key yet_abc123...
+
+<span class="text-gray-500"># Create a task from your terminal</span>
+<span class="text-green-400">$</span> yet todo "Implement user authentication"
+<span class="text-blue-400">✓</span> Created task: abc123
+
+<span class="text-gray-500"># Check your status</span>
+<span class="text-green-400">$</span> yet status
+<span class="text-blue-400">Branch:</span> feature/auth
+<span class="text-blue-400">Task:</span>   abc123 - Implement user authentication
+<span class="text-blue-400">Status:</span> in_progress (45%)
+
+<span class="text-gray-500"># Mark complete when done</span>
+<span class="text-green-400">$</span> yet done --summary "Added JWT auth with refresh tokens"
+<span class="text-blue-400">✓</span> Task completed</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="py-24 px-6">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Everything You Need
+          </h2>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+            A complete project management platform designed for developers and their AI assistants.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map(feature => (
+            <div class="bg-white border border-gray-100 rounded-2xl p-8 hover:shadow-lg hover:border-gray-200 transition-all">
+              <div class="text-4xl mb-4">{feature.icon}</div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
+              <p class="text-gray-600">{feature.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-24 px-6 bg-gray-50">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Get Started in Minutes
+          </h2>
+          <p class="text-xl text-gray-600">
+            Three simple steps to AI-powered project management.
+          </p>
+        </div>
+
+        <div class="space-y-8">
+          {steps.map(step => (
+            <div class="flex gap-6 items-start">
+              <div class="flex-shrink-0 w-12 h-12 bg-primary-600 text-white rounded-full flex items-center justify-center font-bold text-xl">
+                {step.step}
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">{step.title}</h3>
+                <p class="text-gray-600">{step.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="py-24 px-6">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Simple Pricing
+          </h2>
+          <p class="text-xl text-gray-600">
+            Start free, upgrade when you need more.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          {pricing.map(plan => (
+            <div class={`rounded-2xl p-8 ${plan.highlighted ? 'bg-primary-600 text-white ring-4 ring-primary-600 ring-offset-4' : 'bg-white border border-gray-200'}`}>
+              <h3 class={`text-xl font-semibold mb-2 ${plan.highlighted ? 'text-white' : 'text-gray-900'}`}>
+                {plan.name}
+              </h3>
+              <div class="mb-4">
+                <span class={`text-4xl font-bold ${plan.highlighted ? 'text-white' : 'text-gray-900'}`}>
+                  {plan.price}
+                </span>
+                <span class={plan.highlighted ? 'text-primary-100' : 'text-gray-500'}>
+                  {plan.period}
+                </span>
+              </div>
+              <p class={`mb-6 ${plan.highlighted ? 'text-primary-100' : 'text-gray-600'}`}>
+                {plan.description}
+              </p>
+              <ul class="space-y-3 mb-8">
+                {plan.features.map(feature => (
+                  <li class="flex items-center gap-3">
+                    <svg class={`w-5 h-5 ${plan.highlighted ? 'text-primary-200' : 'text-primary-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span class={plan.highlighted ? 'text-white' : 'text-gray-600'}>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <a href="https://yetwork-project.web.app/auth/register" class={`block text-center py-3 px-6 rounded-xl font-medium transition-colors ${plan.highlighted ? 'bg-white text-primary-600 hover:bg-gray-100' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}>
+                {plan.cta}
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-24 px-6 bg-primary-600">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+          Ready to Let AI Manage Your Projects?
+        </h2>
+        <p class="text-xl text-primary-100 mb-10">
+          Join developers using Yet.Project with Claude Code, Cursor, and other AI tools.
+        </p>
+        <a href="https://yetwork-project.web.app/auth/register" class="inline-block bg-white text-primary-600 px-8 py-4 rounded-xl font-medium hover:bg-gray-100 transition-colors text-lg">
+          Get Started for Free
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
