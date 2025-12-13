@@ -1,38 +1,187 @@
 ---
 const navLinks = [
   { href: '/#features', label: 'Features' },
-  { href: '/#how-it-works', label: 'How It Works' },
+  { href: '/#integrations', label: 'Integrations' },
   { href: '/#pricing', label: 'Pricing' },
   { href: '/docs', label: 'Docs' },
 ];
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
-  <div class="max-w-6xl mx-auto px-6 py-4">
-    <nav class="flex items-center justify-between">
-      <a href="/" class="flex items-center gap-2">
-        <div class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
-          <span class="text-white font-bold text-sm">Y</span>
+<header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <div class="absolute inset-0 bg-white/70 backdrop-blur-xl border-b border-dark-200/50 opacity-0 transition-opacity duration-300" id="header-bg"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav class="flex items-center justify-between h-16 lg:h-20">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-3 group">
+        <div class="relative">
+          <div class="w-9 h-9 lg:w-10 lg:h-10 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center shadow-lg shadow-primary-500/25 group-hover:shadow-primary-500/40 transition-shadow duration-300">
+            <svg class="w-5 h-5 lg:w-6 lg:h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" />
+              <path d="M2 17l10 5 10-5" />
+              <path d="M2 12l10 5 10-5" />
+            </svg>
+          </div>
+          <div class="absolute -inset-1 bg-gradient-to-br from-primary-400 to-secondary-500 rounded-xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
         </div>
-        <span class="font-semibold text-xl">Yet.Project</span>
+        <div class="flex flex-col">
+          <span class="font-bold text-lg lg:text-xl text-dark-900 tracking-tight">Yet.Project</span>
+          <span class="hidden sm:block text-2xs text-dark-500 font-medium -mt-0.5">AI-Native PM</span>
+        </div>
       </a>
 
-      <div class="hidden md:flex items-center gap-8">
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:flex items-center gap-1">
         {navLinks.map(link => (
-          <a href={link.href} class="text-gray-600 hover:text-gray-900 transition-colors text-sm">
+          <a
+            href={link.href}
+            class="relative px-4 py-2 text-sm font-medium text-dark-600 hover:text-dark-900 transition-colors rounded-lg hover:bg-dark-100/50 group"
+          >
             {link.label}
+            <span class="absolute bottom-1 left-4 right-4 h-0.5 bg-primary-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-full"></span>
           </a>
         ))}
       </div>
 
-      <div class="flex items-center gap-4">
-        <a href="https://app.yet.watch/auth/signin" class="text-gray-600 hover:text-gray-900 transition-colors text-sm">
+      <!-- Desktop CTA -->
+      <div class="hidden lg:flex items-center gap-3">
+        <a
+          href="https://app.yet.watch/auth/signin"
+          class="px-4 py-2 text-sm font-medium text-dark-600 hover:text-dark-900 transition-colors rounded-lg hover:bg-dark-100/50"
+        >
           Sign In
         </a>
-        <a href="https://app.yet.watch/auth/register" class="bg-primary-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary-700 transition-colors">
-          Get Started
+        <a
+          href="https://app.yet.watch/auth/register"
+          class="group relative inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-primary-600 to-primary-500 rounded-xl shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40 hover:from-primary-500 hover:to-primary-600 transition-all duration-300"
+        >
+          <span>Get Started Free</span>
+          <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
         </a>
       </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-button"
+        class="lg:hidden relative w-10 h-10 flex items-center justify-center rounded-lg hover:bg-dark-100/50 transition-colors"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        <div class="w-5 h-4 flex flex-col justify-between" id="hamburger">
+          <span class="block h-0.5 w-full bg-dark-700 rounded-full transition-all duration-300 origin-center"></span>
+          <span class="block h-0.5 w-full bg-dark-700 rounded-full transition-all duration-300"></span>
+          <span class="block h-0.5 w-full bg-dark-700 rounded-full transition-all duration-300 origin-center"></span>
+        </div>
+      </button>
     </nav>
   </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="lg:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-xl border-b border-dark-200/50 shadow-xl opacity-0 -translate-y-4 pointer-events-none transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 py-6 space-y-2">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class="flex items-center gap-3 px-4 py-3 text-base font-medium text-dark-700 hover:text-primary-600 hover:bg-primary-50 rounded-xl transition-colors"
+        >
+          {link.label}
+        </a>
+      ))}
+
+      <div class="pt-4 mt-4 border-t border-dark-200/50 space-y-3">
+        <a
+          href="https://app.yet.watch/auth/signin"
+          class="flex items-center justify-center gap-2 px-4 py-3 text-base font-medium text-dark-700 hover:text-dark-900 border border-dark-200 rounded-xl hover:bg-dark-50 transition-colors"
+        >
+          Sign In
+        </a>
+        <a
+          href="https://app.yet.watch/auth/register"
+          class="flex items-center justify-center gap-2 px-4 py-3 text-base font-semibold text-white bg-gradient-to-r from-primary-600 to-primary-500 rounded-xl shadow-lg shadow-primary-500/25"
+        >
+          Get Started Free
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
 </header>
+
+<script>
+  // Header scroll effect
+  const header = document.getElementById('header');
+  const headerBg = document.getElementById('header-bg');
+
+  function updateHeader() {
+    if (window.scrollY > 20) {
+      headerBg?.classList.add('opacity-100');
+      header?.classList.add('shadow-sm');
+    } else {
+      headerBg?.classList.remove('opacity-100');
+      header?.classList.remove('shadow-sm');
+    }
+  }
+
+  window.addEventListener('scroll', updateHeader, { passive: true });
+  updateHeader();
+
+  // Mobile menu toggle
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const hamburger = document.getElementById('hamburger');
+  let isMenuOpen = false;
+
+  function toggleMenu() {
+    isMenuOpen = !isMenuOpen;
+
+    if (isMenuOpen) {
+      mobileMenu?.classList.remove('opacity-0', '-translate-y-4', 'pointer-events-none');
+      mobileMenu?.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+      hamburger?.classList.add('menu-open');
+      mobileMenuButton?.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    } else {
+      mobileMenu?.classList.add('opacity-0', '-translate-y-4', 'pointer-events-none');
+      mobileMenu?.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+      hamburger?.classList.remove('menu-open');
+      mobileMenuButton?.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+  }
+
+  mobileMenuButton?.addEventListener('click', toggleMenu);
+
+  // Close menu on link click
+  mobileMenu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (isMenuOpen) toggleMenu();
+    });
+  });
+
+  // Close menu on escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isMenuOpen) {
+      toggleMenu();
+    }
+  });
+</script>
+
+<style>
+  /* Hamburger animation */
+  #hamburger.menu-open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  #hamburger.menu-open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  #hamburger.menu-open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+</style>

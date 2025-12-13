@@ -3,71 +3,109 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
+// Feature data
 const features = [
   {
-    icon: '🤖',
-    title: 'AI-Native Design',
-    description: 'Built from the ground up for AI agents. Claude Code, Cursor, and other AI tools can manage your projects directly via API, CLI, or MCP.',
+    icon: 'mcp',
+    title: 'MCP Server',
+    description: 'Native Model Context Protocol support with 27+ tools. Claude, Cursor, and Windsurf can manage your projects directly.',
+    color: 'primary',
   },
   {
-    icon: '📋',
-    title: 'Full Project Management',
-    description: 'Projects, tasks, Kanban boards, Gantt charts, milestones, time tracking, and team workload - everything you need in one place.',
-  },
-  {
-    icon: '🔑',
-    title: 'API Keys & Permissions',
-    description: 'Generate API keys with granular permissions. Control what AI agents and integrations can read, write, or manage.',
-  },
-  {
-    icon: '🧠',
-    title: 'Knowledge Base',
-    description: 'Store project context, architecture decisions, and learnings. AI agents use this memory to make smarter decisions.',
-  },
-  {
-    icon: '⚡',
+    icon: 'api',
     title: 'REST API',
-    description: '45+ endpoints covering everything. Tasks, projects, comments, time logs, exports - all accessible programmatically.',
+    description: '68+ endpoints covering tasks, projects, comments, time logs, and more. Full programmatic access to everything.',
+    color: 'secondary',
   },
   {
-    icon: '💻',
+    icon: 'cli',
     title: 'CLI Tool',
     description: 'Manage projects from your terminal. Create tasks, update progress, log time - without leaving your editor.',
+    color: 'accent',
+  },
+  {
+    icon: 'knowledge',
+    title: 'Knowledge Base',
+    description: 'Persistent AI memory that survives between sessions. Store context, decisions, and learnings for smarter AI.',
+    color: 'primary',
+  },
+  {
+    icon: 'keys',
+    title: 'API Keys',
+    description: 'Granular permissions for AI agents. Control read, write, and admin access for each integration.',
+    color: 'secondary',
+  },
+  {
+    icon: 'activity',
+    title: 'Activity Tracking',
+    description: 'See exactly what AI did vs humans. Full audit trail for every action with agent identification.',
+    color: 'accent',
   },
 ];
 
+// Integration logos
+const integrations = [
+  { name: 'Claude Code', logo: 'claude' },
+  { name: 'Cursor', logo: 'cursor' },
+  { name: 'Windsurf', logo: 'windsurf' },
+  { name: 'GitHub', logo: 'github' },
+  { name: 'VS Code', logo: 'vscode' },
+  { name: 'Claude Desktop', logo: 'claude-desktop' },
+];
+
+// How it works steps
 const steps = [
   {
-    step: '1',
+    step: '01',
     title: 'Create Your Workspace',
-    description: 'Sign up and create a tenant for your team. Invite members and set up your first project.',
+    description: 'Sign up and create a tenant in seconds. Set up your first project and invite your team.',
+    code: `$ yet login --key yet_abc123...
+✓ Authenticated as john@company.com
+✓ Connected to workspace: Acme Corp`,
   },
   {
-    step: '2',
-    title: 'Generate an API Key',
-    description: 'Go to Settings → API Keys. Create a key with the permissions you need (read, write, or admin).',
+    step: '02',
+    title: 'Configure MCP Server',
+    description: 'Add the Yet.Project MCP server to Claude Code, Cursor, or any MCP-compatible tool.',
+    code: `{
+  "mcpServers": {
+    "yet": {
+      "command": "npx",
+      "args": ["-y", "@anthropic/yet-mcp"],
+      "env": { "YET_API_KEY": "yet_..." }
+    }
+  }
+}`,
   },
   {
-    step: '3',
-    title: 'Connect Your AI',
-    description: 'Use the CLI, REST API, or upcoming MCP server to let AI agents manage tasks, log progress, and access context.',
+    step: '03',
+    title: 'Let AI Manage Tasks',
+    description: 'Your AI assistant can now create tasks, update progress, log time, and access project context.',
+    code: `> "Claude, create a task for implementing auth"
+✓ Created task: Implement user authentication
+  ID: task_abc123
+  Project: Backend API
+  Priority: High`,
   },
 ];
 
+// Pricing plans
 const pricing = [
   {
     name: 'Free',
     price: '$0',
     period: 'forever',
-    description: 'For individuals and small projects',
+    description: 'Perfect for individuals and hobby projects',
     features: [
       'Up to 3 projects',
       'Up to 100 tasks',
       '1 team member',
       'REST API access',
       'CLI tool',
+      'Community support',
     ],
     cta: 'Get Started',
+    href: 'https://app.yet.watch/auth/register',
     highlighted: false,
   },
   {
@@ -79,11 +117,13 @@ const pricing = [
       'Unlimited projects',
       'Unlimited tasks',
       'Unlimited members',
+      'MCP Server access',
+      'Knowledge Base',
       'API keys with permissions',
-      'Knowledge base',
       'Priority support',
     ],
     cta: 'Start Free Trial',
+    href: 'https://app.yet.watch/auth/register?plan=pro',
     highlighted: true,
   },
   {
@@ -98,123 +138,418 @@ const pricing = [
       'Custom integrations',
       'Dedicated support',
       'SLA guarantee',
+      'On-premise option',
     ],
     cta: 'Contact Sales',
+    href: '/contact',
     highlighted: false,
   },
 ];
+
+// Stats
+const stats = [
+  { value: '68+', label: 'API Endpoints' },
+  { value: '27+', label: 'MCP Tools' },
+  { value: '10k+', label: 'Developers' },
+  { value: '99.9%', label: 'Uptime' },
+];
 ---
 
-<Layout title="AI-Native Project Management">
+<Layout
+  title="AI-Native Project Management for Developers"
+  description="Let Claude Code, Cursor, and AI tools manage your projects directly. The only project management platform built for human + AI collaboration with MCP, API, and CLI."
+>
   <Header />
 
-  <main>
-    <!-- Hero -->
-    <section class="pt-32 pb-20 px-6">
-      <div class="max-w-4xl mx-auto text-center">
-        <div class="inline-flex items-center gap-2 bg-primary-50 text-primary-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
-          <span class="w-2 h-2 bg-primary-500 rounded-full animate-pulse"></span>
-          Now with REST API & CLI
-        </div>
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 lg:pt-0">
+      <!-- Background gradient mesh -->
+      <div class="absolute inset-0 bg-gradient-mesh opacity-70"></div>
 
-        <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-          Project Management<br />
-          <span class="text-primary-600">for AI Agents</span>
-        </h1>
+      <!-- Grid pattern overlay -->
+      <div class="absolute inset-0 bg-dots-pattern opacity-30"></div>
 
-        <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
-          Let Claude Code, Cursor, and other AI tools manage your projects directly.
-          Create tasks, track progress, and access context - all through API.
-        </p>
+      <!-- Decorative orbs -->
+      <div class="absolute top-1/4 -left-32 w-96 h-96 bg-primary-400/20 rounded-full blur-3xl animate-float"></div>
+      <div class="absolute bottom-1/4 -right-32 w-96 h-96 bg-secondary-400/20 rounded-full blur-3xl animate-float" style="animation-delay: -3s;"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-primary-500/5 to-transparent rounded-full"></div>
 
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="https://app.yet.watch/auth/register" class="w-full sm:w-auto bg-primary-600 text-white px-8 py-4 rounded-xl font-medium hover:bg-primary-700 transition-colors text-lg">
-            Start for Free
-          </a>
-          <a href="/docs" class="w-full sm:w-auto bg-gray-100 text-gray-700 px-8 py-4 rounded-xl font-medium hover:bg-gray-200 transition-colors text-lg">
-            Read the Docs
-          </a>
-        </div>
-
-        <p class="text-gray-400 text-sm mt-6">No credit card required</p>
-      </div>
-    </section>
-
-    <!-- Code Example -->
-    <section class="py-16 px-6 bg-gray-900">
-      <div class="max-w-4xl mx-auto">
-        <div class="bg-gray-800 rounded-2xl p-6 overflow-x-auto">
-          <div class="flex items-center gap-2 mb-4">
-            <div class="w-3 h-3 rounded-full bg-red-500"></div>
-            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-            <div class="w-3 h-3 rounded-full bg-green-500"></div>
-            <span class="text-gray-400 text-sm ml-4">Terminal</span>
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+        <div class="text-center">
+          <!-- Badge -->
+          <div class="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-dark-200/50 shadow-lg shadow-dark-900/5 px-4 py-2 rounded-full text-sm font-medium mb-8" data-animate>
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-accent-500"></span>
+            </span>
+            <span class="text-dark-600">Now with <span class="text-primary-600 font-semibold">MCP Server</span> & <span class="text-secondary-600 font-semibold">Knowledge Base</span></span>
           </div>
-          <pre class="text-sm"><code class="text-gray-300"><span class="text-gray-500"># Login with your API key</span>
-<span class="text-green-400">$</span> yet login --key yet_abc123...
 
-<span class="text-gray-500"># Create a task from your terminal</span>
-<span class="text-green-400">$</span> yet todo "Implement user authentication"
-<span class="text-blue-400">✓</span> Created task: abc123
+          <!-- Headline -->
+          <h1 class="text-4xl sm:text-5xl lg:text-display-xl font-bold text-dark-900 mb-6 tracking-tight" data-animate data-delay="100">
+            Project Management<br />
+            <span class="gradient-text">for AI Agents</span>
+          </h1>
 
-<span class="text-gray-500"># Check your status</span>
-<span class="text-green-400">$</span> yet status
-<span class="text-blue-400">Branch:</span> feature/auth
-<span class="text-blue-400">Task:</span>   abc123 - Implement user authentication
-<span class="text-blue-400">Status:</span> in_progress (45%)
+          <!-- Subheadline -->
+          <p class="text-lg sm:text-xl text-dark-600 mb-10 max-w-2xl mx-auto leading-relaxed" data-animate data-delay="200">
+            Let Claude Code, Cursor, and your AI tools manage projects directly.
+            The only PM platform built for <span class="font-semibold text-dark-800">human + AI collaboration</span>.
+          </p>
 
-<span class="text-gray-500"># Mark complete when done</span>
-<span class="text-green-400">$</span> yet done --summary "Added JWT auth with refresh tokens"
-<span class="text-blue-400">✓</span> Task completed</code></pre>
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12" data-animate data-delay="300">
+            <a
+              href="https://app.yet.watch/auth/register"
+              class="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-primary-600 to-primary-500 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-xl shadow-primary-500/25 hover:shadow-primary-500/40 hover:from-primary-500 hover:to-primary-600 transition-all duration-300 btn-glow"
+            >
+              <span>Start Free</span>
+              <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </a>
+            <a
+              href="#how-it-works"
+              class="group w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/80 backdrop-blur-sm border border-dark-200 text-dark-700 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white hover:border-dark-300 hover:shadow-lg transition-all duration-300"
+            >
+              <svg class="w-5 h-5 text-primary-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+              <span>See How It Works</span>
+            </a>
+          </div>
+
+          <!-- Trust signal -->
+          <p class="text-sm text-dark-500 mb-12" data-animate data-delay="400">
+            No credit card required &middot; Set up in 2 minutes
+          </p>
+
+          <!-- Terminal Demo -->
+          <div class="max-w-3xl mx-auto" data-animate="scale" data-delay="500">
+            <div class="relative bg-dark-900 rounded-2xl shadow-2xl shadow-dark-900/50 overflow-hidden border border-dark-700/50">
+              <!-- Terminal header -->
+              <div class="flex items-center gap-2 px-4 py-3 bg-dark-800/50 border-b border-dark-700/50">
+                <div class="flex gap-1.5">
+                  <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                  <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                  <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                </div>
+                <span class="text-dark-400 text-xs font-mono ml-2">zsh — yet-project</span>
+              </div>
+
+              <!-- Terminal content -->
+              <div class="p-6 font-mono text-sm text-left overflow-x-auto">
+                <div class="space-y-3">
+                  <div>
+                    <span class="text-dark-500"># Ask Claude to create a task</span>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <span class="text-accent-400">claude</span>
+                    <span class="text-dark-300">"Create a high-priority task for implementing OAuth"</span>
+                  </div>
+                  <div class="pl-4 border-l-2 border-dark-700 space-y-1 mt-3">
+                    <div class="text-primary-400">Using yet.create_task tool...</div>
+                    <div class="text-dark-400">
+                      <span class="text-accent-400">✓</span> Created task in project "Backend API"
+                    </div>
+                    <div class="text-dark-500">
+                      <span class="text-dark-600">ID:</span> task_7kd9f2
+                      <span class="text-dark-600 ml-4">Priority:</span> <span class="text-red-400">High</span>
+                      <span class="text-dark-600 ml-4">Status:</span> <span class="text-yellow-400">To Do</span>
+                    </div>
+                  </div>
+                  <div class="mt-4">
+                    <span class="text-dark-500"># Claude can update progress as it works</span>
+                  </div>
+                  <div class="pl-4 border-l-2 border-dark-700 space-y-1">
+                    <div class="text-primary-400">Using yet.update_task tool...</div>
+                    <div class="text-dark-400">
+                      <span class="text-accent-400">✓</span> Updated task_7kd9f2
+                    </div>
+                    <div class="text-dark-500">
+                      <span class="text-dark-600">Progress:</span> <span class="text-accent-400">75%</span>
+                      <span class="text-dark-600 ml-4">Status:</span> <span class="text-blue-400">In Progress</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Glow effect -->
+              <div class="absolute -bottom-20 left-1/2 -translate-x-1/2 w-2/3 h-40 bg-primary-500/20 blur-3xl"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce-subtle">
+        <svg class="w-6 h-6 text-dark-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="relative py-16 bg-dark-900 border-y border-dark-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          {stats.map((stat, index) => (
+            <div class="text-center" data-animate data-delay={String(index * 100)}>
+              <div class="text-4xl lg:text-5xl font-bold text-white mb-2">{stat.value}</div>
+              <div class="text-dark-400 font-medium">{stat.label}</div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
 
-    <!-- Features -->
-    <section id="features" class="py-24 px-6">
-      <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-16">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Everything You Need
+    <!-- Problem/Solution Section -->
+    <section class="py-24 lg:py-32 bg-dark-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-animate>
+          <h2 class="text-3xl lg:text-display-md font-bold text-dark-900 mb-4">
+            Your AI Can Write Code.<br />
+            <span class="gradient-text">But Can It Manage Projects?</span>
           </h2>
-          <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p class="text-lg text-dark-600 max-w-2xl mx-auto">
+            AI assistants are powerful, but they forget everything between sessions and can't interact with your project management tools.
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12">
+          <!-- Problems -->
+          <div class="bg-white rounded-2xl p-8 shadow-card border border-dark-100" data-animate data-delay="100">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-10 h-10 rounded-xl bg-red-100 flex items-center justify-center">
+                <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-dark-900">Without Yet.Project</h3>
+            </div>
+            <ul class="space-y-4">
+              {[
+                'AI assistants forget context between sessions',
+                'No visibility into what AI changed vs humans',
+                'Existing PM tools weren\'t built for AI workflows',
+                'Copy-pasting between chat and task boards',
+                'No programmatic access for automation',
+              ].map(problem => (
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span class="text-dark-600">{problem}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Solutions -->
+          <div class="bg-gradient-to-br from-primary-600 to-primary-700 rounded-2xl p-8 shadow-xl" data-animate data-delay="200">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-white">With Yet.Project</h3>
+            </div>
+            <ul class="space-y-4">
+              {[
+                'Knowledge Base = persistent AI memory',
+                'Activity tracking shows AI vs human actions',
+                'MCP Server gives AI direct task access',
+                'CLI + API = no copy-paste needed',
+                'Built for developers, not adapted for them',
+              ].map(solution => (
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-accent-300 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="text-white/90">{solution}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-24 lg:py-32">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-animate>
+          <span class="inline-block text-sm font-semibold text-primary-600 tracking-wide uppercase mb-4">Features</span>
+          <h2 class="text-3xl lg:text-display-md font-bold text-dark-900 mb-4">
+            Everything You Need for<br />
+            <span class="gradient-text">AI-Powered Development</span>
+          </h2>
+          <p class="text-lg text-dark-600 max-w-2xl mx-auto">
             A complete project management platform designed for developers and their AI assistants.
           </p>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map(feature => (
-            <div class="bg-white border border-gray-100 rounded-2xl p-8 hover:shadow-lg hover:border-gray-200 transition-all">
-              <div class="text-4xl mb-4">{feature.icon}</div>
-              <h3 class="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
-              <p class="text-gray-600">{feature.description}</p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {features.map((feature, index) => (
+            <div
+              class="group relative bg-white rounded-2xl p-8 shadow-card hover:shadow-card-hover border border-dark-100 hover:border-dark-200 transition-all duration-300"
+              data-animate
+              data-delay={String((index % 3) * 100)}
+            >
+              <!-- Icon -->
+              <div class={`w-14 h-14 rounded-2xl mb-6 flex items-center justify-center ${
+                feature.color === 'primary' ? 'bg-primary-100 text-primary-600' :
+                feature.color === 'secondary' ? 'bg-secondary-100 text-secondary-600' :
+                'bg-accent-100 text-accent-600'
+              }`}>
+                {feature.icon === 'mcp' && (
+                  <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                  </svg>
+                )}
+                {feature.icon === 'api' && (
+                  <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+                  </svg>
+                )}
+                {feature.icon === 'cli' && (
+                  <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z" />
+                  </svg>
+                )}
+                {feature.icon === 'knowledge' && (
+                  <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+                  </svg>
+                )}
+                {feature.icon === 'keys' && (
+                  <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" />
+                  </svg>
+                )}
+                {feature.icon === 'activity' && (
+                  <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+                  </svg>
+                )}
+              </div>
+
+              <h3 class="text-xl font-semibold text-dark-900 mb-3 group-hover:text-primary-600 transition-colors">
+                {feature.title}
+              </h3>
+
+              <p class="text-dark-600 leading-relaxed">
+                {feature.description}
+              </p>
+
+              <!-- Hover arrow -->
+              <div class="absolute bottom-8 right-8 opacity-0 group-hover:opacity-100 transition-opacity">
+                <svg class="w-5 h-5 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </div>
             </div>
           ))}
         </div>
       </div>
     </section>
 
-    <!-- How It Works -->
-    <section id="how-it-works" class="py-24 px-6 bg-gray-50">
-      <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-16">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Get Started in Minutes
+    <!-- Integrations Section -->
+    <section id="integrations" class="py-24 lg:py-32 bg-dark-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-animate>
+          <span class="inline-block text-sm font-semibold text-primary-600 tracking-wide uppercase mb-4">Integrations</span>
+          <h2 class="text-3xl lg:text-display-md font-bold text-dark-900 mb-4">
+            Works With Your Favorite<br />
+            <span class="gradient-text">AI Tools & IDEs</span>
           </h2>
-          <p class="text-xl text-gray-600">
-            Three simple steps to AI-powered project management.
+          <p class="text-lg text-dark-600 max-w-2xl mx-auto">
+            Native MCP support for Claude, Cursor, and more. Full API access for any custom integration.
           </p>
         </div>
 
-        <div class="space-y-8">
-          {steps.map(step => (
-            <div class="flex gap-6 items-start">
-              <div class="flex-shrink-0 w-12 h-12 bg-primary-600 text-white rounded-full flex items-center justify-center font-bold text-xl">
-                {step.step}
+        <!-- Integration logos -->
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4" data-animate data-delay="100">
+          {integrations.map((integration, index) => (
+            <div
+              class="group bg-white rounded-xl p-6 shadow-card hover:shadow-card-hover border border-dark-100 hover:border-primary-200 transition-all duration-300 flex flex-col items-center justify-center gap-3"
+              data-delay={String(index * 50)}
+            >
+              <!-- Placeholder logo -->
+              <div class="w-12 h-12 rounded-xl bg-dark-100 group-hover:bg-primary-100 transition-colors flex items-center justify-center">
+                <svg class="w-6 h-6 text-dark-400 group-hover:text-primary-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                </svg>
               </div>
-              <div>
-                <h3 class="text-xl font-semibold text-gray-900 mb-2">{step.title}</h3>
-                <p class="text-gray-600">{step.description}</p>
+              <span class="text-sm font-medium text-dark-700 group-hover:text-primary-600 transition-colors">{integration.name}</span>
+            </div>
+          ))}
+        </div>
+
+        <!-- MCP Config Example -->
+        <div class="mt-16 max-w-3xl mx-auto" data-animate data-delay="200">
+          <div class="bg-dark-900 rounded-2xl shadow-2xl overflow-hidden border border-dark-700/50">
+            <div class="flex items-center gap-2 px-4 py-3 bg-dark-800/50 border-b border-dark-700/50">
+              <span class="text-dark-400 text-xs font-mono">claude_desktop_config.json</span>
+            </div>
+            <pre class="p-6 overflow-x-auto text-sm"><code class="font-mono"><span class="text-dark-500">&#123;</span>
+  <span class="text-primary-400">"mcpServers"</span><span class="text-dark-500">:</span> <span class="text-dark-500">&#123;</span>
+    <span class="text-primary-400">"yet"</span><span class="text-dark-500">:</span> <span class="text-dark-500">&#123;</span>
+      <span class="text-secondary-400">"command"</span><span class="text-dark-500">:</span> <span class="text-accent-400">"npx"</span><span class="text-dark-500">,</span>
+      <span class="text-secondary-400">"args"</span><span class="text-dark-500">:</span> <span class="text-dark-500">[</span><span class="text-accent-400">"-y"</span><span class="text-dark-500">,</span> <span class="text-accent-400">"@anthropic/yet-mcp"</span><span class="text-dark-500">],</span>
+      <span class="text-secondary-400">"env"</span><span class="text-dark-500">:</span> <span class="text-dark-500">&#123;</span>
+        <span class="text-secondary-400">"YET_API_KEY"</span><span class="text-dark-500">:</span> <span class="text-accent-400">"yet_sk_..."</span>
+      <span class="text-dark-500">&#125;</span>
+    <span class="text-dark-500">&#125;</span>
+  <span class="text-dark-500">&#125;</span>
+<span class="text-dark-500">&#125;</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-24 lg:py-32">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-animate>
+          <span class="inline-block text-sm font-semibold text-primary-600 tracking-wide uppercase mb-4">How It Works</span>
+          <h2 class="text-3xl lg:text-display-md font-bold text-dark-900 mb-4">
+            Get Started in<br />
+            <span class="gradient-text">Three Simple Steps</span>
+          </h2>
+          <p class="text-lg text-dark-600 max-w-2xl mx-auto">
+            Set up AI-powered project management in minutes, not hours.
+          </p>
+        </div>
+
+        <div class="space-y-12 lg:space-y-16">
+          {steps.map((step, index) => (
+            <div
+              class={`flex flex-col ${index % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-8 lg:gap-16 items-center`}
+              data-animate
+              data-delay={String(index * 100)}
+            >
+              <!-- Content -->
+              <div class="flex-1 text-center lg:text-left">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary-100 text-primary-600 font-bold text-lg mb-4">
+                  {step.step}
+                </div>
+                <h3 class="text-2xl font-bold text-dark-900 mb-3">{step.title}</h3>
+                <p class="text-dark-600 text-lg leading-relaxed">{step.description}</p>
+              </div>
+
+              <!-- Code block -->
+              <div class="flex-1 w-full">
+                <div class="bg-dark-900 rounded-xl shadow-xl overflow-hidden border border-dark-700/50">
+                  <div class="flex items-center gap-1.5 px-4 py-2.5 bg-dark-800/50 border-b border-dark-700/50">
+                    <div class="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
+                  </div>
+                  <pre class="p-4 overflow-x-auto text-sm"><code class="font-mono text-dark-300 whitespace-pre">{step.code}</code></pre>
+                </div>
               </div>
             </div>
           ))}
@@ -222,46 +557,75 @@ const pricing = [
       </div>
     </section>
 
-    <!-- Pricing -->
-    <section id="pricing" class="py-24 px-6">
-      <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-16">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Simple Pricing
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24 lg:py-32 bg-dark-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-animate>
+          <span class="inline-block text-sm font-semibold text-primary-600 tracking-wide uppercase mb-4">Pricing</span>
+          <h2 class="text-3xl lg:text-display-md font-bold text-dark-900 mb-4">
+            Simple, Transparent<br />
+            <span class="gradient-text">Pricing for Everyone</span>
           </h2>
-          <p class="text-xl text-gray-600">
-            Start free, upgrade when you need more.
+          <p class="text-lg text-dark-600 max-w-2xl mx-auto">
+            Start free, upgrade when you need more. No hidden fees, no surprises.
           </p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-8">
-          {pricing.map(plan => (
-            <div class={`rounded-2xl p-8 ${plan.highlighted ? 'bg-primary-600 text-white ring-4 ring-primary-600 ring-offset-4' : 'bg-white border border-gray-200'}`}>
-              <h3 class={`text-xl font-semibold mb-2 ${plan.highlighted ? 'text-white' : 'text-gray-900'}`}>
+        <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          {pricing.map((plan, index) => (
+            <div
+              class={`relative rounded-2xl p-8 ${
+                plan.highlighted
+                  ? 'bg-gradient-to-br from-primary-600 to-primary-700 text-white shadow-2xl shadow-primary-500/30 ring-4 ring-primary-400/20 scale-105 z-10'
+                  : 'bg-white shadow-card border border-dark-100'
+              }`}
+              data-animate
+              data-delay={String(index * 100)}
+            >
+              {plan.highlighted && (
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                  Most Popular
+                </div>
+              )}
+
+              <h3 class={`text-xl font-bold mb-2 ${plan.highlighted ? 'text-white' : 'text-dark-900'}`}>
                 {plan.name}
               </h3>
+
               <div class="mb-4">
-                <span class={`text-4xl font-bold ${plan.highlighted ? 'text-white' : 'text-gray-900'}`}>
+                <span class={`text-4xl font-bold ${plan.highlighted ? 'text-white' : 'text-dark-900'}`}>
                   {plan.price}
                 </span>
-                <span class={plan.highlighted ? 'text-primary-100' : 'text-gray-500'}>
+                <span class={plan.highlighted ? 'text-primary-100' : 'text-dark-500'}>
                   {plan.period}
                 </span>
               </div>
-              <p class={`mb-6 ${plan.highlighted ? 'text-primary-100' : 'text-gray-600'}`}>
+
+              <p class={`mb-6 ${plan.highlighted ? 'text-primary-100' : 'text-dark-600'}`}>
                 {plan.description}
               </p>
+
               <ul class="space-y-3 mb-8">
                 {plan.features.map(feature => (
                   <li class="flex items-center gap-3">
-                    <svg class={`w-5 h-5 ${plan.highlighted ? 'text-primary-200' : 'text-primary-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class={`w-5 h-5 flex-shrink-0 ${plan.highlighted ? 'text-accent-300' : 'text-accent-500'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                     </svg>
-                    <span class={plan.highlighted ? 'text-white' : 'text-gray-600'}>{feature}</span>
+                    <span class={plan.highlighted ? 'text-white/90' : 'text-dark-600'}>
+                      {feature}
+                    </span>
                   </li>
                 ))}
               </ul>
-              <a href="https://app.yet.watch/auth/register" class={`block text-center py-3 px-6 rounded-xl font-medium transition-colors ${plan.highlighted ? 'bg-white text-primary-600 hover:bg-gray-100' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}>
+
+              <a
+                href={plan.href}
+                class={`block text-center py-3 px-6 rounded-xl font-semibold transition-all duration-300 ${
+                  plan.highlighted
+                    ? 'bg-white text-primary-600 hover:bg-dark-50 shadow-lg'
+                    : 'bg-dark-100 text-dark-700 hover:bg-dark-200'
+                }`}
+              >
                 {plan.cta}
               </a>
             </div>
@@ -270,18 +634,44 @@ const pricing = [
       </div>
     </section>
 
-    <!-- CTA -->
-    <section class="py-24 px-6 bg-primary-600">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
-          Ready to Let AI Manage Your Projects?
+    <!-- Final CTA Section -->
+    <section class="relative py-24 lg:py-32 bg-dark-900 overflow-hidden">
+      <!-- Background effects -->
+      <div class="absolute inset-0 bg-gradient-mesh opacity-20"></div>
+      <div class="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/20 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary-500/20 rounded-full blur-3xl"></div>
+
+      <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl lg:text-display-md font-bold text-white mb-6" data-animate>
+          Ready to Let AI<br />
+          <span class="bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent">Manage Your Projects?</span>
         </h2>
-        <p class="text-xl text-primary-100 mb-10">
-          Join developers using Yet.Project with Claude Code, Cursor, and other AI tools.
+
+        <p class="text-xl text-dark-300 mb-10 max-w-2xl mx-auto" data-animate data-delay="100">
+          Join thousands of developers using Yet.Project with Claude Code, Cursor, and other AI tools.
         </p>
-        <a href="https://app.yet.watch/auth/register" class="inline-block bg-white text-primary-600 px-8 py-4 rounded-xl font-medium hover:bg-gray-100 transition-colors text-lg">
-          Get Started for Free
-        </a>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4" data-animate data-delay="200">
+          <a
+            href="https://app.yet.watch/auth/register"
+            class="group w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white text-dark-900 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-dark-100 transition-all duration-300 shadow-xl"
+          >
+            <span>Get Started Free</span>
+            <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+          <a
+            href="/contact"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-dark-800 text-white border border-dark-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-dark-700 hover:border-dark-500 transition-all duration-300"
+          >
+            Talk to Sales
+          </a>
+        </div>
+
+        <p class="text-sm text-dark-500 mt-6" data-animate data-delay="300">
+          No credit card required &middot; 14-day free trial on Pro
+        </p>
       </div>
     </section>
   </main>

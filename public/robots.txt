@@ -1,0 +1,31 @@
+# Robots.txt for yet.watch
+# https://yet.watch
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://yet.watch/sitemap.xml
+
+# Block sensitive paths
+Disallow: /api/
+Disallow: /_astro/
+
+# Crawl delay (be nice to search engines)
+Crawl-delay: 1
+
+# Block AI training crawlers (optional - remove if you want AI indexing)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /

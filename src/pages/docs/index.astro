@@ -6,6 +6,8 @@ import Footer from '../../components/Footer.astro';
 const sections = [
   {
     title: 'Getting Started',
+    icon: 'rocket',
+    color: 'primary',
     items: [
       { title: 'Introduction', href: '/docs/intro', description: 'What is Yet.Project and how it works' },
       { title: 'Quick Start', href: '/docs/quickstart', description: 'Get up and running in 5 minutes' },
@@ -14,6 +16,8 @@ const sections = [
   },
   {
     title: 'Web App',
+    icon: 'app',
+    color: 'secondary',
     items: [
       { title: 'Projects', href: '/docs/app/projects', description: 'Creating and managing projects' },
       { title: 'Tasks', href: '/docs/app/tasks', description: 'Task management, Kanban, dependencies' },
@@ -24,6 +28,8 @@ const sections = [
   },
   {
     title: 'REST API',
+    icon: 'api',
+    color: 'accent',
     items: [
       { title: 'Authentication', href: '/docs/api/auth', description: 'API key authentication' },
       { title: 'Tasks', href: '/docs/api/tasks', description: 'Task endpoints' },
@@ -34,6 +40,8 @@ const sections = [
   },
   {
     title: 'CLI',
+    icon: 'cli',
+    color: 'primary',
     items: [
       { title: 'Installation', href: '/docs/cli/install', description: 'Installing the CLI' },
       { title: 'Commands', href: '/docs/cli/commands', description: 'All available commands' },
@@ -41,69 +49,252 @@ const sections = [
     ],
   },
   {
+    title: 'MCP Server',
+    icon: 'mcp',
+    color: 'secondary',
+    items: [
+      { title: 'Setup', href: '/docs/mcp/setup', description: 'Configure MCP for Claude & Cursor' },
+      { title: 'Tools Reference', href: '/docs/mcp/tools', description: 'All 27+ MCP tools' },
+      { title: 'Examples', href: '/docs/mcp/examples', description: 'Real-world usage examples' },
+    ],
+  },
+  {
     title: 'Integrations',
+    icon: 'integrations',
+    color: 'accent',
     items: [
       { title: 'Claude Code', href: '/docs/integrations/claude', description: 'Using with Claude Code' },
       { title: 'Cursor', href: '/docs/integrations/cursor', description: 'Using with Cursor IDE' },
-      { title: 'MCP Server', href: '/docs/integrations/mcp', description: 'Model Context Protocol (coming soon)' },
+      { title: 'Windsurf', href: '/docs/integrations/windsurf', description: 'Using with Windsurf' },
+      { title: 'GitHub', href: '/docs/integrations/github', description: 'GitHub webhooks & automation' },
     ],
+  },
+];
+
+const quickLinks = [
+  {
+    title: 'GitHub',
+    href: 'https://github.com/yet-market',
+    icon: 'github',
+    description: 'View source code',
+  },
+  {
+    title: 'Web App',
+    href: 'https://app.yet.watch',
+    icon: 'app',
+    description: 'Open dashboard',
+  },
+  {
+    title: 'npm',
+    href: 'https://www.npmjs.com/package/@yet/cli',
+    icon: 'npm',
+    description: 'Install CLI',
+  },
+  {
+    title: 'API Reference',
+    href: '/docs/api',
+    icon: 'api',
+    description: '68+ endpoints',
   },
 ];
 ---
 
-<Layout title="Documentation">
+<Layout
+  title="Documentation"
+  description="Learn how to use Yet.Project and integrate it with Claude Code, Cursor, and other AI tools. Complete guides for API, CLI, and MCP Server."
+>
   <Header />
 
-  <main class="pt-24 pb-16 px-6">
-    <div class="max-w-6xl mx-auto">
-      <div class="mb-12">
-        <h1 class="text-4xl font-bold text-gray-900 mb-4">Documentation</h1>
-        <p class="text-xl text-gray-600">
-          Learn how to use Yet.Project and integrate it with your AI tools.
-        </p>
-      </div>
+  <main class="pt-24 pb-16" id="main-content">
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-mesh opacity-50"></div>
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+        <div class="text-center" data-animate>
+          <span class="inline-block text-sm font-semibold text-primary-600 tracking-wide uppercase mb-4">Documentation</span>
+          <h1 class="text-4xl lg:text-display-lg font-bold text-dark-900 mb-6">
+            Learn to Build with<br />
+            <span class="gradient-text">Yet.Project</span>
+          </h1>
+          <p class="text-xl text-dark-600 max-w-2xl mx-auto">
+            Everything you need to integrate Yet.Project with your AI tools and workflows.
+          </p>
+        </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {sections.map(section => (
-          <div>
-            <h2 class="text-lg font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-200">
-              {section.title}
-            </h2>
-            <ul class="space-y-4">
-              {section.items.map(item => (
-                <li>
-                  <a href={item.href} class="block group">
-                    <span class="text-gray-900 group-hover:text-primary-600 font-medium transition-colors">
-                      {item.title}
-                    </span>
-                    <p class="text-sm text-gray-500 mt-1">{item.description}</p>
-                  </a>
-                </li>
-              ))}
-            </ul>
+        <!-- Search (placeholder) -->
+        <div class="max-w-xl mx-auto mt-10" data-animate data-delay="100">
+          <div class="relative">
+            <input
+              type="text"
+              placeholder="Search documentation..."
+              class="w-full px-5 py-4 pl-12 text-lg bg-white border border-dark-200 rounded-xl shadow-lg focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all"
+            />
+            <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-dark-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
           </div>
-        ))}
+        </div>
       </div>
+    </section>
 
-      <!-- Quick Links -->
-      <div class="mt-16 p-8 bg-gray-50 rounded-2xl">
-        <h2 class="text-xl font-semibold text-gray-900 mb-4">Quick Links</h2>
-        <div class="grid sm:grid-cols-3 gap-4">
-          <a href="https://github.com/yet-market/yet.project" class="flex items-center gap-3 p-4 bg-white rounded-xl hover:shadow-md transition-shadow">
-            <svg class="w-6 h-6 text-gray-700" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-            <span class="font-medium text-gray-900">GitHub</span>
+    <!-- Quick Links -->
+    <section class="py-12 bg-dark-50 border-y border-dark-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-animate>
+          {quickLinks.map((link, index) => (
+            <a
+              href={link.href}
+              target={link.href.startsWith('http') ? '_blank' : undefined}
+              rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              class="group flex items-center gap-4 p-4 bg-white rounded-xl border border-dark-100 hover:border-primary-200 hover:shadow-lg transition-all duration-300"
+              data-delay={String(index * 50)}
+            >
+              <div class="w-10 h-10 rounded-lg bg-dark-100 group-hover:bg-primary-100 flex items-center justify-center transition-colors">
+                {link.icon === 'github' && (
+                  <svg class="w-5 h-5 text-dark-600 group-hover:text-primary-600 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                )}
+                {link.icon === 'app' && (
+                  <svg class="w-5 h-5 text-dark-600 group-hover:text-primary-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+                  </svg>
+                )}
+                {link.icon === 'npm' && (
+                  <svg class="w-5 h-5 text-dark-600 group-hover:text-primary-600 transition-colors" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M0 7.334v8h6.666v1.332H12v-1.332h12v-8H0zm6.666 6.664H5.334v-4H3.999v4H1.335V8.667h5.331v5.331zm4 0v1.336H8.001V8.667h5.334v5.332h-2.669v-.001zm12.001 0h-1.33v-4h-1.336v4h-1.335v-4h-1.33v4h-2.671V8.667h8.002v5.331z"/>
+                  </svg>
+                )}
+                {link.icon === 'api' && (
+                  <svg class="w-5 h-5 text-dark-600 group-hover:text-primary-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+                  </svg>
+                )}
+              </div>
+              <div>
+                <span class="font-semibold text-dark-900 group-hover:text-primary-600 transition-colors">{link.title}</span>
+                <p class="text-sm text-dark-500">{link.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Documentation Grid -->
+    <section class="py-16 lg:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {sections.map((section, sectionIndex) => (
+            <div
+              class="bg-white rounded-2xl border border-dark-100 overflow-hidden hover:shadow-lg transition-shadow duration-300"
+              data-animate
+              data-delay={String((sectionIndex % 3) * 100)}
+            >
+              <!-- Section header -->
+              <div class={`px-6 py-4 border-b border-dark-100 ${
+                section.color === 'primary' ? 'bg-primary-50' :
+                section.color === 'secondary' ? 'bg-secondary-50' :
+                'bg-accent-50'
+              }`}>
+                <div class="flex items-center gap-3">
+                  <div class={`w-8 h-8 rounded-lg flex items-center justify-center ${
+                    section.color === 'primary' ? 'bg-primary-100 text-primary-600' :
+                    section.color === 'secondary' ? 'bg-secondary-100 text-secondary-600' :
+                    'bg-accent-100 text-accent-600'
+                  }`}>
+                    {section.icon === 'rocket' && (
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+                      </svg>
+                    )}
+                    {section.icon === 'app' && (
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" />
+                      </svg>
+                    )}
+                    {section.icon === 'api' && (
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+                      </svg>
+                    )}
+                    {section.icon === 'cli' && (
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z" />
+                      </svg>
+                    )}
+                    {section.icon === 'mcp' && (
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                      </svg>
+                    )}
+                    {section.icon === 'integrations' && (
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 6.087c0-.355.186-.676.401-.959.221-.29.349-.634.349-1.003 0-1.036-1.007-1.875-2.25-1.875s-2.25.84-2.25 1.875c0 .369.128.713.349 1.003.215.283.401.604.401.959v0a.64.64 0 01-.657.643 48.39 48.39 0 01-4.163-.3c.186 1.613.293 3.25.315 4.907a.656.656 0 01-.658.663v0c-.355 0-.676-.186-.959-.401a1.647 1.647 0 00-1.003-.349c-1.036 0-1.875 1.007-1.875 2.25s.84 2.25 1.875 2.25c.369 0 .713-.128 1.003-.349.283-.215.604-.401.959-.401v0c.31 0 .555.26.532.57a48.039 48.039 0 01-.642 5.056c1.518.19 3.058.309 4.616.354a.64.64 0 00.657-.643v0c0-.355-.186-.676-.401-.959a1.647 1.647 0 01-.349-1.003c0-1.035 1.008-1.875 2.25-1.875 1.243 0 2.25.84 2.25 1.875 0 .369-.128.713-.349 1.003-.215.283-.4.604-.4.959v0c0 .333.277.599.61.58a48.1 48.1 0 005.427-.63 48.05 48.05 0 00.582-4.717.532.532 0 00-.533-.57v0c-.355 0-.676.186-.959.401-.29.221-.634.349-1.003.349-1.035 0-1.875-1.007-1.875-2.25s.84-2.25 1.875-2.25c.37 0 .713.128 1.003.349.283.215.604.401.96.401v0a.656.656 0 00.658-.663 48.422 48.422 0 00-.37-5.36c-1.886.342-3.81.574-5.766.689a.578.578 0 01-.61-.58v0z" />
+                      </svg>
+                    )}
+                  </div>
+                  <h2 class="text-lg font-bold text-dark-900">{section.title}</h2>
+                </div>
+              </div>
+
+              <!-- Section items -->
+              <ul class="divide-y divide-dark-100">
+                {section.items.map(item => (
+                  <li>
+                    <a
+                      href={item.href}
+                      class="flex items-center justify-between px-6 py-4 hover:bg-dark-50 transition-colors group"
+                    >
+                      <div>
+                        <span class="font-medium text-dark-900 group-hover:text-primary-600 transition-colors">
+                          {item.title}
+                        </span>
+                        <p class="text-sm text-dark-500 mt-0.5">{item.description}</p>
+                      </div>
+                      <svg class="w-4 h-4 text-dark-400 group-hover:text-primary-500 group-hover:translate-x-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Help CTA -->
+    <section class="py-16 bg-dark-900">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-2xl lg:text-3xl font-bold text-white mb-4" data-animate>
+          Can't find what you're looking for?
+        </h2>
+        <p class="text-lg text-dark-300 mb-8" data-animate data-delay="100">
+          Our team is here to help. Join our Discord or reach out directly.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4" data-animate data-delay="200">
+          <a
+            href="https://discord.gg/yetproject"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-6 py-3 bg-[#5865F2] text-white rounded-xl font-medium hover:bg-[#4752C4] transition-colors"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+            </svg>
+            Join Discord
           </a>
-          <a href="https://app.yet.watch" class="flex items-center gap-3 p-4 bg-white rounded-xl hover:shadow-md transition-shadow">
-            <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
-            <span class="font-medium text-gray-900">Web App</span>
-          </a>
-          <a href="https://www.npmjs.com/package/@yet/cli" class="flex items-center gap-3 p-4 bg-white rounded-xl hover:shadow-md transition-shadow">
-            <svg class="w-6 h-6 text-red-600" viewBox="0 0 24 24" fill="currentColor"><path d="M0 7.334v8h6.666v1.332H12v-1.332h12v-8H0zm6.666 6.664H5.334v-4H3.999v4H1.335V8.667h5.331v5.331zm4 0v1.336H8.001V8.667h5.334v5.332h-2.669v-.001zm12.001 0h-1.33v-4h-1.336v4h-1.335v-4h-1.33v4h-2.671V8.667h8.002v5.331z"/></svg>
-            <span class="font-medium text-gray-900">npm</span>
+          <a
+            href="/contact"
+            class="inline-flex items-center gap-2 px-6 py-3 bg-dark-700 text-white border border-dark-600 rounded-xl font-medium hover:bg-dark-600 transition-colors"
+          >
+            Contact Support
           </a>
         </div>
       </div>
-    </div>
+    </section>
   </main>
 
   <Footer />
