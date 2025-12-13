@@ -95,14 +95,15 @@ const pricing = [
     name: 'Free',
     price: '$0',
     period: 'forever',
-    description: 'Perfect for individuals and hobby projects',
+    description: 'Perfect for trying out Yet.Project',
     features: [
-      'Up to 3 projects',
-      'Up to 100 tasks',
-      '1 team member',
-      'REST API access',
-      'CLI tool',
-      'Community support',
+      '1 project',
+      'Unlimited tasks',
+      '2 team members',
+      '3 vault secrets',
+      '100MB storage',
+      '1 API key',
+      '7-day activity history',
     ],
     cta: 'Get Started',
     href: 'https://app.yet.watch/auth/register',
@@ -110,40 +111,31 @@ const pricing = [
   },
   {
     name: 'Pro',
-    price: '$12',
-    period: '/user/month',
-    description: 'For teams building with AI',
+    price: '$5',
+    period: '/month',
+    description: 'Pay-as-you-go for growing teams',
     features: [
       'Unlimited projects',
       'Unlimited tasks',
-      'Unlimited members',
-      'MCP Server access',
-      'Knowledge Base',
-      'API keys with permissions',
+      '10 members included',
+      '20 vault secrets included',
+      '2GB storage included',
+      '10 API keys included',
+      'Unlimited activity history',
       'Priority support',
     ],
     cta: 'Start Free Trial',
     href: 'https://app.yet.watch/auth/register?plan=pro',
     highlighted: true,
   },
-  {
-    name: 'Enterprise',
-    price: 'Custom',
-    period: '',
-    description: 'For organizations at scale',
-    features: [
-      'Everything in Pro',
-      'SSO / SAML',
-      'Audit logs',
-      'Custom integrations',
-      'Dedicated support',
-      'SLA guarantee',
-      'On-premise option',
-    ],
-    cta: 'Contact Sales',
-    href: '/contact',
-    highlighted: false,
-  },
+];
+
+// Pay-as-you-go rates for Pro plan
+const payAsYouGo = [
+  { resource: 'Extra vault secrets', rate: '$0.10', unit: '/secret/month' },
+  { resource: 'Extra storage', rate: '$0.05', unit: '/GB/month' },
+  { resource: 'Extra API keys', rate: '$0.20', unit: '/key/month' },
+  { resource: 'Extra team members', rate: '$2', unit: '/member/month' },
 ];
 
 // Stats
@@ -178,7 +170,7 @@ const faqs = [
   },
   {
     question: 'What happens if I exceed the free tier limits?',
-    answer: 'The free tier includes 3 projects and 100 tasks. If you need more, you can upgrade to Pro at any time. We\'ll notify you when you\'re approaching limits. Your data is never deleted - you just can\'t create new items until you upgrade or delete existing ones.',
+    answer: 'The free tier includes 1 project with unlimited tasks. If you need more, upgrade to Pro for $5/month which includes generous allocations. Beyond that, you only pay for what you use: $0.10/secret, $0.05/GB storage, $0.20/API key, $2/extra member. We\'ll notify you when approaching limits and your data is never deleted.',
   },
   {
     question: 'Do you offer a free trial for Pro features?',
@@ -686,20 +678,20 @@ const faqs = [
         <div class="text-center mb-16" data-animate>
           <span class="inline-block text-sm font-semibold text-primary-600 tracking-wide uppercase mb-4">Pricing</span>
           <h2 class="text-3xl lg:text-display-md font-bold text-dark-900 mb-4">
-            Simple, Transparent<br />
-            <span class="gradient-text">Pricing for Everyone</span>
+            Simple, Pay-As-You-Go<br />
+            <span class="gradient-text">Pricing</span>
           </h2>
           <p class="text-lg text-dark-600 max-w-2xl mx-auto">
-            Start free, upgrade when you need more. No hidden fees, no surprises.
+            Start free, upgrade when you need more. Only pay for what you use beyond included allocations.
           </p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
           {pricing.map((plan, index) => (
             <div
               class={`relative rounded-2xl p-8 ${
                 plan.highlighted
-                  ? 'bg-gradient-to-br from-primary-600 to-primary-700 text-white shadow-2xl shadow-primary-500/30 ring-4 ring-primary-400/20 scale-105 z-10'
+                  ? 'bg-gradient-to-br from-primary-600 to-primary-700 text-white shadow-2xl shadow-primary-500/30 ring-4 ring-primary-400/20'
                   : 'bg-white shadow-card border border-dark-100'
               }`}
               data-animate
@@ -707,7 +699,7 @@ const faqs = [
             >
               {plan.highlighted && (
                 <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
-                  Most Popular
+                  Recommended
                 </div>
               )}
 
@@ -755,6 +747,23 @@ const faqs = [
               </a>
             </div>
           ))}
+        </div>
+
+        <!-- Pay-as-you-go rates -->
+        <div class="max-w-3xl mx-auto" data-animate data-delay="200">
+          <div class="bg-white rounded-2xl p-8 shadow-card border border-dark-100">
+            <h3 class="text-lg font-bold text-dark-900 mb-4 text-center">Pro Plan: Pay Only for What You Use</h3>
+            <p class="text-dark-600 text-center mb-6">Need more than what's included? Add resources at transparent rates:</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {payAsYouGo.map(item => (
+                <div class="text-center p-4 bg-dark-50 rounded-xl">
+                  <div class="text-2xl font-bold text-primary-600">{item.rate}</div>
+                  <div class="text-xs text-dark-500">{item.unit}</div>
+                  <div class="text-sm font-medium text-dark-700 mt-1">{item.resource}</div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
