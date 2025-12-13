@@ -1,0 +1,148 @@
+---
+import DocLayout from '../../../layouts/DocLayout.astro';
+---
+
+<DocLayout title="Knowledge Base" description="Storing context for AI agents with the Yet.Project Knowledge Base.">
+  <h1>Knowledge Base</h1>
+
+  <p>
+    The Knowledge Base stores information that AI assistants can access across sessions. It's persistent memory for your AI tools.
+  </p>
+
+  <h2>Why Use Knowledge Base?</h2>
+
+  <p>
+    AI assistants typically forget everything between sessions. Every time you start a new chat, you have to re-explain:
+  </p>
+  <ul>
+    <li>Project architecture</li>
+    <li>Coding conventions</li>
+    <li>Business requirements</li>
+    <li>Past decisions and their reasoning</li>
+  </ul>
+
+  <p>
+    The Knowledge Base solves this by storing context that AI can retrieve automatically.
+  </p>
+
+  <h2>Adding Knowledge</h2>
+
+  <h3>From the Web App</h3>
+  <ol>
+    <li>Go to <strong>Knowledge Base</strong> in your project</li>
+    <li>Click <strong>"Add Item"</strong></li>
+    <li>Enter a <strong>key</strong> (e.g., "architecture")</li>
+    <li>Add your <strong>content</strong></li>
+    <li>Click <strong>"Save"</strong></li>
+  </ol>
+
+  <h3>From AI</h3>
+  <p>Ask your AI assistant:</p>
+  <pre><code>"Save this to the knowledge base: Our API uses REST with JSON responses. Authentication is via Bearer tokens."</code></pre>
+
+  <h3>From CLI</h3>
+  <pre><code>{`yet kb set architecture "
+Our app uses a microservices architecture:
+- API Gateway: Kong
+- Services: Node.js
+- Database: PostgreSQL
+- Cache: Redis
+"`}</code></pre>
+
+  <h2>Knowledge Keys</h2>
+
+  <p>
+    Keys are identifiers for knowledge items. Use descriptive, hierarchical keys:
+  </p>
+
+  <ul>
+    <li><code>architecture</code> - Overall system design</li>
+    <li><code>coding/style</code> - Code style guidelines</li>
+    <li><code>api/auth</code> - Authentication details</li>
+    <li><code>decisions/database</code> - Why we chose PostgreSQL</li>
+  </ul>
+
+  <h2>Searching Knowledge</h2>
+
+  <p>
+    AI assistants automatically search the knowledge base when relevant. You can also explicitly ask:
+  </p>
+
+  <pre><code>"Search the knowledge base for authentication"</code></pre>
+
+  <p>Or via CLI:</p>
+  <pre><code>yet kb search "authentication"</code></pre>
+
+  <h2>Best Practices</h2>
+
+  <h3>What to Store</h3>
+  <ul>
+    <li><strong>Project context</strong> - Goals, scope, stakeholders</li>
+    <li><strong>Architecture decisions</strong> - Why you chose certain technologies</li>
+    <li><strong>Coding standards</strong> - Style guides, patterns to use/avoid</li>
+    <li><strong>API documentation</strong> - Endpoint summaries, auth flows</li>
+    <li><strong>Business rules</strong> - Domain logic that affects implementation</li>
+  </ul>
+
+  <h3>Keep It Concise</h3>
+  <p>
+    AI context windows have limits. Store summaries and key points rather than entire documents.
+  </p>
+
+  <h3>Update Regularly</h3>
+  <p>
+    When decisions change, update the knowledge base. Outdated information is worse than no information.
+  </p>
+
+  <h2>Example Knowledge Items</h2>
+
+  <pre><code>{`# Key: coding/style
+- Use TypeScript strict mode
+- Prefer const over let
+- Use async/await over callbacks
+- Maximum function length: 50 lines
+- Always add JSDoc for public functions
+
+# Key: api/endpoints
+- GET /users - List users (paginated)
+- POST /users - Create user
+- GET /users/:id - Get user details
+- All responses use { data, meta, error } format
+
+# Key: decisions/database
+We chose PostgreSQL over MongoDB because:
+1. Strong ACID compliance needed for transactions
+2. Complex queries with joins
+3. Team has more SQL experience`}</code></pre>
+
+  <h2>Plan Limits</h2>
+
+  <p>Knowledge base items are unlimited on all plans. Storage limits apply:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Plan</th>
+        <th>Storage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Free</td>
+        <td>100MB</td>
+      </tr>
+      <tr>
+        <td>Pro</td>
+        <td>2GB included, then $0.05/GB/month</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Next Steps</h2>
+
+  <ul>
+    <li><a href="/docs/mcp">MCP Server Setup</a></li>
+    <li><a href="/docs/api/knowledge">Knowledge API Reference</a></li>
+    <li><a href="/docs/mcp/tools">MCP Knowledge Tools</a></li>
+  </ul>
+</DocLayout>

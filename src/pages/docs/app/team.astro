@@ -1,0 +1,120 @@
+---
+import DocLayout from '../../../layouts/DocLayout.astro';
+---
+
+<DocLayout title="Team" description="Inviting members, roles, and permissions in Yet.Project.">
+  <h1>Team & Permissions</h1>
+
+  <p>
+    Collaborate with your team by inviting members and managing their access levels.
+  </p>
+
+  <h2>Inviting Members</h2>
+
+  <ol>
+    <li>Go to <strong>Settings → Team</strong></li>
+    <li>Click <strong>"Invite Member"</strong></li>
+    <li>Enter their email address</li>
+    <li>Select a role (Member or Admin)</li>
+    <li>Click <strong>"Send Invite"</strong></li>
+  </ol>
+
+  <p>
+    The invited person will receive an email with a link to join your tenant.
+  </p>
+
+  <h2>Roles</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Role</th>
+        <th>Capabilities</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Owner</strong></td>
+        <td>Full access. Can delete tenant, manage billing, transfer ownership.</td>
+      </tr>
+      <tr>
+        <td><strong>Admin</strong></td>
+        <td>Manage projects, members, API keys. Cannot delete tenant or manage billing.</td>
+      </tr>
+      <tr>
+        <td><strong>Member</strong></td>
+        <td>Create and manage tasks in assigned projects. Cannot manage team or settings.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Project Access</h2>
+
+  <p>
+    By default, all members can access all projects. You can restrict access:
+  </p>
+
+  <ol>
+    <li>Go to <strong>Project Settings → Access</strong></li>
+    <li>Toggle <strong>"Restrict Access"</strong></li>
+    <li>Add specific members who should have access</li>
+  </ol>
+
+  <h2>Removing Members</h2>
+
+  <ol>
+    <li>Go to <strong>Settings → Team</strong></li>
+    <li>Find the member</li>
+    <li>Click the <strong>...</strong> menu</li>
+    <li>Select <strong>"Remove"</strong></li>
+  </ol>
+
+  <p>
+    Removed members immediately lose access. Tasks assigned to them remain but become unassigned.
+  </p>
+
+  <h2>Transferring Ownership</h2>
+
+  <p>
+    Only the current owner can transfer ownership:
+  </p>
+
+  <ol>
+    <li>Go to <strong>Settings → General</strong></li>
+    <li>Scroll to <strong>"Transfer Ownership"</strong></li>
+    <li>Select the new owner (must be an Admin)</li>
+    <li>Confirm the transfer</li>
+  </ol>
+
+  <blockquote>
+    <p>After transfer, you'll become an Admin. The new owner gains full control including billing.</p>
+  </blockquote>
+
+  <h2>Plan Limits</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Plan</th>
+        <th>Team Members</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Free</td>
+        <td>2 members</td>
+      </tr>
+      <tr>
+        <td>Pro</td>
+        <td>10 included, then $2/member/month</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Next Steps</h2>
+
+  <ul>
+    <li><a href="/docs/app/api-keys">API Keys</a></li>
+    <li><a href="/docs/app/projects">Project Settings</a></li>
+  </ul>
+</DocLayout>

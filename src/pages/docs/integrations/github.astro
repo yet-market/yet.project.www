@@ -1,0 +1,180 @@
+---
+import DocLayout from '../../../layouts/DocLayout.astro';
+---
+
+<DocLayout title="GitHub Integration" description="Connecting Yet.Project with GitHub for webhooks and automation.">
+  <h1>GitHub Integration</h1>
+
+  <p>
+    Connect Yet.Project with GitHub to automatically sync issues, link PRs to tasks, and automate workflows.
+  </p>
+
+  <h2>Features</h2>
+
+  <ul>
+    <li><strong>PR Linking</strong> - Automatically link pull requests to tasks</li>
+    <li><strong>Status Updates</strong> - Update task status when PRs are merged</li>
+    <li><strong>Branch Detection</strong> - Detect task IDs in branch names</li>
+    <li><strong>Commit Tracking</strong> - Track commits that reference tasks</li>
+  </ul>
+
+  <h2>Setup</h2>
+
+  <h3>1. Connect GitHub</h3>
+  <ol>
+    <li>Go to <strong>Settings → Integrations</strong> in Yet.Project</li>
+    <li>Click <strong>"Connect GitHub"</strong></li>
+    <li>Authorize Yet.Project to access your repositories</li>
+    <li>Select which repositories to connect</li>
+  </ol>
+
+  <h3>2. Configure Webhooks</h3>
+  <p>
+    Yet.Project automatically configures webhooks for connected repositories. Events monitored:
+  </p>
+  <ul>
+    <li>Pull request opened/closed/merged</li>
+    <li>Push events (for commit tracking)</li>
+    <li>Branch created/deleted</li>
+  </ul>
+
+  <h2>Linking Tasks to PRs</h2>
+
+  <h3>Via Branch Name</h3>
+  <p>Include the task ID in your branch name:</p>
+  <pre><code>git checkout -b MYAPP-45-fix-timeout
+git checkout -b feature/MYAPP-45
+git checkout -b MYAPP-45</code></pre>
+
+  <h3>Via PR Title or Description</h3>
+  <p>Reference the task ID in your PR:</p>
+  <pre><code># PR Title
+MYAPP-45: Fix database timeout
+
+# Or in description
+This PR fixes the timeout issue.
+Closes MYAPP-45</code></pre>
+
+  <h3>Via Commit Message</h3>
+  <pre><code>git commit -m "MYAPP-45: Increase pool size to 20"</code></pre>
+
+  <h2>Automatic Status Updates</h2>
+
+  <p>Configure automatic task status changes:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>GitHub Event</th>
+        <th>Task Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>PR Opened</td>
+        <td>In Review (optional)</td>
+      </tr>
+      <tr>
+        <td>PR Merged</td>
+        <td>Done</td>
+      </tr>
+      <tr>
+        <td>PR Closed (not merged)</td>
+        <td>No change</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Configure in <strong>Settings → Integrations → GitHub → Status Mapping</strong></p>
+
+  <h2>GitHub Actions</h2>
+
+  <p>Use Yet.Project in your CI/CD workflows:</p>
+
+  <pre><code># .github/workflows/yet.yml
+name: Update Yet.Project
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  update-task:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Extract task ID
+        id: task
+        run: |
+          TASK_ID=$(echo "$&#123;&#123; github.head_ref &#125;&#125;" | grep -oE '[A-Z]+-[0-9]+' | head -1)
+          echo "task_id=$TASK_ID" &gt;&gt; $GITHUB_OUTPUT
+
+      - name: Update task status
+        if: steps.task.outputs.task_id
+        run: |
+          curl -X PATCH https://api.yet.watch/v1/tasks/$&#123;&#123; steps.task.outputs.task_id &#125;&#125; \
+            -H "Authorization: Bearer $&#123;&#123; secrets.YET_API_KEY &#125;&#125;" \
+            -H "Content-Type: application/json" \
+            -d '&#123;"status": "done"&#125;'</code></pre>
+
+  <h2>Creating Tasks from Issues</h2>
+
+  <p>Optionally sync GitHub Issues to Yet.Project tasks:</p>
+
+  <ol>
+    <li>Go to <strong>Settings → Integrations → GitHub</strong></li>
+    <li>Enable <strong>"Sync Issues"</strong></li>
+    <li>Select which labels to sync</li>
+  </ol>
+
+  <p>
+    New GitHub issues with selected labels automatically create Yet.Project tasks.
+  </p>
+
+  <h2>Activity Feed</h2>
+
+  <p>
+    GitHub activity appears in the Yet.Project activity feed:
+  </p>
+
+  <ul>
+    <li>Commits linked to tasks</li>
+    <li>PRs opened/merged</li>
+    <li>Branches created for tasks</li>
+  </ul>
+
+  <h2>Disconnecting</h2>
+
+  <ol>
+    <li>Go to <strong>Settings → Integrations</strong></li>
+    <li>Find GitHub and click <strong>"Disconnect"</strong></li>
+    <li>Confirm disconnection</li>
+  </ol>
+
+  <p>
+    Existing task links remain but no new updates will sync.
+  </p>
+
+  <h2>Troubleshooting</h2>
+
+  <h3>PRs not linking</h3>
+  <ul>
+    <li>Check task ID format matches exactly (e.g., MYAPP-45)</li>
+    <li>Verify webhook is configured in GitHub repo settings</li>
+    <li>Check webhook delivery logs in GitHub</li>
+  </ul>
+
+  <h3>Status not updating</h3>
+  <ul>
+    <li>Verify status mapping is configured</li>
+    <li>Check the task exists and isn't archived</li>
+  </ul>
+
+  <h2>Next Steps</h2>
+
+  <ul>
+    <li><a href="/docs/cli/git">CLI Git Integration</a></li>
+    <li><a href="/docs/api">API Reference</a></li>
+    <li><a href="/docs/app/tasks">Task Management</a></li>
+  </ul>
+</DocLayout>

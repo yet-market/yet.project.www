@@ -1,0 +1,169 @@
+---
+import DocLayout from '../../../layouts/DocLayout.astro';
+---
+
+<DocLayout title="MCP Examples" description="Real-world examples of using Yet.Project MCP tools with AI assistants.">
+  <h1>MCP Examples</h1>
+
+  <p>
+    Real-world examples of how to use Yet.Project with AI assistants via MCP.
+  </p>
+
+  <h2>Task Management</h2>
+
+  <h3>Creating a Task</h3>
+  <p><strong>You:</strong> "Create a task in MYAPP to implement user authentication with JWT"</p>
+  <p><strong>Claude:</strong></p>
+  <pre><code>{`I'll create that task for you.
+
+[Uses yet_task_create with:
+  projectId: "proj_xxx"
+  title: "Implement user authentication with JWT"
+  priority: "high"
+  labels: ["feature", "auth"]]
+
+✓ Created task MYAPP-47: "Implement user authentication with JWT"
+  Priority: High
+  Labels: feature, auth`}</code></pre>
+
+  <h3>Updating Task Status</h3>
+  <p><strong>You:</strong> "Mark MYAPP-47 as in progress"</p>
+  <p><strong>Claude:</strong></p>
+  <pre><code>{`[Uses yet_task_update with:
+  taskId: "MYAPP-47"
+  status: "in_progress"]
+
+✓ Updated MYAPP-47 status to "In Progress"`}</code></pre>
+
+  <h3>Finding Tasks</h3>
+  <p><strong>You:</strong> "What are my high priority tasks?"</p>
+  <p><strong>Claude:</strong></p>
+  <pre><code>{`[Uses yet_task_list with:
+  status: "todo"
+  priority: "high"]
+
+Found 3 high-priority tasks:
+
+1. MYAPP-47: Implement user authentication with JWT
+2. MYAPP-45: Fix production database timeout
+3. MYAPP-42: Add rate limiting to API`}</code></pre>
+
+  <h2>Knowledge Base</h2>
+
+  <h3>Storing Project Context</h3>
+  <p><strong>You:</strong> "Save to knowledge base: Our API uses REST with JSON. Auth is via Bearer tokens with 24h expiry. Rate limit is 100 req/min."</p>
+  <p><strong>Claude:</strong></p>
+  <pre><code>{`[Uses yet_knowledge_set with:
+  key: "api/overview"
+  content: "Our API uses REST with JSON..."]
+
+✓ Saved to knowledge base with key "api/overview"`}</code></pre>
+
+  <h3>Retrieving Context</h3>
+  <p><strong>You:</strong> "What's our API authentication approach?"</p>
+  <p><strong>Claude:</strong></p>
+  <pre><code>{`[Uses yet_knowledge_search with:
+  query: "API authentication"]
+
+Based on your knowledge base:
+
+Your API uses Bearer token authentication with 24-hour expiry.
+Rate limit is 100 requests per minute.`}</code></pre>
+
+  <h2>Project Overview</h2>
+
+  <h3>Getting Project Status</h3>
+  <p><strong>You:</strong> "Give me an overview of the MYAPP project"</p>
+  <p><strong>Claude:</strong></p>
+  <pre><code>{`[Uses yet_project_get with projectId]
+[Uses yet_task_list with projectId]
+
+MYAPP - My Application
+
+Statistics:
+- Total tasks: 47
+- Todo: 12
+- In Progress: 8
+- Done: 27
+
+Recent activity:
+- MYAPP-47 created (2 hours ago)
+- MYAPP-46 completed (yesterday)
+- MYAPP-45 assigned to John (yesterday)`}</code></pre>
+
+  <h2>Daily Workflow</h2>
+
+  <h3>Morning Standup</h3>
+  <p><strong>You:</strong> "What did I work on yesterday and what's planned for today?"</p>
+  <p><strong>Claude:</strong></p>
+  <pre><code>{`[Uses yet_activity_list]
+[Uses yet_task_list with status: "in_progress"]
+
+Yesterday:
+- Completed MYAPP-44: Add email validation
+- Started MYAPP-45: Fix database timeout
+- Added 3 comments on MYAPP-45
+
+Today (In Progress):
+- MYAPP-45: Fix database timeout (High priority)
+- MYAPP-46: Update user dashboard
+
+Blocked:
+- None currently`}</code></pre>
+
+  <h3>End of Day Update</h3>
+  <p><strong>You:</strong> "I finished the database timeout fix. Log 3 hours and mark it done."</p>
+  <p><strong>Claude:</strong></p>
+  <pre><code>{`[Uses yet_time_log with:
+  taskId: "MYAPP-45"
+  minutes: 180
+  description: "Fixed timeout issue"]
+
+[Uses yet_task_update with:
+  taskId: "MYAPP-45"
+  status: "done"]
+
+✓ Logged 3 hours on MYAPP-45
+✓ Marked MYAPP-45 as Done`}</code></pre>
+
+  <h2>Code Review Context</h2>
+
+  <h3>Understanding a Task Before Review</h3>
+  <p><strong>You:</strong> "I'm about to review PR #123 for MYAPP-45. What's the context?"</p>
+  <p><strong>Claude:</strong></p>
+  <pre><code>{`[Uses yet_task_get with taskId: "MYAPP-45"]
+[Uses yet_comment_list with taskId: "MYAPP-45"]
+[Uses yet_knowledge_search with query: "database"]
+
+MYAPP-45: Fix production database timeout
+
+Description:
+Database queries timing out under load. Need to add
+connection pooling and optimize slow queries.
+
+Comments:
+- John: "Main issue is the user list query"
+- Sarah: "Also check the report generation"
+
+Related knowledge:
+- Database uses PostgreSQL 14
+- Connection limit is 100
+- Current pool size: 10`}</code></pre>
+
+  <h2>Best Practices</h2>
+
+  <ul>
+    <li><strong>Be specific</strong> - Include project names and task IDs when possible</li>
+    <li><strong>Use knowledge base</strong> - Store context AI should know across sessions</li>
+    <li><strong>Keep tasks updated</strong> - Ask AI to update status as you work</li>
+    <li><strong>Log time</strong> - Track time for better project insights</li>
+  </ul>
+
+  <h2>Next Steps</h2>
+
+  <ul>
+    <li><a href="/docs/mcp/tools">MCP Tools Reference</a></li>
+    <li><a href="/docs/app/knowledge">Knowledge Base Guide</a></li>
+    <li><a href="/docs/integrations/claude">Claude Code Integration</a></li>
+  </ul>
+</DocLayout>

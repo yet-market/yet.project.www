@@ -1,0 +1,202 @@
+---
+import DocLayout from '../../../layouts/DocLayout.astro';
+---
+
+<DocLayout title="MCP Tools Reference" description="Complete reference for all 27+ Yet.Project MCP tools.">
+  <h1>MCP Tools Reference</h1>
+
+  <p>
+    The Yet.Project MCP server provides 27+ tools organized by category.
+  </p>
+
+  <h2>Task Tools</h2>
+
+  <h3>yet_task_list</h3>
+  <p>List tasks with optional filters.</p>
+  <table>
+    <thead>
+      <tr><th>Parameter</th><th>Type</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>projectId</td><td>string</td><td>Filter by project</td></tr>
+      <tr><td>status</td><td>string</td><td>Filter by status</td></tr>
+      <tr><td>assignee</td><td>string</td><td>Filter by assignee</td></tr>
+      <tr><td>limit</td><td>number</td><td>Max results (default: 20)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>yet_task_get</h3>
+  <p>Get details of a specific task.</p>
+  <table>
+    <thead>
+      <tr><th>Parameter</th><th>Type</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>taskId</td><td>string</td><td>Task ID (e.g., "MYAPP-123")</td></tr>
+    </tbody>
+  </table>
+
+  <h3>yet_task_create</h3>
+  <p>Create a new task.</p>
+  <table>
+    <thead>
+      <tr><th>Parameter</th><th>Type</th><th>Required</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>projectId</td><td>string</td><td>Yes</td></tr>
+      <tr><td>title</td><td>string</td><td>Yes</td></tr>
+      <tr><td>description</td><td>string</td><td>No</td></tr>
+      <tr><td>priority</td><td>string</td><td>No</td></tr>
+      <tr><td>labels</td><td>string[]</td><td>No</td></tr>
+    </tbody>
+  </table>
+
+  <h3>yet_task_update</h3>
+  <p>Update an existing task.</p>
+  <table>
+    <thead>
+      <tr><th>Parameter</th><th>Type</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>taskId</td><td>string</td><td>Task to update</td></tr>
+      <tr><td>status</td><td>string</td><td>New status</td></tr>
+      <tr><td>priority</td><td>string</td><td>New priority</td></tr>
+      <tr><td>title</td><td>string</td><td>New title</td></tr>
+      <tr><td>description</td><td>string</td><td>New description</td></tr>
+    </tbody>
+  </table>
+
+  <h3>yet_task_delete</h3>
+  <p>Delete a task.</p>
+
+  <h3>yet_task_search</h3>
+  <p>Search tasks by text.</p>
+  <table>
+    <thead>
+      <tr><th>Parameter</th><th>Type</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>query</td><td>string</td><td>Search text</td></tr>
+      <tr><td>projectId</td><td>string</td><td>Limit to project</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Project Tools</h2>
+
+  <h3>yet_project_list</h3>
+  <p>List all accessible projects.</p>
+
+  <h3>yet_project_get</h3>
+  <p>Get project details and statistics.</p>
+
+  <h3>yet_project_create</h3>
+  <p>Create a new project.</p>
+  <table>
+    <thead>
+      <tr><th>Parameter</th><th>Type</th><th>Required</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>name</td><td>string</td><td>Yes</td></tr>
+      <tr><td>key</td><td>string</td><td>Yes</td></tr>
+      <tr><td>description</td><td>string</td><td>No</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Knowledge Tools</h2>
+
+  <h3>yet_knowledge_list</h3>
+  <p>List knowledge base items.</p>
+
+  <h3>yet_knowledge_get</h3>
+  <p>Get a specific knowledge item.</p>
+  <table>
+    <thead>
+      <tr><th>Parameter</th><th>Type</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>key</td><td>string</td><td>Knowledge item key</td></tr>
+    </tbody>
+  </table>
+
+  <h3>yet_knowledge_set</h3>
+  <p>Create or update a knowledge item.</p>
+  <table>
+    <thead>
+      <tr><th>Parameter</th><th>Type</th><th>Required</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>key</td><td>string</td><td>Yes</td></tr>
+      <tr><td>content</td><td>string</td><td>Yes</td></tr>
+      <tr><td>projectId</td><td>string</td><td>No</td></tr>
+    </tbody>
+  </table>
+
+  <h3>yet_knowledge_search</h3>
+  <p>Search the knowledge base.</p>
+  <table>
+    <thead>
+      <tr><th>Parameter</th><th>Type</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>query</td><td>string</td><td>Search text</td></tr>
+      <tr><td>limit</td><td>number</td><td>Max results</td></tr>
+    </tbody>
+  </table>
+
+  <h3>yet_knowledge_delete</h3>
+  <p>Delete a knowledge item.</p>
+
+  <h2>Comment Tools</h2>
+
+  <h3>yet_comment_add</h3>
+  <p>Add a comment to a task.</p>
+  <table>
+    <thead>
+      <tr><th>Parameter</th><th>Type</th><th>Required</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>taskId</td><td>string</td><td>Yes</td></tr>
+      <tr><td>content</td><td>string</td><td>Yes</td></tr>
+    </tbody>
+  </table>
+
+  <h3>yet_comment_list</h3>
+  <p>List comments on a task.</p>
+
+  <h2>Time Tracking Tools</h2>
+
+  <h3>yet_time_log</h3>
+  <p>Log time spent on a task.</p>
+  <table>
+    <thead>
+      <tr><th>Parameter</th><th>Type</th><th>Required</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>taskId</td><td>string</td><td>Yes</td></tr>
+      <tr><td>minutes</td><td>number</td><td>Yes</td></tr>
+      <tr><td>description</td><td>string</td><td>No</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Activity Tools</h2>
+
+  <h3>yet_activity_list</h3>
+  <p>List recent activity.</p>
+  <table>
+    <thead>
+      <tr><th>Parameter</th><th>Type</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>projectId</td><td>string</td><td>Filter by project</td></tr>
+      <tr><td>taskId</td><td>string</td><td>Filter by task</td></tr>
+      <tr><td>limit</td><td>number</td><td>Max results</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Next Steps</h2>
+
+  <ul>
+    <li><a href="/docs/mcp/examples">MCP Examples</a></li>
+    <li><a href="/docs/mcp">MCP Setup</a></li>
+  </ul>
+</DocLayout>

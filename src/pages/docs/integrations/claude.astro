@@ -1,0 +1,133 @@
+---
+import DocLayout from '../../../layouts/DocLayout.astro';
+---
+
+<DocLayout title="Claude Code Integration" description="Using Yet.Project with Claude Code via MCP.">
+  <h1>Claude Code Integration</h1>
+
+  <p>
+    Claude Code is Anthropic's AI coding assistant. Yet.Project integrates via the Model Context Protocol (MCP).
+  </p>
+
+  <h2>Setup</h2>
+
+  <h3>1. Get Your API Key</h3>
+  <p>
+    Create an API key in <a href="https://app.yet.watch">Yet.Project</a> under <strong>Settings → API Keys</strong>.
+  </p>
+
+  <h3>2. Configure Claude Code</h3>
+  <p>Edit the Claude Code configuration file:</p>
+
+  <pre><code>{`// macOS: ~/.config/claude/claude_desktop_config.json
+// Windows: %APPDATA%\\Claude\\claude_desktop_config.json
+// Linux: ~/.config/claude/claude_desktop_config.json
+
+{
+  "mcpServers": {
+    "yet": {
+      "command": "npx",
+      "args": ["-y", "@yet/mcp-server"],
+      "env": {
+        "YET_API_KEY": "yet_your_api_key_here"
+      }
+    }
+  }
+}`}</code></pre>
+
+  <h3>3. Restart Claude Code</h3>
+  <p>Fully quit and restart Claude Code to load the new configuration.</p>
+
+  <h3>4. Verify</h3>
+  <p>Ask Claude: "List my Yet.Project projects"</p>
+
+  <h2>What Claude Can Do</h2>
+
+  <p>With the Yet.Project MCP server, Claude can:</p>
+
+  <ul>
+    <li><strong>Manage tasks</strong> - Create, update, search, and complete tasks</li>
+    <li><strong>Access knowledge</strong> - Read and write to your knowledge base</li>
+    <li><strong>Track progress</strong> - Log time, add comments, view activity</li>
+    <li><strong>Understand context</strong> - Read project structure and requirements</li>
+  </ul>
+
+  <h2>Example Conversations</h2>
+
+  <h3>Creating Tasks from Code</h3>
+  <pre><code>{`You: "I just found a bug in the login form - the password
+      validation is wrong. Create a task for it."
+
+Claude: "I'll create a bug task for that.
+
+✓ Created MYAPP-48: Fix password validation in login form
+  Priority: High
+  Labels: bug, auth"`}</code></pre>
+
+  <h3>Getting Context</h3>
+  <pre><code>{`You: "What's the auth architecture for this project?"
+
+Claude: [Searches knowledge base]
+
+"Based on your knowledge base:
+
+Your authentication uses JWT tokens:
+- Access tokens expire in 1 hour
+- Refresh tokens expire in 7 days
+- Tokens are stored in httpOnly cookies
+- Password hashing uses bcrypt with cost 12"`}</code></pre>
+
+  <h3>Daily Updates</h3>
+  <pre><code>{`You: "What tasks am I working on?"
+
+Claude: [Lists in-progress tasks]
+
+"You have 2 tasks in progress:
+
+1. MYAPP-45: Fix database timeout (High)
+   - Started yesterday
+   - 3 hours logged
+
+2. MYAPP-47: Implement JWT auth (High)
+   - Started today
+   - No time logged yet"`}</code></pre>
+
+  <h2>Tips for Best Results</h2>
+
+  <h3>Be Specific</h3>
+  <p>Include project names when you have multiple projects:</p>
+  <pre><code>"Create a task in MYAPP to..." vs "Create a task to..."</code></pre>
+
+  <h3>Use Knowledge Base</h3>
+  <p>Store project context so Claude can reference it:</p>
+  <pre><code>"Save to knowledge base: Our coding style uses..."</code></pre>
+
+  <h3>Reference Tasks by ID</h3>
+  <p>When discussing specific tasks, use the ID:</p>
+  <pre><code>"Update MYAPP-45 status to done"</code></pre>
+
+  <h2>Troubleshooting</h2>
+
+  <h3>Claude doesn't see the MCP tools</h3>
+  <ul>
+    <li>Verify the config file path is correct for your OS</li>
+    <li>Check JSON syntax - missing commas are common</li>
+    <li>Fully quit Claude (not just close window)</li>
+    <li>Try running <code>npx @yet/mcp-server</code> manually to check for errors</li>
+  </ul>
+
+  <h3>Authentication errors</h3>
+  <ul>
+    <li>Verify your API key is correct</li>
+    <li>Check the key has Write permissions</li>
+    <li>Ensure no extra spaces in the key</li>
+  </ul>
+
+  <h2>Next Steps</h2>
+
+  <ul>
+    <li><a href="/docs/mcp/tools">MCP Tools Reference</a></li>
+    <li><a href="/docs/mcp/examples">More Examples</a></li>
+    <li><a href="/docs/app/knowledge">Knowledge Base Guide</a></li>
+  </ul>
+</DocLayout>

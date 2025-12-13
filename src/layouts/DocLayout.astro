@@ -1,0 +1,188 @@
+---
+import Layout from './Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  section?: string;
+}
+
+const { title, description, section } = Astro.props;
+
+const navigation = [
+  {
+    title: 'Getting Started',
+    items: [
+      { title: 'Introduction', href: '/docs/intro' },
+      { title: 'Quick Start', href: '/docs/quickstart' },
+      { title: 'Concepts', href: '/docs/concepts' },
+    ],
+  },
+  {
+    title: 'Web App',
+    items: [
+      { title: 'Projects', href: '/docs/app/projects' },
+      { title: 'Tasks', href: '/docs/app/tasks' },
+      { title: 'Team', href: '/docs/app/team' },
+      { title: 'API Keys', href: '/docs/app/api-keys' },
+      { title: 'Knowledge Base', href: '/docs/app/knowledge' },
+    ],
+  },
+  {
+    title: 'REST API',
+    items: [
+      { title: 'Authentication', href: '/docs/api' },
+      { title: 'Tasks', href: '/docs/api/tasks' },
+      { title: 'Projects', href: '/docs/api/projects' },
+      { title: 'Knowledge', href: '/docs/api/knowledge' },
+      { title: 'Rate Limits', href: '/docs/api/rate-limits' },
+    ],
+  },
+  {
+    title: 'CLI',
+    items: [
+      { title: 'Installation', href: '/docs/cli' },
+      { title: 'Commands', href: '/docs/cli/commands' },
+      { title: 'Git Integration', href: '/docs/cli/git' },
+    ],
+  },
+  {
+    title: 'MCP Server',
+    items: [
+      { title: 'Setup', href: '/docs/mcp' },
+      { title: 'Tools Reference', href: '/docs/mcp/tools' },
+      { title: 'Examples', href: '/docs/mcp/examples' },
+    ],
+  },
+  {
+    title: 'Integrations',
+    items: [
+      { title: 'Claude Code', href: '/docs/integrations/claude' },
+      { title: 'Cursor', href: '/docs/integrations/cursor' },
+      { title: 'Windsurf', href: '/docs/integrations/windsurf' },
+      { title: 'GitHub', href: '/docs/integrations/github' },
+    ],
+  },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<Layout title={`${title} - Docs`} description={description}>
+  <Header />
+
+  <div class="pt-20 min-h-screen bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex gap-12 py-12">
+        <!-- Sidebar -->
+        <aside class="hidden lg:block w-64 flex-shrink-0">
+          <nav class="sticky top-24 space-y-8">
+            {navigation.map(group => (
+              <div>
+                <h4 class="font-semibold text-dark-900 text-sm mb-3">{group.title}</h4>
+                <ul class="space-y-1">
+                  {group.items.map(item => (
+                    <li>
+                      <a
+                        href={item.href}
+                        class={`block px-3 py-2 text-sm rounded-lg transition-colors ${
+                          currentPath === item.href || currentPath === item.href + '/'
+                            ? 'bg-primary-50 text-primary-700 font-medium'
+                            : 'text-dark-600 hover:text-dark-900 hover:bg-dark-50'
+                        }`}
+                      >
+                        {item.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </nav>
+        </aside>
+
+        <!-- Main content -->
+        <main class="flex-1 min-w-0">
+          <article class="prose prose-dark max-w-none">
+            <slot />
+          </article>
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <Footer />
+</Layout>
+
+<style is:global>
+  .prose {
+    --tw-prose-body: #374151;
+    --tw-prose-headings: #111827;
+    --tw-prose-links: #4f46e5;
+    --tw-prose-code: #111827;
+    --tw-prose-pre-bg: #1f2937;
+    --tw-prose-pre-code: #e5e7eb;
+  }
+
+  .prose h1 {
+    @apply text-3xl font-bold text-dark-900 mb-4;
+  }
+
+  .prose h2 {
+    @apply text-2xl font-bold text-dark-900 mt-12 mb-4 pb-2 border-b border-dark-200;
+  }
+
+  .prose h3 {
+    @apply text-xl font-semibold text-dark-900 mt-8 mb-3;
+  }
+
+  .prose p {
+    @apply text-dark-600 leading-relaxed mb-4;
+  }
+
+  .prose ul, .prose ol {
+    @apply mb-4 pl-6;
+  }
+
+  .prose li {
+    @apply text-dark-600 mb-2;
+  }
+
+  .prose code:not(pre code) {
+    @apply bg-dark-100 text-dark-800 px-1.5 py-0.5 rounded text-sm font-mono;
+  }
+
+  .prose pre {
+    @apply bg-dark-900 text-dark-100 p-4 rounded-xl overflow-x-auto mb-6;
+  }
+
+  .prose pre code {
+    @apply bg-transparent p-0 text-sm;
+  }
+
+  .prose a {
+    @apply text-primary-600 hover:text-primary-700 underline;
+  }
+
+  .prose table {
+    @apply w-full border-collapse mb-6;
+  }
+
+  .prose th {
+    @apply bg-dark-50 text-left p-3 font-semibold text-dark-900 border border-dark-200;
+  }
+
+  .prose td {
+    @apply p-3 border border-dark-200 text-dark-600;
+  }
+
+  .prose blockquote {
+    @apply border-l-4 border-primary-500 bg-primary-50 pl-4 py-2 pr-4 my-4 rounded-r-lg;
+  }
+
+  .prose blockquote p {
+    @apply mb-0 text-dark-700;
+  }
+</style>

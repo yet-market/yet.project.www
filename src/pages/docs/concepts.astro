@@ -1,0 +1,144 @@
+---
+import DocLayout from '../../layouts/DocLayout.astro';
+---
+
+<DocLayout title="Concepts" description="Core concepts in Yet.Project: tenants, projects, tasks, and more.">
+  <h1>Core Concepts</h1>
+
+  <p>
+    Understanding the data model helps you get the most out of Yet.Project.
+  </p>
+
+  <h2>Tenant</h2>
+
+  <p>
+    A <strong>tenant</strong> is your workspace - the top-level container for all your data. When you sign up, you get one tenant. Think of it as your organization or team space.
+  </p>
+
+  <ul>
+    <li>Each tenant has its own projects, members, and settings</li>
+    <li>API keys are scoped to a tenant</li>
+    <li>Data is isolated between tenants</li>
+  </ul>
+
+  <h2>Project</h2>
+
+  <p>
+    A <strong>project</strong> groups related tasks together. Each project has:
+  </p>
+
+  <ul>
+    <li><strong>Name</strong> - Human-readable name</li>
+    <li><strong>Key</strong> - Short identifier (e.g., "MYAPP") used in task IDs</li>
+    <li><strong>Description</strong> - Optional context</li>
+    <li><strong>Settings</strong> - Custom statuses, priorities, labels</li>
+  </ul>
+
+  <h2>Task</h2>
+
+  <p>
+    A <strong>task</strong> is a unit of work. Tasks have:
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Field</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>id</code></td>
+        <td>Unique identifier (e.g., "MYAPP-123")</td>
+      </tr>
+      <tr>
+        <td><code>title</code></td>
+        <td>Task title</td>
+      </tr>
+      <tr>
+        <td><code>description</code></td>
+        <td>Detailed description (Markdown supported)</td>
+      </tr>
+      <tr>
+        <td><code>status</code></td>
+        <td>Current status (todo, in_progress, done, etc.)</td>
+      </tr>
+      <tr>
+        <td><code>priority</code></td>
+        <td>Priority level (low, medium, high, urgent)</td>
+      </tr>
+      <tr>
+        <td><code>assignee</code></td>
+        <td>Assigned team member</td>
+      </tr>
+      <tr>
+        <td><code>labels</code></td>
+        <td>Tags for categorization</td>
+      </tr>
+      <tr>
+        <td><code>dueDate</code></td>
+        <td>Optional deadline</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Knowledge Base</h2>
+
+  <p>
+    The <strong>Knowledge Base</strong> stores information that AI assistants can access. Use it for:
+  </p>
+
+  <ul>
+    <li>Project context and goals</li>
+    <li>Architectural decisions</li>
+    <li>Coding conventions and standards</li>
+    <li>API documentation summaries</li>
+    <li>Team processes and workflows</li>
+  </ul>
+
+  <p>
+    Knowledge items have a <code>key</code> and <code>content</code>. AI can search and retrieve them automatically.
+  </p>
+
+  <h2>API Key</h2>
+
+  <p>
+    <strong>API keys</strong> authenticate requests to the REST API and MCP server. Each key has:
+  </p>
+
+  <ul>
+    <li><strong>Name</strong> - For identification (e.g., "Claude Code", "CI/CD")</li>
+    <li><strong>Permissions</strong> - Read, Write, or Admin access</li>
+    <li><strong>Scope</strong> - Can be limited to specific projects</li>
+  </ul>
+
+  <blockquote>
+    <p><strong>Best Practice:</strong> Create separate API keys for each AI agent. This lets you track which agent did what and revoke access if needed.</p>
+  </blockquote>
+
+  <h2>Activity</h2>
+
+  <p>
+    Every action in Yet.Project is logged as an <strong>activity</strong>. Activities track:
+  </p>
+
+  <ul>
+    <li>What changed (task created, status updated, etc.)</li>
+    <li>Who made the change (user or API key)</li>
+    <li>When it happened</li>
+    <li>The before/after values</li>
+  </ul>
+
+  <p>
+    This gives you a complete audit trail, including AI agent actions.
+  </p>
+
+  <h2>Next Steps</h2>
+
+  <ul>
+    <li><a href="/docs/app/projects">Managing Projects</a></li>
+    <li><a href="/docs/app/tasks">Working with Tasks</a></li>
+    <li><a href="/docs/app/knowledge">Using the Knowledge Base</a></li>
+  </ul>
+</DocLayout>

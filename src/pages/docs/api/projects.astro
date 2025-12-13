@@ -1,0 +1,147 @@
+---
+import DocLayout from '../../../layouts/DocLayout.astro';
+---
+
+<DocLayout title="Projects API" description="REST API endpoints for managing projects in Yet.Project.">
+  <h1>Projects API</h1>
+
+  <p>
+    Endpoints for creating and managing projects.
+  </p>
+
+  <h2>List Projects</h2>
+
+  <pre><code>GET /v1/projects</code></pre>
+
+  <h3>Example</h3>
+  <pre><code>{`curl https://api.yet.watch/v1/projects \\
+  -H "Authorization: Bearer yet_xxx"`}</code></pre>
+
+  <h3>Response</h3>
+  <pre><code>{`{
+  "data": [
+    {
+      "id": "proj_abc123",
+      "key": "MYAPP",
+      "name": "My Application",
+      "description": "Main product backend",
+      "taskCount": 42,
+      "createdAt": "2024-01-01T00:00:00Z"
+    }
+  ]
+}`}</code></pre>
+
+  <h2>Get Project</h2>
+
+  <pre><code>GET /v1/projects/:projectId</code></pre>
+
+  <h3>Example</h3>
+  <pre><code>{`curl https://api.yet.watch/v1/projects/proj_abc123 \\
+  -H "Authorization: Bearer yet_xxx"`}</code></pre>
+
+  <h2>Create Project</h2>
+
+  <pre><code>POST /v1/projects</code></pre>
+
+  <h3>Body</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Field</th>
+        <th>Type</th>
+        <th>Required</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>name</code></td>
+        <td>string</td>
+        <td>Yes</td>
+        <td>Project name</td>
+      </tr>
+      <tr>
+        <td><code>key</code></td>
+        <td>string</td>
+        <td>Yes</td>
+        <td>2-5 uppercase letters (e.g., "MYAPP")</td>
+      </tr>
+      <tr>
+        <td><code>description</code></td>
+        <td>string</td>
+        <td>No</td>
+        <td>Project description</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Example</h3>
+  <pre><code>{`curl -X POST https://api.yet.watch/v1/projects \\
+  -H "Authorization: Bearer yet_xxx" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "name": "My Application",
+    "key": "MYAPP",
+    "description": "Main product backend"
+  }'`}</code></pre>
+
+  <h2>Update Project</h2>
+
+  <pre><code>PATCH /v1/projects/:projectId</code></pre>
+
+  <h3>Example</h3>
+  <pre><code>{`curl -X PATCH https://api.yet.watch/v1/projects/proj_abc123 \\
+  -H "Authorization: Bearer yet_xxx" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "name": "My Application v2",
+    "description": "Updated description"
+  }'`}</code></pre>
+
+  <blockquote>
+    <p><strong>Note:</strong> The project <code>key</code> cannot be changed after creation.</p>
+  </blockquote>
+
+  <h2>Delete Project</h2>
+
+  <pre><code>DELETE /v1/projects/:projectId</code></pre>
+
+  <p>
+    <strong>Warning:</strong> This permanently deletes the project and all its tasks. This action cannot be undone.
+  </p>
+
+  <h3>Example</h3>
+  <pre><code>{`curl -X DELETE https://api.yet.watch/v1/projects/proj_abc123 \\
+  -H "Authorization: Bearer yet_xxx"`}</code></pre>
+
+  <h2>Get Project Statistics</h2>
+
+  <pre><code>GET /v1/projects/:projectId/stats</code></pre>
+
+  <h3>Response</h3>
+  <pre><code>{`{
+  "data": {
+    "taskCount": 42,
+    "tasksByStatus": {
+      "todo": 15,
+      "in_progress": 8,
+      "done": 19
+    },
+    "tasksByPriority": {
+      "urgent": 2,
+      "high": 10,
+      "medium": 20,
+      "low": 10
+    },
+    "memberCount": 5
+  }
+}`}</code></pre>
+
+  <h2>Next Steps</h2>
+
+  <ul>
+    <li><a href="/docs/api/tasks">Tasks API</a></li>
+    <li><a href="/docs/api/knowledge">Knowledge API</a></li>
+    <li><a href="/docs/api/rate-limits">Rate Limits</a></li>
+  </ul>
+</DocLayout>

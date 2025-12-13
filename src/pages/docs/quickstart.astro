@@ -1,0 +1,91 @@
+---
+import DocLayout from '../../layouts/DocLayout.astro';
+---
+
+<DocLayout title="Quick Start" description="Get up and running with Yet.Project in 5 minutes.">
+  <h1>Quick Start Guide</h1>
+
+  <p>
+    Get Yet.Project set up and connected to your AI assistant in just a few minutes.
+  </p>
+
+  <h2>Step 1: Create Your Account</h2>
+
+  <p>
+    Sign up at <a href="https://app.yet.watch/auth/register">app.yet.watch</a>. No credit card required for the free tier.
+  </p>
+
+  <h2>Step 2: Create Your First Project</h2>
+
+  <ol>
+    <li>After signing in, click <strong>"New Project"</strong></li>
+    <li>Enter a project name and optional description</li>
+    <li>Choose a project key (e.g., "MYAPP")</li>
+    <li>Click <strong>"Create Project"</strong></li>
+  </ol>
+
+  <h2>Step 3: Generate an API Key</h2>
+
+  <ol>
+    <li>Go to <strong>Settings → API Keys</strong></li>
+    <li>Click <strong>"Create API Key"</strong></li>
+    <li>Name it (e.g., "Claude Code")</li>
+    <li>Select permissions (recommend: Read + Write)</li>
+    <li>Copy the key - you'll need it next</li>
+  </ol>
+
+  <blockquote>
+    <p><strong>Important:</strong> Save your API key securely. It won't be shown again.</p>
+  </blockquote>
+
+  <h2>Step 4: Configure MCP (for Claude Code)</h2>
+
+  <p>Add Yet.Project to your Claude Code configuration:</p>
+
+  <pre><code>{`// ~/.config/claude/claude_desktop_config.json
+{
+  "mcpServers": {
+    "yet": {
+      "command": "npx",
+      "args": ["-y", "@anthropic/yet-mcp"],
+      "env": {
+        "YET_API_KEY": "your_api_key_here"
+      }
+    }
+  }
+}`}</code></pre>
+
+  <p>Restart Claude Code to activate the MCP server.</p>
+
+  <h2>Step 5: Test the Integration</h2>
+
+  <p>Try asking Claude:</p>
+
+  <pre><code>"Create a task called 'Set up authentication' in my project"</code></pre>
+
+  <p>Claude will use the MCP tools to create the task directly in Yet.Project.</p>
+
+  <h2>Alternative: Use the CLI</h2>
+
+  <p>If you prefer the command line:</p>
+
+  <pre><code>{`# Install the CLI
+npm install -g @yet/cli
+
+# Login with your API key
+yet login --key your_api_key_here
+
+# Create a task
+yet task create "Set up authentication" --project MYAPP
+
+# List tasks
+yet task list`}</code></pre>
+
+  <h2>What's Next?</h2>
+
+  <ul>
+    <li><a href="/docs/concepts">Learn core concepts</a> - Understand the data model</li>
+    <li><a href="/docs/mcp/tools">MCP Tools Reference</a> - All 27+ available tools</li>
+    <li><a href="/docs/app/knowledge">Knowledge Base</a> - Set up persistent AI memory</li>
+  </ul>
+</DocLayout>

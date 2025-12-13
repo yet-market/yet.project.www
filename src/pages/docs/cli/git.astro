@@ -1,0 +1,160 @@
+---
+import DocLayout from '../../../layouts/DocLayout.astro';
+---
+
+<DocLayout title="Git Integration" description="Linking git branches to tasks with the Yet.Project CLI.">
+  <h1>Git Integration</h1>
+
+  <p>
+    Link git branches to tasks for better tracking and automatic status updates.
+  </p>
+
+  <h2>Branch Naming Convention</h2>
+
+  <p>
+    The CLI recognizes branches that include a task ID:
+  </p>
+
+  <pre><code>{`# These all link to MYAPP-123:
+git checkout -b MYAPP-123-implement-auth
+git checkout -b feature/MYAPP-123-auth
+git checkout -b MYAPP-123`}</code></pre>
+
+  <h2>Starting Work on a Task</h2>
+
+  <p>Create a branch for a task automatically:</p>
+
+  <pre><code>{`yet task start MYAPP-123
+
+# Creates branch: MYAPP-123-implement-auth
+# Sets task status to: in_progress`}</code></pre>
+
+  <p>Options:</p>
+  <pre><code>{`# Custom branch name
+yet task start MYAPP-123 --branch feature/auth
+
+# Don't change task status
+yet task start MYAPP-123 --no-status`}</code></pre>
+
+  <h2>Finishing a Task</h2>
+
+  <p>Mark a task as done from the current branch:</p>
+
+  <pre><code>{`yet task finish
+
+# If on branch MYAPP-123-implement-auth:
+# - Sets MYAPP-123 status to: done
+# - Optionally creates PR`}</code></pre>
+
+  <h2>Commit Messages</h2>
+
+  <p>Include the task ID in commit messages for linking:</p>
+
+  <pre><code>{`git commit -m "MYAPP-123: Add login endpoint"
+
+# Or use the CLI helper:
+yet commit "Add login endpoint"
+# Automatically prepends: MYAPP-123: Add login endpoint`}</code></pre>
+
+  <h2>Automatic Status Updates</h2>
+
+  <p>
+    Set up git hooks to automatically update task status:
+  </p>
+
+  <pre><code>{`yet git hooks install
+
+# Installs hooks that:
+# - Set task to in_progress when branch created
+# - Add commit references to task
+# - Optionally set to done on merge`}</code></pre>
+
+  <h2>PR Integration</h2>
+
+  <p>Create a pull request linked to the task:</p>
+
+  <pre><code>{`yet pr create
+
+# Creates PR with:
+# - Title from task
+# - Link to task in description
+# - Task ID in PR body`}</code></pre>
+
+  <h2>Git Hooks Configuration</h2>
+
+  <p>Configure hook behavior in <code>.yet/config.json</code>:</p>
+
+  <pre><code>{`{
+  "git": {
+    "autoStatus": true,
+    "branchPrefix": "feature/",
+    "commitPrefix": true,
+    "doneOnMerge": true
+  }
+}`}</code></pre>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Option</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>autoStatus</code></td>
+        <td>Auto-update task status on branch events</td>
+      </tr>
+      <tr>
+        <td><code>branchPrefix</code></td>
+        <td>Prefix for generated branch names</td>
+      </tr>
+      <tr>
+        <td><code>commitPrefix</code></td>
+        <td>Auto-add task ID to commits</td>
+      </tr>
+      <tr>
+        <td><code>doneOnMerge</code></td>
+        <td>Set task to done when PR merged</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Viewing Linked Activity</h2>
+
+  <p>See git activity for a task:</p>
+
+  <pre><code>{`yet task show MYAPP-123 --git
+
+# Shows:
+# - Linked branches
+# - Commits mentioning task
+# - Pull requests`}</code></pre>
+
+  <h2>Example Workflow</h2>
+
+  <pre><code>{`# 1. Pick up a task
+yet task list --status todo
+yet task start MYAPP-123
+
+# 2. Work on it, commit
+git add .
+yet commit "Add login form"
+
+# 3. More work...
+git add .
+yet commit "Add validation"
+
+# 4. Finish and create PR
+yet task finish
+yet pr create
+
+# 5. After PR merged, task auto-completes (if configured)`}</code></pre>
+
+  <h2>Next Steps</h2>
+
+  <ul>
+    <li><a href="/docs/cli/commands">CLI Commands</a></li>
+    <li><a href="/docs/integrations/github">GitHub Integration</a></li>
+  </ul>
+</DocLayout>

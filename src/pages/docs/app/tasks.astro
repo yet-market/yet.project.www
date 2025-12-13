@@ -1,0 +1,162 @@
+---
+import DocLayout from '../../../layouts/DocLayout.astro';
+---
+
+<DocLayout title="Tasks" description="Task management, Kanban boards, and task dependencies in Yet.Project.">
+  <h1>Tasks</h1>
+
+  <p>
+    Tasks are the core work items in Yet.Project. This guide covers creating, managing, and organizing tasks.
+  </p>
+
+  <h2>Creating Tasks</h2>
+
+  <h3>From the Web App</h3>
+  <ol>
+    <li>Open a project</li>
+    <li>Click <strong>"New Task"</strong> or press <code>C</code></li>
+    <li>Enter the task title</li>
+    <li>Add optional details (description, priority, assignee)</li>
+    <li>Press <code>Enter</code> or click <strong>"Create"</strong></li>
+  </ol>
+
+  <h3>From Claude/AI</h3>
+  <p>Just ask your AI assistant:</p>
+  <pre><code>"Create a task to implement user authentication in the MYAPP project"</code></pre>
+
+  <h3>From CLI</h3>
+  <pre><code>{`yet task create "Implement user authentication" \\
+  --project MYAPP \\
+  --priority high \\
+  --label feature`}</code></pre>
+
+  <h2>Task Fields</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Field</th>
+        <th>Description</th>
+        <th>Required</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Title</td>
+        <td>Short description of the task</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>Description</td>
+        <td>Detailed info, supports Markdown</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td>Status</td>
+        <td>Current workflow status</td>
+        <td>Auto</td>
+      </tr>
+      <tr>
+        <td>Priority</td>
+        <td>low, medium, high, urgent</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td>Assignee</td>
+        <td>Team member responsible</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td>Labels</td>
+        <td>Tags for categorization</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td>Due Date</td>
+        <td>Deadline for completion</td>
+        <td>No</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Task Status</h2>
+
+  <p>Default statuses:</p>
+  <ul>
+    <li><strong>Todo</strong> - Not started</li>
+    <li><strong>In Progress</strong> - Currently being worked on</li>
+    <li><strong>Done</strong> - Completed</li>
+  </ul>
+
+  <p>Change status by:</p>
+  <ul>
+    <li>Clicking the status badge and selecting a new status</li>
+    <li>Dragging the task in Board view</li>
+    <li>Using keyboard shortcut <code>S</code> then selecting</li>
+    <li>Via API or CLI</li>
+  </ul>
+
+  <h2>Board View (Kanban)</h2>
+
+  <p>
+    The board view shows tasks as cards organized by status columns. Drag cards between columns to update status.
+  </p>
+
+  <h2>Filtering & Search</h2>
+
+  <p>Filter tasks by:</p>
+  <ul>
+    <li>Status</li>
+    <li>Assignee</li>
+    <li>Priority</li>
+    <li>Labels</li>
+    <li>Due date range</li>
+  </ul>
+
+  <p>Use the search bar to find tasks by title or description content.</p>
+
+  <h2>Keyboard Shortcuts</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Shortcut</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>C</code></td>
+        <td>Create new task</td>
+      </tr>
+      <tr>
+        <td><code>E</code></td>
+        <td>Edit selected task</td>
+      </tr>
+      <tr>
+        <td><code>S</code></td>
+        <td>Change status</td>
+      </tr>
+      <tr>
+        <td><code>A</code></td>
+        <td>Assign task</td>
+      </tr>
+      <tr>
+        <td><code>P</code></td>
+        <td>Set priority</td>
+      </tr>
+      <tr>
+        <td><code>/</code></td>
+        <td>Focus search</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Next Steps</h2>
+
+  <ul>
+    <li><a href="/docs/app/team">Team & Permissions</a></li>
+    <li><a href="/docs/api/tasks">Tasks API Reference</a></li>
+    <li><a href="/docs/mcp/tools">MCP Tools for Tasks</a></li>
+  </ul>
+</DocLayout>

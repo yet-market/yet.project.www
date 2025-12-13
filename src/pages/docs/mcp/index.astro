@@ -1,0 +1,166 @@
+---
+import DocLayout from '../../../layouts/DocLayout.astro';
+---
+
+<DocLayout title="MCP Setup" description="Setting up the Yet.Project MCP Server for Claude Code and other AI tools.">
+  <h1>MCP Server Setup</h1>
+
+  <p>
+    The Model Context Protocol (MCP) server allows AI assistants like Claude Code, Cursor, and Windsurf to interact directly with Yet.Project.
+  </p>
+
+  <h2>What is MCP?</h2>
+
+  <p>
+    MCP is a standard protocol that enables AI assistants to use external tools. Our MCP server provides 27+ tools that let AI:
+  </p>
+
+  <ul>
+    <li>Create and update tasks</li>
+    <li>Search and read project information</li>
+    <li>Access and update the knowledge base</li>
+    <li>Log time and add comments</li>
+  </ul>
+
+  <h2>Prerequisites</h2>
+
+  <ul>
+    <li>A Yet.Project account with an API key</li>
+    <li>Node.js 18+ installed</li>
+    <li>An MCP-compatible AI tool (Claude Code, Cursor, etc.)</li>
+  </ul>
+
+  <h2>Setup for Claude Code</h2>
+
+  <h3>1. Get Your API Key</h3>
+  <p>
+    Go to <strong>Settings → API Keys</strong> in the Yet.Project web app and create a new key with Write permissions.
+  </p>
+
+  <h3>2. Configure Claude Code</h3>
+  <p>
+    Edit your Claude Code configuration file:
+  </p>
+
+  <pre><code>{`// macOS: ~/.config/claude/claude_desktop_config.json
+// Windows: %APPDATA%\\Claude\\claude_desktop_config.json
+
+{
+  "mcpServers": {
+    "yet": {
+      "command": "npx",
+      "args": ["-y", "@yet/mcp-server"],
+      "env": {
+        "YET_API_KEY": "yet_your_api_key_here"
+      }
+    }
+  }
+}`}</code></pre>
+
+  <h3>3. Restart Claude Code</h3>
+  <p>
+    Completely quit and restart Claude Code to load the MCP server.
+  </p>
+
+  <h3>4. Verify</h3>
+  <p>
+    Ask Claude: "List my Yet.Project projects"
+  </p>
+  <p>
+    Claude should show your projects using the MCP tools.
+  </p>
+
+  <h2>Setup for Cursor</h2>
+
+  <p>
+    Add to your Cursor settings:
+  </p>
+
+  <pre><code>{`// .cursor/settings.json
+{
+  "mcp": {
+    "servers": {
+      "yet": {
+        "command": "npx",
+        "args": ["-y", "@yet/mcp-server"],
+        "env": {
+          "YET_API_KEY": "yet_your_api_key_here"
+        }
+      }
+    }
+  }
+}`}</code></pre>
+
+  <h2>Setup for Windsurf</h2>
+
+  <pre><code>{`// ~/.windsurf/config.json
+{
+  "mcpServers": {
+    "yet": {
+      "command": "npx",
+      "args": ["-y", "@yet/mcp-server"],
+      "env": {
+        "YET_API_KEY": "yet_your_api_key_here"
+      }
+    }
+  }
+}`}</code></pre>
+
+  <h2>Environment Variables</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Variable</th>
+        <th>Required</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>YET_API_KEY</code></td>
+        <td>Yes</td>
+        <td>Your Yet.Project API key</td>
+      </tr>
+      <tr>
+        <td><code>YET_API_URL</code></td>
+        <td>No</td>
+        <td>Custom API URL (default: https://api.yet.watch)</td>
+      </tr>
+      <tr>
+        <td><code>YET_DEFAULT_PROJECT</code></td>
+        <td>No</td>
+        <td>Default project key for commands</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Troubleshooting</h2>
+
+  <h3>"MCP server not found"</h3>
+  <ul>
+    <li>Ensure Node.js 18+ is installed: <code>node --version</code></li>
+    <li>Try running manually: <code>npx -y @yet/mcp-server</code></li>
+  </ul>
+
+  <h3>"Unauthorized" errors</h3>
+  <ul>
+    <li>Check your API key is correct</li>
+    <li>Ensure the key has Write permissions</li>
+    <li>Verify the key hasn't been revoked</li>
+  </ul>
+
+  <h3>"No projects found"</h3>
+  <ul>
+    <li>Create a project in the web app first</li>
+    <li>Check if your API key is scoped to specific projects</li>
+  </ul>
+
+  <h2>Next Steps</h2>
+
+  <ul>
+    <li><a href="/docs/mcp/tools">MCP Tools Reference</a> - All 27+ available tools</li>
+    <li><a href="/docs/mcp/examples">MCP Examples</a> - Real-world usage examples</li>
+    <li><a href="/docs/app/api-keys">API Keys</a> - Managing permissions</li>
+  </ul>
+</DocLayout>

@@ -1,0 +1,150 @@
+---
+import DocLayout from '../../../layouts/DocLayout.astro';
+---
+
+<DocLayout title="REST API" description="REST API authentication and getting started with the Yet.Project API.">
+  <h1>REST API</h1>
+
+  <p>
+    The Yet.Project REST API provides 68+ endpoints for full programmatic access to your workspace. Build integrations, automate workflows, or create custom tools.
+  </p>
+
+  <h2>Base URL</h2>
+
+  <pre><code>https://api.yet.watch/v1</code></pre>
+
+  <h2>Authentication</h2>
+
+  <p>
+    All API requests require authentication via API key. Include your key in the <code>Authorization</code> header:
+  </p>
+
+  <pre><code>{`curl https://api.yet.watch/v1/projects \\
+  -H "Authorization: Bearer yet_your_api_key_here"`}</code></pre>
+
+  <p>
+    Get your API key from <strong>Settings → API Keys</strong> in the web app.
+  </p>
+
+  <h2>Response Format</h2>
+
+  <p>All responses use a consistent JSON structure:</p>
+
+  <pre><code>{`// Success response
+{
+  "data": { ... },
+  "meta": {
+    "timestamp": "2024-01-15T10:30:00Z",
+    "requestId": "req_abc123"
+  }
+}
+
+// Error response
+{
+  "error": {
+    "code": "NOT_FOUND",
+    "message": "Task not found",
+    "details": { ... }
+  },
+  "meta": {
+    "timestamp": "2024-01-15T10:30:00Z",
+    "requestId": "req_abc123"
+  }
+}`}</code></pre>
+
+  <h2>HTTP Status Codes</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>200</code></td>
+        <td>Success</td>
+      </tr>
+      <tr>
+        <td><code>201</code></td>
+        <td>Created</td>
+      </tr>
+      <tr>
+        <td><code>400</code></td>
+        <td>Bad request - check your input</td>
+      </tr>
+      <tr>
+        <td><code>401</code></td>
+        <td>Unauthorized - invalid or missing API key</td>
+      </tr>
+      <tr>
+        <td><code>403</code></td>
+        <td>Forbidden - insufficient permissions</td>
+      </tr>
+      <tr>
+        <td><code>404</code></td>
+        <td>Not found</td>
+      </tr>
+      <tr>
+        <td><code>429</code></td>
+        <td>Rate limited - slow down</td>
+      </tr>
+      <tr>
+        <td><code>500</code></td>
+        <td>Server error</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Pagination</h2>
+
+  <p>List endpoints support pagination:</p>
+
+  <pre><code>{`GET /v1/tasks?page=2&limit=50`}</code></pre>
+
+  <p>Response includes pagination metadata:</p>
+
+  <pre><code>{`{
+  "data": [...],
+  "meta": {
+    "pagination": {
+      "page": 2,
+      "limit": 50,
+      "total": 150,
+      "totalPages": 3
+    }
+  }
+}`}</code></pre>
+
+  <h2>Quick Examples</h2>
+
+  <h3>List Projects</h3>
+  <pre><code>{`curl https://api.yet.watch/v1/projects \\
+  -H "Authorization: Bearer yet_xxx"`}</code></pre>
+
+  <h3>Create a Task</h3>
+  <pre><code>{`curl -X POST https://api.yet.watch/v1/tasks \\
+  -H "Authorization: Bearer yet_xxx" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "projectId": "proj_abc123",
+    "title": "Implement auth",
+    "priority": "high"
+  }'`}</code></pre>
+
+  <h3>Update Task Status</h3>
+  <pre><code>{`curl -X PATCH https://api.yet.watch/v1/tasks/MYAPP-123 \\
+  -H "Authorization: Bearer yet_xxx" \\
+  -H "Content-Type: application/json" \\
+  -d '{"status": "done"}'`}</code></pre>
+
+  <h2>API Sections</h2>
+
+  <ul>
+    <li><a href="/docs/api/tasks">Tasks API</a> - Create, update, list, delete tasks</li>
+    <li><a href="/docs/api/projects">Projects API</a> - Manage projects and settings</li>
+    <li><a href="/docs/api/knowledge">Knowledge API</a> - Store and retrieve knowledge items</li>
+    <li><a href="/docs/api/rate-limits">Rate Limits</a> - API usage limits and quotas</li>
+  </ul>
+</DocLayout>

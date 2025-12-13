@@ -1,0 +1,147 @@
+---
+import DocLayout from '../../../layouts/DocLayout.astro';
+---
+
+<DocLayout title="Windsurf Integration" description="Using Yet.Project with Windsurf IDE via MCP.">
+  <h1>Windsurf Integration</h1>
+
+  <p>
+    Windsurf is Codeium's AI-powered IDE. Yet.Project integrates via MCP for seamless task management.
+  </p>
+
+  <h2>Setup</h2>
+
+  <h3>1. Get Your API Key</h3>
+  <p>
+    Create an API key in <a href="https://app.yet.watch">Yet.Project</a> under <strong>Settings → API Keys</strong>.
+  </p>
+
+  <h3>2. Configure Windsurf</h3>
+  <p>Edit the Windsurf configuration:</p>
+
+  <pre><code>{`// ~/.windsurf/config.json
+
+{
+  "mcpServers": {
+    "yet": {
+      "command": "npx",
+      "args": ["-y", "@yet/mcp-server"],
+      "env": {
+        "YET_API_KEY": "yet_your_api_key_here"
+      }
+    }
+  }
+}`}</code></pre>
+
+  <h3>3. Restart Windsurf</h3>
+  <p>Restart Windsurf to load the MCP configuration.</p>
+
+  <h3>4. Verify</h3>
+  <p>Ask the AI: "Show my Yet.Project tasks"</p>
+
+  <h2>Cascade Integration</h2>
+
+  <p>
+    Windsurf's Cascade feature works seamlessly with Yet.Project. The AI can:
+  </p>
+
+  <ul>
+    <li>Read task requirements before suggesting code</li>
+    <li>Update task status as you complete work</li>
+    <li>Reference knowledge base for coding standards</li>
+    <li>Create new tasks when it identifies issues</li>
+  </ul>
+
+  <h3>Example: Guided Development</h3>
+
+  <pre><code>{`You: "Help me implement MYAPP-45"
+
+Cascade: [Reads task details from Yet.Project]
+
+"MYAPP-45 is about fixing database timeouts. Based on your
+knowledge base, you're using PostgreSQL with a pool size of 10.
+
+I'll help you:
+1. Increase the connection pool
+2. Add timeout handling
+3. Implement retry logic
+
+Let me start with the connection pool configuration..."`}</code></pre>
+
+  <h2>Using Flows with Yet.Project</h2>
+
+  <p>
+    Windsurf Flows can incorporate Yet.Project context:
+  </p>
+
+  <pre><code>{`You: "Start a flow for implementing user authentication"
+
+Cascade: [Creates flow, checks Yet.Project for related tasks]
+
+"I found these related tasks:
+- MYAPP-47: Implement JWT auth
+- MYAPP-48: Add password reset
+
+I'll create a flow that addresses both. Let me also check
+your knowledge base for auth requirements...
+
+Found: 'Auth must support OAuth2 and email/password'
+
+Starting implementation flow..."`}</code></pre>
+
+  <h2>Workspace Configuration</h2>
+
+  <p>
+    For multi-project setups, use workspace-specific config:
+  </p>
+
+  <pre><code>{`// .windsurf/config.json in project root
+
+{
+  "mcpServers": {
+    "yet": {
+      "command": "npx",
+      "args": ["-y", "@yet/mcp-server"],
+      "env": {
+        "YET_API_KEY": "yet_your_api_key_here",
+        "YET_DEFAULT_PROJECT": "MYAPP"
+      }
+    }
+  }
+}`}</code></pre>
+
+  <h2>Tips</h2>
+
+  <h3>Let Cascade Read Tasks First</h3>
+  <p>Before implementing, ask Cascade to understand the task:</p>
+  <pre><code>"Read MYAPP-45 and tell me what needs to be done"</code></pre>
+
+  <h3>Update Status During Work</h3>
+  <pre><code>"Mark MYAPP-45 as in progress, I'm starting on it"</code></pre>
+
+  <h3>Use Knowledge Base</h3>
+  <pre><code>"Check the knowledge base for our error handling patterns"</code></pre>
+
+  <h2>Troubleshooting</h2>
+
+  <h3>MCP not recognized</h3>
+  <ul>
+    <li>Verify config file location: <code>~/.windsurf/config.json</code></li>
+    <li>Check JSON syntax</li>
+    <li>Ensure Node.js 18+ is installed</li>
+  </ul>
+
+  <h3>Connection issues</h3>
+  <ul>
+    <li>Test API key with CLI: <code>yet whoami</code></li>
+    <li>Check firewall settings</li>
+  </ul>
+
+  <h2>Next Steps</h2>
+
+  <ul>
+    <li><a href="/docs/mcp/tools">MCP Tools Reference</a></li>
+    <li><a href="/docs/integrations/cursor">Cursor Setup</a></li>
+    <li><a href="/docs/mcp/examples">Usage Examples</a></li>
+  </ul>
+</DocLayout>

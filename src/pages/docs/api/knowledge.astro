@@ -1,0 +1,188 @@
+---
+import DocLayout from '../../../layouts/DocLayout.astro';
+---
+
+<DocLayout title="Knowledge API" description="REST API endpoints for the Yet.Project Knowledge Base.">
+  <h1>Knowledge API</h1>
+
+  <p>
+    Endpoints for storing and retrieving knowledge base items.
+  </p>
+
+  <h2>List Knowledge Items</h2>
+
+  <pre><code>GET /v1/knowledge</code></pre>
+
+  <h3>Query Parameters</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Parameter</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>projectId</code></td>
+        <td>string</td>
+        <td>Filter by project (optional)</td>
+      </tr>
+      <tr>
+        <td><code>prefix</code></td>
+        <td>string</td>
+        <td>Filter by key prefix (e.g., "api/")</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Example</h3>
+  <pre><code>{`curl https://api.yet.watch/v1/knowledge \\
+  -H "Authorization: Bearer yet_xxx"`}</code></pre>
+
+  <h3>Response</h3>
+  <pre><code>{`{
+  "data": [
+    {
+      "key": "architecture",
+      "content": "Our app uses...",
+      "projectId": null,
+      "updatedAt": "2024-01-15T10:00:00Z"
+    },
+    {
+      "key": "api/auth",
+      "content": "Authentication uses...",
+      "projectId": "proj_abc123",
+      "updatedAt": "2024-01-14T09:00:00Z"
+    }
+  ]
+}`}</code></pre>
+
+  <h2>Get Knowledge Item</h2>
+
+  <pre><code>GET /v1/knowledge/:key</code></pre>
+
+  <h3>Example</h3>
+  <pre><code>{`curl https://api.yet.watch/v1/knowledge/architecture \\
+  -H "Authorization: Bearer yet_xxx"`}</code></pre>
+
+  <h2>Set Knowledge Item</h2>
+
+  <pre><code>PUT /v1/knowledge/:key</code></pre>
+
+  <p>Creates or updates a knowledge item.</p>
+
+  <h3>Body</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Field</th>
+        <th>Type</th>
+        <th>Required</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>content</code></td>
+        <td>string</td>
+        <td>Yes</td>
+        <td>Knowledge content</td>
+      </tr>
+      <tr>
+        <td><code>projectId</code></td>
+        <td>string</td>
+        <td>No</td>
+        <td>Scope to project (null for tenant-wide)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Example</h3>
+  <pre><code>{`curl -X PUT https://api.yet.watch/v1/knowledge/architecture \\
+  -H "Authorization: Bearer yet_xxx" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "content": "Our application uses a microservices architecture:\\n- API Gateway: Kong\\n- Services: Node.js with TypeScript\\n- Database: PostgreSQL\\n- Cache: Redis"
+  }'`}</code></pre>
+
+  <h2>Delete Knowledge Item</h2>
+
+  <pre><code>DELETE /v1/knowledge/:key</code></pre>
+
+  <h3>Example</h3>
+  <pre><code>{`curl -X DELETE https://api.yet.watch/v1/knowledge/old-docs \\
+  -H "Authorization: Bearer yet_xxx"`}</code></pre>
+
+  <h2>Search Knowledge</h2>
+
+  <pre><code>GET /v1/knowledge/search</code></pre>
+
+  <h3>Query Parameters</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Parameter</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>q</code></td>
+        <td>string</td>
+        <td>Search query</td>
+      </tr>
+      <tr>
+        <td><code>projectId</code></td>
+        <td>string</td>
+        <td>Limit search to project</td>
+      </tr>
+      <tr>
+        <td><code>limit</code></td>
+        <td>number</td>
+        <td>Max results (default: 10)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Example</h3>
+  <pre><code>{`curl "https://api.yet.watch/v1/knowledge/search?q=authentication" \\
+  -H "Authorization: Bearer yet_xxx"`}</code></pre>
+
+  <h3>Response</h3>
+  <pre><code>{`{
+  "data": [
+    {
+      "key": "api/auth",
+      "content": "Authentication uses JWT tokens...",
+      "score": 0.95
+    },
+    {
+      "key": "security/overview",
+      "content": "Security includes authentication...",
+      "score": 0.72
+    }
+  ]
+}`}</code></pre>
+
+  <h2>Knowledge Key Conventions</h2>
+
+  <p>Use forward slashes to create hierarchical keys:</p>
+
+  <ul>
+    <li><code>architecture</code> - Top-level overview</li>
+    <li><code>api/auth</code> - API authentication docs</li>
+    <li><code>api/endpoints</code> - API endpoint summary</li>
+    <li><code>coding/style</code> - Code style guidelines</li>
+    <li><code>decisions/database</code> - Database decision record</li>
+  </ul>
+
+  <h2>Next Steps</h2>
+
+  <ul>
+    <li><a href="/docs/api/tasks">Tasks API</a></li>
+    <li><a href="/docs/api/projects">Projects API</a></li>
+    <li><a href="/docs/api/rate-limits">Rate Limits</a></li>
+  </ul>
+</DocLayout>

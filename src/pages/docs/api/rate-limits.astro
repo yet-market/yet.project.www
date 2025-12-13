@@ -1,0 +1,156 @@
+---
+import DocLayout from '../../../layouts/DocLayout.astro';
+---
+
+<DocLayout title="Rate Limits" description="API rate limits and quotas for Yet.Project.">
+  <h1>Rate Limits</h1>
+
+  <p>
+    The API enforces rate limits to ensure fair usage and system stability.
+  </p>
+
+  <h2>Default Limits</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Plan</th>
+        <th>Requests/Minute</th>
+        <th>Requests/Day</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Free</td>
+        <td>60</td>
+        <td>1,000</td>
+      </tr>
+      <tr>
+        <td>Pro</td>
+        <td>300</td>
+        <td>50,000</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Rate Limit Headers</h2>
+
+  <p>Every API response includes rate limit information in headers:</p>
+
+  <pre><code>{`X-RateLimit-Limit: 60
+X-RateLimit-Remaining: 45
+X-RateLimit-Reset: 1705320000`}</code></pre>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Header</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>X-RateLimit-Limit</code></td>
+        <td>Max requests per window</td>
+      </tr>
+      <tr>
+        <td><code>X-RateLimit-Remaining</code></td>
+        <td>Remaining requests in current window</td>
+      </tr>
+      <tr>
+        <td><code>X-RateLimit-Reset</code></td>
+        <td>Unix timestamp when limit resets</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Rate Limit Exceeded</h2>
+
+  <p>When you exceed the rate limit, you'll receive a <code>429 Too Many Requests</code> response:</p>
+
+  <pre><code>{`{
+  "error": {
+    "code": "RATE_LIMIT_EXCEEDED",
+    "message": "Too many requests. Please retry after 45 seconds.",
+    "retryAfter": 45
+  }
+}`}</code></pre>
+
+  <h2>Best Practices</h2>
+
+  <h3>Implement Exponential Backoff</h3>
+  <p>
+    When you receive a 429, wait before retrying. Double the wait time with each subsequent failure:
+  </p>
+
+  <pre><code>{`async function fetchWithRetry(url, options, maxRetries = 3) {
+  for (let i = 0; i < maxRetries; i++) {
+    const response = await fetch(url, options);
+
+    if (response.status === 429) {
+      const retryAfter = response.headers.get('Retry-After') || Math.pow(2, i);
+      await sleep(retryAfter * 1000);
+      continue;
+    }
+
+    return response;
+  }
+  throw new Error('Max retries exceeded');
+}`}</code></pre>
+
+  <h3>Cache Responses</h3>
+  <p>
+    Cache GET responses when possible. Project and knowledge data changes infrequently.
+  </p>
+
+  <h3>Batch Operations</h3>
+  <p>
+    When creating multiple tasks, consider if you can batch them into fewer requests.
+  </p>
+
+  <h3>Use Webhooks</h3>
+  <p>
+    Instead of polling for changes, use webhooks to receive real-time notifications.
+  </p>
+
+  <h2>Endpoint-Specific Limits</h2>
+
+  <p>Some endpoints have additional limits:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Endpoint</th>
+        <th>Additional Limit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>POST /v1/tasks</code></td>
+        <td>100 creates/hour</td>
+      </tr>
+      <tr>
+        <td><code>GET /v1/*/search</code></td>
+        <td>30 searches/minute</td>
+      </tr>
+      <tr>
+        <td><code>PUT /v1/knowledge/*</code></td>
+        <td>60 writes/hour</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Need Higher Limits?</h2>
+
+  <p>
+    If you need higher rate limits for your use case, <a href="/contact">contact us</a> to discuss options.
+  </p>
+
+  <h2>Next Steps</h2>
+
+  <ul>
+    <li><a href="/docs/api">API Overview</a></li>
+    <li><a href="/docs/api/tasks">Tasks API</a></li>
+    <li><a href="/docs/integrations/github">GitHub Webhooks</a></li>
+  </ul>
+</DocLayout>

@@ -1,0 +1,134 @@
+---
+import DocLayout from '../../../layouts/DocLayout.astro';
+---
+
+<DocLayout title="API Keys" description="Generating and managing API keys for AI agents and integrations.">
+  <h1>API Keys</h1>
+
+  <p>
+    API keys authenticate requests to the REST API, CLI, and MCP server. Create separate keys for different tools and AI agents.
+  </p>
+
+  <h2>Creating an API Key</h2>
+
+  <ol>
+    <li>Go to <strong>Settings → API Keys</strong></li>
+    <li>Click <strong>"Create API Key"</strong></li>
+    <li>Enter a <strong>name</strong> (e.g., "Claude Code", "CI Pipeline")</li>
+    <li>Select <strong>permissions</strong></li>
+    <li>Optionally restrict to specific projects</li>
+    <li>Click <strong>"Create"</strong></li>
+    <li>Copy the key immediately</li>
+  </ol>
+
+  <blockquote>
+    <p><strong>Important:</strong> The API key is only shown once. Save it securely before closing the dialog.</p>
+  </blockquote>
+
+  <h2>Permission Levels</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Permission</th>
+        <th>Capabilities</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Read</strong></td>
+        <td>View projects, tasks, knowledge base. Cannot make changes.</td>
+      </tr>
+      <tr>
+        <td><strong>Write</strong></td>
+        <td>Read + create and update tasks, add knowledge items.</td>
+      </tr>
+      <tr>
+        <td><strong>Admin</strong></td>
+        <td>Write + manage projects, delete items, full access.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Best Practices</h2>
+
+  <h3>One Key Per Agent</h3>
+  <p>
+    Create separate keys for each AI agent or integration:
+  </p>
+  <ul>
+    <li><code>claude-code-personal</code> - Your personal Claude Code</li>
+    <li><code>cursor-ide</code> - Cursor IDE integration</li>
+    <li><code>github-actions</code> - CI/CD pipeline</li>
+  </ul>
+
+  <p>This lets you:</p>
+  <ul>
+    <li>Track which agent performed each action</li>
+    <li>Revoke specific access without affecting others</li>
+    <li>Apply different permission levels</li>
+  </ul>
+
+  <h3>Least Privilege</h3>
+  <p>
+    Only grant the permissions needed. A reporting dashboard only needs Read access.
+  </p>
+
+  <h3>Project Scoping</h3>
+  <p>
+    Restrict keys to specific projects when possible. A key for a client project shouldn't access other projects.
+  </p>
+
+  <h2>Revoking Keys</h2>
+
+  <ol>
+    <li>Go to <strong>Settings → API Keys</strong></li>
+    <li>Find the key to revoke</li>
+    <li>Click the <strong>...</strong> menu</li>
+    <li>Select <strong>"Revoke"</strong></li>
+  </ol>
+
+  <p>
+    Revoked keys stop working immediately. Any tools using them will fail to authenticate.
+  </p>
+
+  <h2>Viewing Activity</h2>
+
+  <p>
+    Each API key's actions are tracked. View activity by clicking the key name to see:
+  </p>
+  <ul>
+    <li>Last used timestamp</li>
+    <li>Total requests</li>
+    <li>Recent actions</li>
+  </ul>
+
+  <h2>Plan Limits</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Plan</th>
+        <th>API Keys</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Free</td>
+        <td>1 key</td>
+      </tr>
+      <tr>
+        <td>Pro</td>
+        <td>10 included, then $0.20/key/month</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Next Steps</h2>
+
+  <ul>
+    <li><a href="/docs/api">REST API Documentation</a></li>
+    <li><a href="/docs/mcp">MCP Server Setup</a></li>
+    <li><a href="/docs/cli">CLI Installation</a></li>
+  </ul>
+</DocLayout>

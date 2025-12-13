@@ -1,0 +1,91 @@
+---
+import DocLayout from '../../../layouts/DocLayout.astro';
+---
+
+<DocLayout title="Projects" description="Creating and managing projects in Yet.Project.">
+  <h1>Projects</h1>
+
+  <p>
+    Projects are the main organizational unit in Yet.Project. Each project contains tasks, has its own settings, and can have specific team access.
+  </p>
+
+  <h2>Creating a Project</h2>
+
+  <ol>
+    <li>Click <strong>"New Project"</strong> from the dashboard</li>
+    <li>Enter a <strong>name</strong> for your project</li>
+    <li>Choose a <strong>project key</strong> (2-5 uppercase letters)</li>
+    <li>Add an optional description</li>
+    <li>Click <strong>"Create"</strong></li>
+  </ol>
+
+  <blockquote>
+    <p>The project key is used in task IDs. For example, if your key is "MYAPP", tasks will be numbered MYAPP-1, MYAPP-2, etc.</p>
+  </blockquote>
+
+  <h2>Project Settings</h2>
+
+  <p>Each project can be customized with:</p>
+
+  <h3>Custom Statuses</h3>
+  <p>
+    Define your own workflow statuses beyond the defaults (Todo, In Progress, Done). Add statuses like "In Review", "Blocked", or "Testing".
+  </p>
+
+  <h3>Labels</h3>
+  <p>
+    Create labels to categorize tasks. Common examples:
+  </p>
+  <ul>
+    <li><code>bug</code> - Bug fixes</li>
+    <li><code>feature</code> - New features</li>
+    <li><code>docs</code> - Documentation</li>
+    <li><code>refactor</code> - Code refactoring</li>
+  </ul>
+
+  <h3>Default Assignee</h3>
+  <p>
+    Optionally set a default assignee for new tasks in the project.
+  </p>
+
+  <h2>Project Views</h2>
+
+  <p>Yet.Project supports multiple views:</p>
+
+  <ul>
+    <li><strong>List View</strong> - Traditional list with sorting and filtering</li>
+    <li><strong>Board View</strong> - Kanban-style drag-and-drop</li>
+  </ul>
+
+  <h2>Archive & Delete</h2>
+
+  <p>
+    <strong>Archive</strong> a project to hide it from the main view while preserving all data. Archived projects can be restored.
+  </p>
+
+  <p>
+    <strong>Delete</strong> permanently removes the project and all tasks. This cannot be undone.
+  </p>
+
+  <h2>API & CLI</h2>
+
+  <pre><code>{`# Create a project via CLI
+yet project create "My Project" --key MYPROJ
+
+# List projects
+yet project list
+
+# Via API
+curl -X POST https://api.yet.watch/v1/projects \\
+  -H "Authorization: Bearer your_api_key" \\
+  -H "Content-Type: application/json" \\
+  -d '{"name": "My Project", "key": "MYPROJ"}'`}</code></pre>
+
+  <h2>Next Steps</h2>
+
+  <ul>
+    <li><a href="/docs/app/tasks">Managing Tasks</a></li>
+    <li><a href="/docs/app/team">Team & Permissions</a></li>
+    <li><a href="/docs/api/projects">Projects API Reference</a></li>
+  </ul>
+</DocLayout>

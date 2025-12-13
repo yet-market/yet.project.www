@@ -1,0 +1,135 @@
+---
+import DocLayout from '../../../layouts/DocLayout.astro';
+---
+
+<DocLayout title="Cursor Integration" description="Using Yet.Project with Cursor IDE via MCP.">
+  <h1>Cursor Integration</h1>
+
+  <p>
+    Cursor is an AI-powered IDE. Yet.Project integrates via MCP so you can manage tasks without leaving your editor.
+  </p>
+
+  <h2>Setup</h2>
+
+  <h3>1. Get Your API Key</h3>
+  <p>
+    Create an API key in <a href="https://app.yet.watch">Yet.Project</a> under <strong>Settings → API Keys</strong>.
+  </p>
+
+  <h3>2. Configure Cursor</h3>
+  <p>Add to your Cursor settings:</p>
+
+  <pre><code>{`// .cursor/settings.json (in your project root)
+// Or global: ~/.cursor/settings.json
+
+{
+  "mcp": {
+    "servers": {
+      "yet": {
+        "command": "npx",
+        "args": ["-y", "@yet/mcp-server"],
+        "env": {
+          "YET_API_KEY": "yet_your_api_key_here"
+        }
+      }
+    }
+  }
+}`}</code></pre>
+
+  <h3>3. Restart Cursor</h3>
+  <p>Restart Cursor or reload the window to activate the MCP server.</p>
+
+  <h3>4. Verify</h3>
+  <p>Open the AI chat and ask: "List my Yet.Project projects"</p>
+
+  <h2>Using Yet.Project in Cursor</h2>
+
+  <h3>While Coding</h3>
+  <p>Ask Cursor's AI about your tasks while you code:</p>
+
+  <pre><code>{`You: "What's the next task I should work on?"
+
+AI: [Checks Yet.Project]
+
+"Your highest priority task is MYAPP-45: Fix database timeout.
+It's been in progress for 2 days. Would you like me to help
+you with the implementation?"`}</code></pre>
+
+  <h3>Creating Tasks from Code</h3>
+  <p>Found a TODO or bug? Create a task instantly:</p>
+
+  <pre><code>{`You: "This function needs error handling. Create a task for it."
+
+AI: "Created MYAPP-49: Add error handling to processPayment function
+     Priority: Medium
+     Labels: tech-debt"`}</code></pre>
+
+  <h3>Accessing Project Knowledge</h3>
+  <p>Query your knowledge base for context:</p>
+
+  <pre><code>{`You: "What database are we using and what's the connection setup?"
+
+AI: [Searches knowledge base]
+
+"Based on your project docs:
+- PostgreSQL 14 hosted on AWS RDS
+- Connection pool size: 20
+- Timeout: 30 seconds
+- SSL required for all connections"`}</code></pre>
+
+  <h2>Project-Specific Configuration</h2>
+
+  <p>
+    Use a project-level <code>.cursor/settings.json</code> to scope to a specific project:
+  </p>
+
+  <pre><code>{`{
+  "mcp": {
+    "servers": {
+      "yet": {
+        "command": "npx",
+        "args": ["-y", "@yet/mcp-server"],
+        "env": {
+          "YET_API_KEY": "yet_your_api_key_here",
+          "YET_DEFAULT_PROJECT": "MYAPP"
+        }
+      }
+    }
+  }
+}`}</code></pre>
+
+  <h2>Workflow Tips</h2>
+
+  <h3>Start of Session</h3>
+  <pre><code>"What tasks are assigned to me in MYAPP?"</code></pre>
+
+  <h3>Before Committing</h3>
+  <pre><code>"Update MYAPP-45 to done and log 2 hours"</code></pre>
+
+  <h3>Code Review</h3>
+  <pre><code>"What's the context for MYAPP-45? I'm reviewing the PR."</code></pre>
+
+  <h2>Troubleshooting</h2>
+
+  <h3>MCP not loading</h3>
+  <ul>
+    <li>Check the settings.json location</li>
+    <li>Verify JSON syntax is valid</li>
+    <li>Restart Cursor completely</li>
+  </ul>
+
+  <h3>API errors</h3>
+  <ul>
+    <li>Verify API key is correct</li>
+    <li>Check key permissions</li>
+    <li>Ensure network access to api.yet.watch</li>
+  </ul>
+
+  <h2>Next Steps</h2>
+
+  <ul>
+    <li><a href="/docs/mcp/tools">MCP Tools Reference</a></li>
+    <li><a href="/docs/mcp/examples">Usage Examples</a></li>
+    <li><a href="/docs/integrations/claude">Claude Code Setup</a></li>
+  </ul>
+</DocLayout>
