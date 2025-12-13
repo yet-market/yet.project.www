@@ -1,0 +1,88 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0F172A"/>
+
+  <!-- Gradient overlay -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0.15"/>
+    </linearGradient>
+    <linearGradient id="accentGradient" x1="0" y1="0" x2="200" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+
+  <!-- Grid pattern -->
+  <pattern id="grid" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+    <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#1E293B" stroke-width="1"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#grid)" opacity="0.5"/>
+
+  <!-- Logo / Brand mark -->
+  <g transform="translate(80, 80)">
+    <rect width="64" height="64" rx="16" fill="#3B82F6"/>
+    <text x="32" y="45" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="700" fill="white" text-anchor="middle">Y</text>
+  </g>
+
+  <!-- Main title -->
+  <text x="80" y="260" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="700" fill="white">Yet.Project</text>
+
+  <!-- Tagline -->
+  <text x="80" y="340" font-family="system-ui, -apple-system, sans-serif" font-size="36" fill="#94A3B8">AI-Native Project Management</text>
+
+  <!-- Feature pills -->
+  <g transform="translate(80, 400)">
+    <!-- MCP Server pill -->
+    <rect x="0" y="0" width="180" height="48" rx="24" fill="#1E293B"/>
+    <text x="90" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="500" fill="#3B82F6" text-anchor="middle">MCP Server</text>
+
+    <!-- REST API pill -->
+    <rect x="200" y="0" width="160" height="48" rx="24" fill="#1E293B"/>
+    <text x="280" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="500" fill="#8B5CF6" text-anchor="middle">REST API</text>
+
+    <!-- CLI pill -->
+    <rect x="380" y="0" width="100" height="48" rx="24" fill="#1E293B"/>
+    <text x="430" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="500" fill="#10B981" text-anchor="middle">CLI</text>
+
+    <!-- Knowledge Base pill -->
+    <rect x="500" y="0" width="200" height="48" rx="24" fill="#1E293B"/>
+    <text x="600" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="500" fill="#F59E0B" text-anchor="middle">Knowledge Base</text>
+  </g>
+
+  <!-- URL -->
+  <text x="80" y="560" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="#64748B">yet.watch</text>
+
+  <!-- Decorative elements -->
+  <circle cx="1050" cy="150" r="120" fill="#3B82F6" opacity="0.1"/>
+  <circle cx="1100" cy="450" r="180" fill="#8B5CF6" opacity="0.1"/>
+
+  <!-- Code decoration -->
+  <g transform="translate(750, 200)">
+    <rect width="380" height="280" rx="12" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+    <!-- Window buttons -->
+    <circle cx="24" cy="20" r="6" fill="#EF4444"/>
+    <circle cx="44" cy="20" r="6" fill="#F59E0B"/>
+    <circle cx="64" cy="20" r="6" fill="#10B981"/>
+    <!-- Code lines -->
+    <text x="24" y="70" font-family="monospace" font-size="14" fill="#64748B">// AI-native task management</text>
+    <text x="24" y="100" font-family="monospace" font-size="14" fill="#3B82F6">const</text>
+    <text x="68" y="100" font-family="monospace" font-size="14" fill="#F8FAFC"> task = </text>
+    <text x="143" y="100" font-family="monospace" font-size="14" fill="#10B981">await</text>
+    <text x="190" y="100" font-family="monospace" font-size="14" fill="#F8FAFC"> mcp.</text>
+    <text x="225" y="100" font-family="monospace" font-size="14" fill="#F59E0B">createTask</text>
+    <text x="315" y="100" font-family="monospace" font-size="14" fill="#F8FAFC">({</text>
+    <text x="40" y="130" font-family="monospace" font-size="14" fill="#8B5CF6">title</text>
+    <text x="75" y="130" font-family="monospace" font-size="14" fill="#F8FAFC">: </text>
+    <text x="88" y="130" font-family="monospace" font-size="14" fill="#10B981">"Build feature"</text>
+    <text x="215" y="130" font-family="monospace" font-size="14" fill="#F8FAFC">,</text>
+    <text x="40" y="160" font-family="monospace" font-size="14" fill="#8B5CF6">agent</text>
+    <text x="80" y="160" font-family="monospace" font-size="14" fill="#F8FAFC">: </text>
+    <text x="93" y="160" font-family="monospace" font-size="14" fill="#10B981">"claude"</text>
+    <text x="24" y="190" font-family="monospace" font-size="14" fill="#F8FAFC">});</text>
+    <text x="24" y="230" font-family="monospace" font-size="14" fill="#64748B">// Claude can now manage tasks</text>
+    <text x="24" y="260" font-family="monospace" font-size="14" fill="#64748B">// directly via MCP</text>
+  </g>
+</svg>

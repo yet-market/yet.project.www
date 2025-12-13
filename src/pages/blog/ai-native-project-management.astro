@@ -1,0 +1,359 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const post = {
+  title: 'What is AI-Native Project Management?',
+  excerpt: 'Traditional project management tools weren\'t built for AI workflows. Discover what makes a tool "AI-native" and why it matters for modern development teams.',
+  date: '2025-01-05',
+  readTime: '6 min read',
+  category: 'Product',
+  author: 'Yet.Project Team',
+};
+---
+
+<Layout
+  title={`${post.title} - Yet.Project Blog`}
+  description={post.excerpt}
+>
+  <Header />
+
+  <main class="pt-24 pb-20">
+    <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <header class="mb-12">
+        <div class="flex items-center gap-3 text-sm text-dark-500 mb-4">
+          <a href="/blog" class="text-primary-600 hover:underline">Blog</a>
+          <span>/</span>
+          <span>{post.category}</span>
+        </div>
+        <h1 class="text-3xl lg:text-4xl font-bold text-dark-900 mb-4">
+          {post.title}
+        </h1>
+        <p class="text-xl text-dark-600 mb-6">{post.excerpt}</p>
+        <div class="flex items-center gap-4 text-sm text-dark-500">
+          <span>{post.author}</span>
+          <span>•</span>
+          <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+          <span>•</span>
+          <span>{post.readTime}</span>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <div class="prose prose-lg max-w-none">
+        <p>
+          Jira was released in 2002. Linear in 2019. Asana in 2008. These tools were built in a world where humans did all the work, and project management was about tracking what humans were doing.
+        </p>
+
+        <p>
+          But in 2024-2025, something fundamental changed: AI coding assistants became actually useful. Claude, Cursor, GitHub Copilot, Windsurf — developers now spend significant portions of their day working <em>with</em> AI, not just by themselves.
+        </p>
+
+        <p>
+          Traditional project management tools weren't built for this. They don't know how to talk to AI. They can't give AI context. They can't track what AI did versus what you did.
+        </p>
+
+        <p>
+          <strong>That's what "AI-native" means:</strong> built from the ground up for human + AI collaboration.
+        </p>
+
+        <h2>The 5 Pillars of AI-Native Project Management</h2>
+
+        <h3>1. Native AI Integration (MCP)</h3>
+
+        <p>
+          The most important feature of an AI-native tool is that AI can actually use it. Not through hacks or workarounds, but through proper protocol support.
+        </p>
+
+        <p>
+          MCP (Model Context Protocol) is the emerging standard for AI-tool integration. An AI-native project management tool has a native MCP server that lets AI assistants:
+        </p>
+
+        <ul>
+          <li>Read tasks and project context</li>
+          <li>Create and update tasks</li>
+          <li>Access documentation and knowledge</li>
+          <li>Understand project structure</li>
+        </ul>
+
+        <p>
+          Without this, you're stuck copy-pasting between your AI and your project management tool. That's not AI-native — that's AI-adjacent.
+        </p>
+
+        <h3>2. Knowledge Base for AI Memory</h3>
+
+        <p>
+          AI assistants have a fundamental problem: they forget everything between sessions. You explain your project architecture, your coding standards, your deployment process — and next session, they've forgotten it all.
+        </p>
+
+        <p>
+          An AI-native tool includes a Knowledge Base that AI can access. Store your:
+        </p>
+
+        <ul>
+          <li>Project architecture decisions</li>
+          <li>Coding standards and conventions</li>
+          <li>Common issues and solutions</li>
+          <li>Team-specific context</li>
+        </ul>
+
+        <p>
+          Now your AI has persistent memory. It knows your project like a long-term team member, not a contractor on their first day.
+        </p>
+
+        <h3>3. AI Activity Tracking</h3>
+
+        <p>
+          As AI does more work, visibility becomes crucial. Who created this task — a human or an AI? Who made this code change? What percentage of work is AI-assisted?
+        </p>
+
+        <p>
+          An AI-native tool tracks this automatically:
+        </p>
+
+        <ul>
+          <li>Per-action attribution (human vs. AI)</li>
+          <li>Per-agent tracking (which AI tool did what)</li>
+          <li>Activity dashboards showing AI contribution</li>
+          <li>Audit trails for compliance</li>
+        </ul>
+
+        <p>
+          This isn't about surveillance — it's about understanding how your team actually works in the AI era.
+        </p>
+
+        <h3>4. API-First Architecture</h3>
+
+        <p>
+          AI-native tools need to be programmable. Not "we have an API" but "everything is API-first."
+        </p>
+
+        <ul>
+          <li>Full REST API with all functionality</li>
+          <li>CLI for terminal workflows</li>
+          <li>Webhooks for automation</li>
+          <li>No features locked to the UI</li>
+        </ul>
+
+        <p>
+          When everything is accessible programmatically, AI tools (and humans who prefer terminals) can work efficiently.
+        </p>
+
+        <h3>5. Per-Agent Access Control</h3>
+
+        <p>
+          In a world with multiple AI assistants, you need fine-grained access control:
+        </p>
+
+        <ul>
+          <li>Separate API keys for each AI tool</li>
+          <li>Different permission levels (read, write, admin)</li>
+          <li>Project-scoped access</li>
+          <li>Instant revocation if needed</li>
+        </ul>
+
+        <p>
+          Give Claude read-write access to your main project, give Cursor read-only access for context, keep your experimental AI sandboxed — all manageable from one place.
+        </p>
+
+        <h2>Why Traditional Tools Fall Short</h2>
+
+        <div class="bg-dark-50 rounded-xl p-6 not-prose mb-6">
+          <h3 class="font-semibold text-dark-900 mb-4">Common Pain Points</h3>
+          <div class="space-y-4">
+            <div>
+              <h4 class="font-medium text-dark-800">Jira</h4>
+              <p class="text-sm text-dark-600">No MCP support, complex API, no AI tracking, designed for enterprise waterfall.</p>
+            </div>
+            <div>
+              <h4 class="font-medium text-dark-800">Linear</h4>
+              <p class="text-sm text-dark-600">Beautiful UI, but no MCP support, no Knowledge Base, GraphQL-only API.</p>
+            </div>
+            <div>
+              <h4 class="font-medium text-dark-800">Notion</h4>
+              <p class="text-sm text-dark-600">General-purpose, not task-focused. Has Notion AI, but it's about writing, not integration.</p>
+            </div>
+            <div>
+              <h4 class="font-medium text-dark-800">Asana</h4>
+              <p class="text-sm text-dark-600">Built for marketing teams, no CLI, no MCP, designed for cross-functional (not dev) workflows.</p>
+            </div>
+          </div>
+        </div>
+
+        <p>
+          These are all great tools — for their era. But they weren't built for developers working with AI assistants in 2025.
+        </p>
+
+        <h2>The Workflow Difference</h2>
+
+        <p>
+          Here's what working with a traditional tool looks like:
+        </p>
+
+        <ol>
+          <li>Open Jira, find your task</li>
+          <li>Copy task description</li>
+          <li>Paste into Claude</li>
+          <li>Work with Claude</li>
+          <li>Manually update Jira</li>
+          <li>Repeat dozens of times per day</li>
+        </ol>
+
+        <p>
+          Here's what working with an AI-native tool looks like:
+        </p>
+
+        <ol>
+          <li>Ask Claude: "What's my next task?"</li>
+          <li>Claude reads directly from Yet.Project</li>
+          <li>Work with Claude</li>
+          <li>Tell Claude: "Mark this task as done"</li>
+          <li>Claude updates Yet.Project</li>
+          <li>Done. Zero copy-paste.</li>
+        </ol>
+
+        <p>
+          The difference compounds. Over a day, a week, a month — the productivity gain is substantial.
+        </p>
+
+        <h2>Is AI-Native Right for You?</h2>
+
+        <p>
+          AI-native project management makes sense if:
+        </p>
+
+        <ul>
+          <li>You use AI coding assistants daily</li>
+          <li>You're tired of copy-pasting between tools</li>
+          <li>You want to track AI contributions</li>
+          <li>You prefer CLI/API over clicking</li>
+          <li>You're a developer or small dev team</li>
+        </ul>
+
+        <p>
+          It might not be the best fit if:
+        </p>
+
+        <ul>
+          <li>You don't use AI assistants</li>
+          <li>You need enterprise features like portfolios</li>
+          <li>Your team is non-technical</li>
+          <li>You're happy with your current workflow</li>
+        </ul>
+
+        <div class="bg-primary-50 rounded-xl p-6 not-prose mt-8">
+          <h3 class="font-semibold text-dark-900 mb-2">Try AI-Native Project Management</h3>
+          <p class="text-dark-600 mb-4">
+            Yet.Project is built from the ground up for developers working with AI. Native MCP, Knowledge Base, CLI, and full API access.
+          </p>
+          <a
+            href="https://app.yet.watch/auth/register"
+            class="inline-flex items-center gap-2 bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors"
+          >
+            Start Free
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Author / Share -->
+      <footer class="mt-12 pt-8 border-t border-dark-200">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center">
+              <span class="text-primary-600 font-bold">YP</span>
+            </div>
+            <div>
+              <div class="font-semibold text-dark-900">{post.author}</div>
+              <div class="text-sm text-dark-500">Yet.Project</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="text-sm text-dark-500">Share:</span>
+            <a
+              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent('https://yet.watch/blog/ai-native-project-management')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-dark-400 hover:text-dark-600"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+            </a>
+            <a
+              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://yet.watch/blog/ai-native-project-management')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-dark-400 hover:text-dark-600"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </footer>
+    </article>
+
+    <!-- Related Posts -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
+      <h2 class="text-2xl font-bold text-dark-900 mb-8">Related Articles</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <a href="/blog/what-is-mcp-model-context-protocol" class="group bg-white rounded-xl shadow-card border border-dark-100 p-6 hover:shadow-lg transition-all">
+          <div class="text-sm text-dark-500 mb-2">AI Development</div>
+          <h3 class="font-bold text-dark-900 group-hover:text-primary-600 transition-colors mb-2">What is MCP?</h3>
+          <p class="text-dark-600 text-sm">A developer's guide to Model Context Protocol.</p>
+        </a>
+        <a href="/blog/claude-code-mcp-integration-guide" class="group bg-white rounded-xl shadow-card border border-dark-100 p-6 hover:shadow-lg transition-all">
+          <div class="text-sm text-dark-500 mb-2">Tutorial</div>
+          <h3 class="font-bold text-dark-900 group-hover:text-primary-600 transition-colors mb-2">Connect Claude Code to Yet.Project</h3>
+          <p class="text-dark-600 text-sm">Step-by-step MCP integration guide.</p>
+        </a>
+        <a href="/blog/tracking-ai-contributions" class="group bg-white rounded-xl shadow-card border border-dark-100 p-6 hover:shadow-lg transition-all">
+          <div class="text-sm text-dark-500 mb-2">Best Practices</div>
+          <h3 class="font-bold text-dark-900 group-hover:text-primary-600 transition-colors mb-2">Tracking AI vs Human Contributions</h3>
+          <p class="text-dark-600 text-sm">Why visibility matters for your team.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .prose h2 {
+    @apply text-2xl font-bold text-dark-900 mt-12 mb-4;
+  }
+  .prose h3 {
+    @apply text-xl font-semibold text-dark-900 mt-8 mb-3;
+  }
+  .prose h4 {
+    @apply text-lg font-semibold text-dark-900 mt-6 mb-2;
+  }
+  .prose p {
+    @apply text-dark-700 mb-4 leading-relaxed;
+  }
+  .prose ul, .prose ol {
+    @apply mb-4 pl-6;
+  }
+  .prose ul {
+    @apply list-disc;
+  }
+  .prose ol {
+    @apply list-decimal;
+  }
+  .prose li {
+    @apply text-dark-700 mb-2;
+  }
+  .prose strong {
+    @apply text-dark-900;
+  }
+  .prose em {
+    @apply italic;
+  }
+</style>

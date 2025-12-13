@@ -1,0 +1,287 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const features = [
+  {
+    category: 'AI Integration',
+    items: [
+      { feature: 'Native MCP Server', yet: true, competitor: false, note: 'Direct AI assistant integration' },
+      { feature: 'AI Knowledge Base', yet: true, competitor: false, note: 'Persistent AI memory across sessions' },
+      { feature: 'Per-Agent API Keys', yet: true, competitor: false, note: 'Granular AI access control' },
+      { feature: 'AI Activity Tracking', yet: true, competitor: false, note: 'See what AI did vs humans' },
+    ],
+  },
+  {
+    category: 'Developer Experience',
+    items: [
+      { feature: 'CLI Tool', yet: true, competitor: true, note: 'Terminal-based workflow' },
+      { feature: 'REST API', yet: '68+ endpoints', competitor: 'GraphQL', note: 'API approach' },
+      { feature: 'Keyboard Shortcuts', yet: true, competitor: true, note: 'Speed-focused navigation' },
+      { feature: 'GitHub Integration', yet: true, competitor: true, note: 'Issue and PR linking' },
+    ],
+  },
+  {
+    category: 'UI & Design',
+    items: [
+      { feature: 'Modern UI', yet: true, competitor: true, note: 'Clean, fast interface' },
+      { feature: 'Dark Mode', yet: true, competitor: true, note: 'Theme options' },
+      { feature: 'Mobile App', yet: 'Web-first', competitor: true, note: 'Native mobile experience' },
+    ],
+  },
+  {
+    category: 'Pricing',
+    items: [
+      { feature: 'Free Tier', yet: 'Unlimited', competitor: '250 issues', note: 'Free plan limits' },
+      { feature: 'Starting Price', yet: '$12/user', competitor: '$10/user', note: 'Paid plan cost' },
+    ],
+  },
+];
+---
+
+<Layout
+  title="Yet.Project vs Linear - AI-Native Alternative | Comparison"
+  description="Compare Yet.Project and Linear. Both are modern dev tools, but Yet.Project adds native AI integration that Linear lacks."
+>
+  <Header />
+
+  <main class="pt-24 pb-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <span class="inline-block text-sm font-semibold text-primary-600 tracking-wide uppercase mb-4">Comparison</span>
+        <h1 class="text-4xl lg:text-display-lg font-bold text-dark-900 mb-6">
+          Yet.Project vs<br />
+          <span class="gradient-text">Linear</span>
+        </h1>
+        <p class="text-xl text-dark-600 max-w-2xl mx-auto">
+          Linear is beautiful and fast. But if you're working with AI assistants, Yet.Project offers something Linear doesn't: native AI integration.
+        </p>
+      </div>
+
+      <!-- Quick Summary -->
+      <div class="grid md:grid-cols-2 gap-8 mb-16">
+        <div class="bg-primary-50 rounded-2xl p-8 border-2 border-primary-200">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-lg bg-primary-600 flex items-center justify-center">
+              <span class="text-white font-bold text-lg">Y</span>
+            </div>
+            <h3 class="text-xl font-bold text-dark-900">Yet.Project</h3>
+          </div>
+          <p class="text-dark-600 mb-4">AI-native project management with MCP Server, Knowledge Base, and full API access.</p>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-center gap-2 text-dark-700">
+              <svg class="w-4 h-4 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Native MCP for AI assistants
+            </li>
+            <li class="flex items-center gap-2 text-dark-700">
+              <svg class="w-4 h-4 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Knowledge Base for AI memory
+            </li>
+            <li class="flex items-center gap-2 text-dark-700">
+              <svg class="w-4 h-4 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Track AI vs human activity
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-dark-50 rounded-2xl p-8 border border-dark-200">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-lg bg-violet-600 flex items-center justify-center">
+              <span class="text-white font-bold text-lg">L</span>
+            </div>
+            <h3 class="text-xl font-bold text-dark-900">Linear</h3>
+          </div>
+          <p class="text-dark-600 mb-4">Beautiful, fast issue tracking with excellent UX and keyboard-first design.</p>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-center gap-2 text-dark-700">
+              <svg class="w-4 h-4 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Industry-leading UI/UX
+            </li>
+            <li class="flex items-center gap-2 text-dark-700">
+              <svg class="w-4 h-4 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Excellent mobile apps
+            </li>
+            <li class="flex items-center gap-2 text-dark-700">
+              <svg class="w-4 h-4 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Cycles and roadmaps
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- The AI Gap -->
+      <div class="bg-gradient-to-br from-dark-900 to-dark-800 rounded-2xl p-8 lg:p-12 text-white mb-16">
+        <h2 class="text-2xl lg:text-3xl font-bold mb-6">Linear is Great. But There's an AI Gap.</h2>
+        <p class="text-dark-300 mb-8 max-w-2xl">
+          We love Linear. It's one of the best-designed tools in the industry. But Linear was built before the AI era. If you're using Claude, Cursor, or Windsurf, you're constantly copy-pasting between your AI assistant and Linear.
+        </p>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-white/5 rounded-xl p-6">
+            <h3 class="font-semibold text-lg mb-3 text-red-400">With Linear</h3>
+            <ol class="space-y-2 text-sm text-dark-300">
+              <li>1. Ask AI to help with a task</li>
+              <li>2. Copy task details from Linear</li>
+              <li>3. Paste into AI chat</li>
+              <li>4. Get AI response</li>
+              <li>5. Manually update Linear</li>
+              <li>6. Repeat 100x per day...</li>
+            </ol>
+          </div>
+          <div class="bg-white/5 rounded-xl p-6">
+            <h3 class="font-semibold text-lg mb-3 text-accent-400">With Yet.Project</h3>
+            <ol class="space-y-2 text-sm text-dark-300">
+              <li>1. AI has direct access via MCP</li>
+              <li>2. AI reads tasks automatically</li>
+              <li>3. AI updates progress in real-time</li>
+              <li>4. Knowledge Base provides context</li>
+              <li>5. You just... work.</li>
+              <li class="text-accent-400">✓ Zero copy-paste</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Comparison -->
+      <div class="mb-16">
+        <h2 class="text-2xl font-bold text-dark-900 mb-8 text-center">Feature by Feature</h2>
+
+        {features.map(category => (
+          <div class="mb-8">
+            <h3 class="text-lg font-semibold text-dark-900 mb-4 px-4">{category.category}</h3>
+            <div class="bg-white rounded-xl border border-dark-200 overflow-hidden">
+              <table class="w-full">
+                <thead class="bg-dark-50">
+                  <tr>
+                    <th class="text-left py-3 px-4 font-medium text-dark-600 text-sm">Feature</th>
+                    <th class="text-center py-3 px-4 font-medium text-primary-600 text-sm w-32">Yet.Project</th>
+                    <th class="text-center py-3 px-4 font-medium text-dark-500 text-sm w-32">Linear</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-dark-100">
+                  {category.items.map(item => (
+                    <tr>
+                      <td class="py-3 px-4">
+                        <div class="font-medium text-dark-900 text-sm">{item.feature}</div>
+                        <div class="text-xs text-dark-500">{item.note}</div>
+                      </td>
+                      <td class="py-3 px-4 text-center">
+                        {typeof item.yet === 'boolean' ? (
+                          item.yet ? (
+                            <span class="text-accent-500 text-lg">✓</span>
+                          ) : (
+                            <span class="text-dark-300">—</span>
+                          )
+                        ) : (
+                          <span class="text-sm font-medium text-primary-600">{item.yet}</span>
+                        )}
+                      </td>
+                      <td class="py-3 px-4 text-center">
+                        {typeof item.competitor === 'boolean' ? (
+                          item.competitor ? (
+                            <span class="text-accent-500 text-lg">✓</span>
+                          ) : (
+                            <span class="text-dark-300">—</span>
+                          )
+                        ) : (
+                          <span class="text-sm text-dark-600">{item.competitor}</span>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Verdict -->
+      <div class="bg-primary-50 rounded-2xl p-8 lg:p-12 mb-16">
+        <h2 class="text-2xl font-bold text-dark-900 mb-4">Our Verdict</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="font-semibold text-dark-900 mb-2">Choose Linear if:</h3>
+            <ul class="space-y-2 text-dark-600">
+              <li class="flex items-start gap-2">
+                <span class="text-dark-400 mt-1">•</span>
+                <span>UI design is your top priority</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-dark-400 mt-1">•</span>
+                <span>You need native mobile apps</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-dark-400 mt-1">•</span>
+                <span>You don't use AI assistants heavily</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-semibold text-primary-700 mb-2">Choose Yet.Project if:</h3>
+            <ul class="space-y-2 text-dark-600">
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-accent-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>You use AI coding assistants daily</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-accent-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>You want AI to have context across sessions</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-accent-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>You need to track AI activity separately</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center">
+        <h2 class="text-2xl font-bold text-dark-900 mb-4">Ready to try AI-native project management?</h2>
+        <p class="text-dark-600 mb-8">Start free, no credit card required.</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="https://app.yet.watch/auth/register"
+            class="inline-flex items-center gap-2 bg-primary-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-primary-700 transition-colors shadow-lg shadow-primary-500/25"
+            data-track-cta="start_free"
+            data-track-location="compare_linear"
+          >
+            Start Free Trial
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+          <a
+            href="/compare"
+            class="inline-flex items-center gap-2 bg-dark-100 text-dark-700 px-8 py-4 rounded-xl font-semibold hover:bg-dark-200 transition-colors"
+          >
+            View All Comparisons
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

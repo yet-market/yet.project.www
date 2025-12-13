@@ -1,0 +1,197 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+// Blog posts - in a real setup, this would come from a CMS or markdown files
+const posts = [
+  {
+    slug: 'what-is-mcp-model-context-protocol',
+    title: 'What is MCP? A Developer\'s Guide to Model Context Protocol',
+    excerpt: 'MCP (Model Context Protocol) is changing how AI assistants interact with external tools. Learn what it is, how it works, and why it matters for your development workflow.',
+    date: '2025-01-10',
+    readTime: '8 min read',
+    category: 'AI Development',
+    featured: true,
+  },
+  {
+    slug: 'ai-native-project-management',
+    title: 'What is AI-Native Project Management?',
+    excerpt: 'Traditional project management tools weren\'t built for AI workflows. Discover what makes a tool "AI-native" and why it matters for modern development teams.',
+    date: '2025-01-05',
+    readTime: '6 min read',
+    category: 'Product',
+    featured: true,
+  },
+  {
+    slug: 'claude-code-mcp-integration-guide',
+    title: 'How to Connect Claude Code to Yet.Project with MCP',
+    excerpt: 'Step-by-step guide to integrating Claude Code with Yet.Project using MCP. Give your AI assistant direct access to your tasks and knowledge base.',
+    date: '2025-01-02',
+    readTime: '5 min read',
+    category: 'Tutorial',
+    featured: false,
+  },
+  {
+    slug: 'cursor-mcp-setup',
+    title: 'Setting Up Cursor with Yet.Project MCP Server',
+    excerpt: 'Learn how to connect Cursor IDE to Yet.Project so your AI can manage tasks without leaving your editor.',
+    date: '2024-12-28',
+    readTime: '4 min read',
+    category: 'Tutorial',
+    featured: false,
+  },
+  {
+    slug: 'knowledge-base-ai-memory',
+    title: 'Using Knowledge Base as Persistent AI Memory',
+    excerpt: 'AI assistants forget everything between sessions. Learn how Yet.Project\'s Knowledge Base gives your AI a persistent memory.',
+    date: '2024-12-20',
+    readTime: '7 min read',
+    category: 'Product',
+    featured: false,
+  },
+  {
+    slug: 'tracking-ai-contributions',
+    title: 'Why You Should Track AI vs Human Contributions',
+    excerpt: 'As AI does more work, visibility becomes crucial. Here\'s why tracking who did what matters for your team and codebase.',
+    date: '2024-12-15',
+    readTime: '5 min read',
+    category: 'Best Practices',
+    featured: false,
+  },
+];
+
+const categories = [...new Set(posts.map(p => p.category))];
+const featuredPosts = posts.filter(p => p.featured);
+const recentPosts = posts.filter(p => !p.featured);
+---
+
+<Layout
+  title="Blog - Yet.Project"
+  description="Learn about AI-native project management, MCP integrations, and best practices for working with AI coding assistants."
+>
+  <Header />
+
+  <main class="pt-24 pb-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <span class="inline-block text-sm font-semibold text-primary-600 tracking-wide uppercase mb-4">Blog</span>
+        <h1 class="text-4xl lg:text-display-lg font-bold text-dark-900 mb-6">
+          Insights on<br />
+          <span class="gradient-text">AI-Native Development</span>
+        </h1>
+        <p class="text-xl text-dark-600 max-w-2xl mx-auto">
+          Guides, tutorials, and best practices for working with AI coding assistants and modern development tools.
+        </p>
+      </div>
+
+      <!-- Categories -->
+      <div class="flex flex-wrap justify-center gap-2 mb-12">
+        <a
+          href="/blog"
+          class="px-4 py-2 bg-primary-100 text-primary-700 rounded-full text-sm font-medium hover:bg-primary-200 transition-colors"
+        >
+          All Posts
+        </a>
+        {categories.map(cat => (
+          <a
+            href={`/blog?category=${cat.toLowerCase().replace(' ', '-')}`}
+            class="px-4 py-2 bg-dark-100 text-dark-600 rounded-full text-sm font-medium hover:bg-dark-200 transition-colors"
+          >
+            {cat}
+          </a>
+        ))}
+      </div>
+
+      <!-- Featured Posts -->
+      {featuredPosts.length > 0 && (
+        <section class="mb-16">
+          <h2 class="text-2xl font-bold text-dark-900 mb-8">Featured</h2>
+          <div class="grid md:grid-cols-2 gap-8">
+            {featuredPosts.map(post => (
+              <a
+                href={`/blog/${post.slug}`}
+                class="group bg-white rounded-2xl shadow-card border border-dark-100 overflow-hidden hover:shadow-xl transition-all duration-300"
+              >
+                <div class="aspect-[16/9] bg-gradient-to-br from-primary-500 to-secondary-500 relative">
+                  <div class="absolute inset-0 flex items-center justify-center">
+                    <span class="text-white/20 text-6xl font-bold">YP</span>
+                  </div>
+                  <div class="absolute top-4 left-4">
+                    <span class="px-3 py-1 bg-white/90 text-primary-700 text-xs font-medium rounded-full">
+                      {post.category}
+                    </span>
+                  </div>
+                </div>
+                <div class="p-6">
+                  <div class="flex items-center gap-3 text-sm text-dark-500 mb-3">
+                    <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                    <span>•</span>
+                    <span>{post.readTime}</span>
+                  </div>
+                  <h3 class="text-xl font-bold text-dark-900 mb-2 group-hover:text-primary-600 transition-colors">
+                    {post.title}
+                  </h3>
+                  <p class="text-dark-600 text-sm line-clamp-2">{post.excerpt}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <!-- Recent Posts -->
+      <section>
+        <h2 class="text-2xl font-bold text-dark-900 mb-8">Recent Posts</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          {recentPosts.map(post => (
+            <a
+              href={`/blog/${post.slug}`}
+              class="group bg-white rounded-xl shadow-card border border-dark-100 p-6 hover:shadow-lg transition-all duration-300"
+            >
+              <div class="flex items-center gap-3 text-sm text-dark-500 mb-3">
+                <span class="px-2 py-0.5 bg-dark-100 text-dark-600 text-xs font-medium rounded">
+                  {post.category}
+                </span>
+                <span>{post.readTime}</span>
+              </div>
+              <h3 class="text-lg font-bold text-dark-900 mb-2 group-hover:text-primary-600 transition-colors line-clamp-2">
+                {post.title}
+              </h3>
+              <p class="text-dark-600 text-sm line-clamp-3 mb-4">{post.excerpt}</p>
+              <div class="text-sm text-dark-400">
+                {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <!-- Newsletter CTA -->
+      <section class="mt-20 bg-gradient-to-br from-primary-600 to-primary-700 rounded-2xl p-8 lg:p-12 text-white text-center">
+        <h2 class="text-2xl lg:text-3xl font-bold mb-4">Stay Updated</h2>
+        <p class="text-primary-100 mb-8 max-w-xl mx-auto">
+          Get the latest articles on AI-native development, MCP integrations, and best practices delivered to your inbox.
+        </p>
+        <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+          <input
+            type="email"
+            placeholder="your@email.com"
+            class="flex-1 px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/40"
+            required
+          />
+          <button
+            type="submit"
+            class="px-6 py-3 bg-white text-primary-600 rounded-xl font-semibold hover:bg-primary-50 transition-colors"
+          >
+            Subscribe
+          </button>
+        </form>
+        <p class="text-xs text-primary-200 mt-4">No spam, unsubscribe anytime.</p>
+      </section>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

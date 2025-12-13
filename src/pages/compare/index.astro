@@ -1,0 +1,197 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const comparisons = [
+  {
+    name: 'Jira',
+    slug: 'jira',
+    description: 'Traditional project management for enterprise teams',
+    verdict: 'Choose Jira for complex enterprise workflows. Choose Yet.Project for AI-native development.',
+  },
+  {
+    name: 'Linear',
+    slug: 'linear',
+    description: 'Modern issue tracking for software teams',
+    verdict: 'Choose Linear for beautiful UI. Choose Yet.Project for AI integration.',
+  },
+  {
+    name: 'Notion',
+    slug: 'notion',
+    description: 'All-in-one workspace for notes and docs',
+    verdict: 'Choose Notion for documentation. Choose Yet.Project for AI-powered task management.',
+  },
+  {
+    name: 'Asana',
+    slug: 'asana',
+    description: 'Work management for cross-functional teams',
+    verdict: 'Choose Asana for marketing teams. Choose Yet.Project for developer teams with AI.',
+  },
+];
+---
+
+<Layout
+  title="Compare Yet.Project vs Alternatives"
+  description="See how Yet.Project compares to Jira, Linear, Notion, and other project management tools. Find the best solution for AI-native development."
+>
+  <Header />
+
+  <main class="pt-24 pb-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <span class="inline-block text-sm font-semibold text-primary-600 tracking-wide uppercase mb-4">Comparisons</span>
+        <h1 class="text-4xl lg:text-display-lg font-bold text-dark-900 mb-6">
+          How Yet.Project<br />
+          <span class="gradient-text">Compares to Alternatives</span>
+        </h1>
+        <p class="text-xl text-dark-600 max-w-2xl mx-auto">
+          We built Yet.Project specifically for developers working with AI. See how we stack up against traditional tools.
+        </p>
+      </div>
+
+      <!-- Why Different -->
+      <div class="bg-gradient-to-br from-primary-600 to-primary-700 rounded-2xl p-8 lg:p-12 text-white mb-16">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-2xl lg:text-3xl font-bold mb-4">Why Yet.Project is Different</h2>
+          <p class="text-lg text-primary-100 mb-8">
+            Traditional PM tools weren't designed for AI workflows. Yet.Project is built from the ground up for human + AI collaboration.
+          </p>
+          <div class="grid md:grid-cols-3 gap-6 text-left">
+            <div class="bg-white/10 rounded-xl p-6">
+              <div class="text-3xl font-bold text-accent-300 mb-2">MCP</div>
+              <div class="text-sm text-primary-100">Native Model Context Protocol support - AI tools can manage tasks directly</div>
+            </div>
+            <div class="bg-white/10 rounded-xl p-6">
+              <div class="text-3xl font-bold text-accent-300 mb-2">API</div>
+              <div class="text-sm text-primary-100">68+ endpoints - Full programmatic access for any automation</div>
+            </div>
+            <div class="bg-white/10 rounded-xl p-6">
+              <div class="text-3xl font-bold text-accent-300 mb-2">KB</div>
+              <div class="text-sm text-primary-100">Knowledge Base - Persistent AI memory across sessions</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparison Cards -->
+      <div class="grid md:grid-cols-2 gap-8 mb-16">
+        {comparisons.map(comp => (
+          <a
+            href={`/compare/${comp.slug}`}
+            class="group bg-white rounded-2xl p-8 shadow-card border border-dark-100 hover:shadow-xl hover:border-primary-300 transition-all duration-300"
+          >
+            <div class="flex items-start justify-between mb-4">
+              <div>
+                <h3 class="text-xl font-bold text-dark-900 group-hover:text-primary-600 transition-colors">
+                  Yet.Project vs {comp.name}
+                </h3>
+                <p class="text-dark-500 text-sm mt-1">{comp.description}</p>
+              </div>
+              <svg class="w-5 h-5 text-dark-300 group-hover:text-primary-500 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </div>
+            <p class="text-dark-600 text-sm">{comp.verdict}</p>
+          </a>
+        ))}
+      </div>
+
+      <!-- Quick Comparison Table -->
+      <div class="bg-dark-50 rounded-2xl p-8 lg:p-12">
+        <h2 class="text-2xl font-bold text-dark-900 mb-8 text-center">Feature Comparison</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead>
+              <tr class="border-b border-dark-200">
+                <th class="text-left py-4 px-4 font-semibold text-dark-900">Feature</th>
+                <th class="text-center py-4 px-4 font-semibold text-primary-600">Yet.Project</th>
+                <th class="text-center py-4 px-4 font-semibold text-dark-500">Jira</th>
+                <th class="text-center py-4 px-4 font-semibold text-dark-500">Linear</th>
+                <th class="text-center py-4 px-4 font-semibold text-dark-500">Notion</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-dark-200">
+              <tr>
+                <td class="py-4 px-4 text-dark-700">MCP Server for AI</td>
+                <td class="py-4 px-4 text-center"><span class="text-accent-500 text-xl">✓</span></td>
+                <td class="py-4 px-4 text-center text-dark-400">—</td>
+                <td class="py-4 px-4 text-center text-dark-400">—</td>
+                <td class="py-4 px-4 text-center text-dark-400">—</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 text-dark-700">REST API</td>
+                <td class="py-4 px-4 text-center"><span class="text-accent-500 text-xl">✓</span> <span class="text-xs text-dark-500">68+</span></td>
+                <td class="py-4 px-4 text-center"><span class="text-accent-500 text-xl">✓</span></td>
+                <td class="py-4 px-4 text-center"><span class="text-accent-500 text-xl">✓</span></td>
+                <td class="py-4 px-4 text-center"><span class="text-accent-500 text-xl">✓</span></td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 text-dark-700">CLI Tool</td>
+                <td class="py-4 px-4 text-center"><span class="text-accent-500 text-xl">✓</span></td>
+                <td class="py-4 px-4 text-center text-dark-400">—</td>
+                <td class="py-4 px-4 text-center"><span class="text-accent-500 text-xl">✓</span></td>
+                <td class="py-4 px-4 text-center text-dark-400">—</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 text-dark-700">AI Knowledge Base</td>
+                <td class="py-4 px-4 text-center"><span class="text-accent-500 text-xl">✓</span></td>
+                <td class="py-4 px-4 text-center text-dark-400">—</td>
+                <td class="py-4 px-4 text-center text-dark-400">—</td>
+                <td class="py-4 px-4 text-center text-dark-400">—</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 text-dark-700">AI Activity Tracking</td>
+                <td class="py-4 px-4 text-center"><span class="text-accent-500 text-xl">✓</span></td>
+                <td class="py-4 px-4 text-center text-dark-400">—</td>
+                <td class="py-4 px-4 text-center text-dark-400">—</td>
+                <td class="py-4 px-4 text-center text-dark-400">—</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 text-dark-700">Per-Agent API Keys</td>
+                <td class="py-4 px-4 text-center"><span class="text-accent-500 text-xl">✓</span></td>
+                <td class="py-4 px-4 text-center text-dark-400">—</td>
+                <td class="py-4 px-4 text-center text-dark-400">—</td>
+                <td class="py-4 px-4 text-center text-dark-400">—</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 text-dark-700">Free Tier</td>
+                <td class="py-4 px-4 text-center"><span class="text-accent-500 text-xl">✓</span></td>
+                <td class="py-4 px-4 text-center"><span class="text-accent-500 text-xl">✓</span></td>
+                <td class="py-4 px-4 text-center"><span class="text-accent-500 text-xl">✓</span></td>
+                <td class="py-4 px-4 text-center"><span class="text-accent-500 text-xl">✓</span></td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 text-dark-700">Starting Price</td>
+                <td class="py-4 px-4 text-center font-semibold text-primary-600">$12/user</td>
+                <td class="py-4 px-4 text-center text-dark-600">$8/user</td>
+                <td class="py-4 px-4 text-center text-dark-600">$10/user</td>
+                <td class="py-4 px-4 text-center text-dark-600">$10/user</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center mt-16">
+        <h2 class="text-2xl font-bold text-dark-900 mb-4">Ready to try AI-native project management?</h2>
+        <p class="text-dark-600 mb-8">Start free, no credit card required.</p>
+        <a
+          href="https://app.yet.watch/auth/register"
+          class="inline-flex items-center gap-2 bg-primary-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-primary-700 transition-colors shadow-lg shadow-primary-500/25"
+          data-track-cta="start_free"
+          data-track-location="compare_page"
+        >
+          Start Free Trial
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

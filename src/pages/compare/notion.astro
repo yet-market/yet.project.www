@@ -1,0 +1,315 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const features = [
+  {
+    category: 'AI Integration',
+    items: [
+      { feature: 'Native MCP Server', yet: true, competitor: false, note: 'AI assistants can manage tasks directly' },
+      { feature: 'AI Knowledge Base', yet: true, competitor: 'Notion AI', note: 'Persistent memory for AI tools' },
+      { feature: 'Per-Agent API Keys', yet: true, competitor: false, note: 'Separate API keys for each AI' },
+      { feature: 'AI Activity Tracking', yet: true, competitor: false, note: 'See AI vs human contributions' },
+    ],
+  },
+  {
+    category: 'Task Management',
+    items: [
+      { feature: 'Purpose-Built Tasks', yet: true, competitor: 'Database', note: 'Native task management vs generic DB' },
+      { feature: 'CLI Tool', yet: true, competitor: false, note: 'Terminal-based access' },
+      { feature: 'REST API', yet: '68+ endpoints', competitor: true, note: 'Programmatic access' },
+      { feature: 'Task Dependencies', yet: true, competitor: 'Relations', note: 'Task linking approach' },
+    ],
+  },
+  {
+    category: 'Documentation',
+    items: [
+      { feature: 'Docs/Wiki', yet: 'Knowledge Base', competitor: true, note: 'Documentation solution' },
+      { feature: 'Rich Text Editing', yet: 'Markdown', competitor: true, note: 'Content editing' },
+      { feature: 'Nested Pages', yet: false, competitor: true, note: 'Hierarchical content' },
+      { feature: 'Templates', yet: false, competitor: true, note: 'Pre-built layouts' },
+    ],
+  },
+  {
+    category: 'Pricing',
+    items: [
+      { feature: 'Free Tier', yet: 'Unlimited tasks', competitor: 'Limited blocks', note: 'Free plan limits' },
+      { feature: 'Starting Price', yet: '$12/user', competitor: '$10/user', note: 'Paid plan cost' },
+    ],
+  },
+];
+---
+
+<Layout
+  title="Yet.Project vs Notion - AI-Native Task Management | Comparison"
+  description="Compare Yet.Project and Notion. Notion is great for docs, but Yet.Project is purpose-built for AI-native task management."
+>
+  <Header />
+
+  <main class="pt-24 pb-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <span class="inline-block text-sm font-semibold text-primary-600 tracking-wide uppercase mb-4">Comparison</span>
+        <h1 class="text-4xl lg:text-display-lg font-bold text-dark-900 mb-6">
+          Yet.Project vs<br />
+          <span class="gradient-text">Notion</span>
+        </h1>
+        <p class="text-xl text-dark-600 max-w-2xl mx-auto">
+          Notion is an amazing all-in-one workspace. But for AI-native task management, a purpose-built tool wins.
+        </p>
+      </div>
+
+      <!-- Quick Summary -->
+      <div class="grid md:grid-cols-2 gap-8 mb-16">
+        <div class="bg-primary-50 rounded-2xl p-8 border-2 border-primary-200">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-lg bg-primary-600 flex items-center justify-center">
+              <span class="text-white font-bold text-lg">Y</span>
+            </div>
+            <h3 class="text-xl font-bold text-dark-900">Yet.Project</h3>
+          </div>
+          <p class="text-dark-600 mb-4">Purpose-built for AI-native task management with MCP, API, and CLI.</p>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-center gap-2 text-dark-700">
+              <svg class="w-4 h-4 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Native MCP for AI assistants
+            </li>
+            <li class="flex items-center gap-2 text-dark-700">
+              <svg class="w-4 h-4 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Developer-focused design
+            </li>
+            <li class="flex items-center gap-2 text-dark-700">
+              <svg class="w-4 h-4 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              CLI for terminal workflows
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-dark-50 rounded-2xl p-8 border border-dark-200">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-lg bg-dark-900 flex items-center justify-center">
+              <span class="text-white font-bold text-lg">N</span>
+            </div>
+            <h3 class="text-xl font-bold text-dark-900">Notion</h3>
+          </div>
+          <p class="text-dark-600 mb-4">All-in-one workspace for docs, wikis, databases, and project management.</p>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-center gap-2 text-dark-700">
+              <svg class="w-4 h-4 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Incredibly flexible
+            </li>
+            <li class="flex items-center gap-2 text-dark-700">
+              <svg class="w-4 h-4 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Beautiful documentation
+            </li>
+            <li class="flex items-center gap-2 text-dark-700">
+              <svg class="w-4 h-4 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Team collaboration
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Different Tools for Different Jobs -->
+      <div class="bg-gradient-to-br from-dark-900 to-dark-800 rounded-2xl p-8 lg:p-12 text-white mb-16">
+        <h2 class="text-2xl lg:text-3xl font-bold mb-6">Different Tools, Different Jobs</h2>
+        <p class="text-dark-300 mb-8 max-w-2xl">
+          Notion is a Swiss Army knife — it does everything. But sometimes you need a scalpel. If your main need is AI-integrated task management for development, a purpose-built tool is more efficient.
+        </p>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <div class="text-4xl mb-4">🔧</div>
+            <h3 class="font-semibold text-lg mb-2">Generic vs Specific</h3>
+            <p class="text-dark-300 text-sm">
+              Notion's databases can do anything, but you have to build task management yourself. Yet.Project is ready out of the box.
+            </p>
+          </div>
+          <div>
+            <div class="text-4xl mb-4">🤖</div>
+            <h3 class="font-semibold text-lg mb-2">AI-Native Design</h3>
+            <p class="text-dark-300 text-sm">
+              Notion AI is good for writing. Yet.Project MCP is built for AI assistants to manage your actual work.
+            </p>
+          </div>
+          <div>
+            <div class="text-4xl mb-4">💻</div>
+            <h3 class="font-semibold text-lg mb-2">Developer Focus</h3>
+            <p class="text-dark-300 text-sm">
+              Notion is for everyone. Yet.Project is specifically for developers working with AI tools.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Comparison -->
+      <div class="mb-16">
+        <h2 class="text-2xl font-bold text-dark-900 mb-8 text-center">Feature Comparison</h2>
+
+        {features.map(category => (
+          <div class="mb-8">
+            <h3 class="text-lg font-semibold text-dark-900 mb-4 px-4">{category.category}</h3>
+            <div class="bg-white rounded-xl border border-dark-200 overflow-hidden">
+              <table class="w-full">
+                <thead class="bg-dark-50">
+                  <tr>
+                    <th class="text-left py-3 px-4 font-medium text-dark-600 text-sm">Feature</th>
+                    <th class="text-center py-3 px-4 font-medium text-primary-600 text-sm w-32">Yet.Project</th>
+                    <th class="text-center py-3 px-4 font-medium text-dark-500 text-sm w-32">Notion</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-dark-100">
+                  {category.items.map(item => (
+                    <tr>
+                      <td class="py-3 px-4">
+                        <div class="font-medium text-dark-900 text-sm">{item.feature}</div>
+                        <div class="text-xs text-dark-500">{item.note}</div>
+                      </td>
+                      <td class="py-3 px-4 text-center">
+                        {typeof item.yet === 'boolean' ? (
+                          item.yet ? (
+                            <span class="text-accent-500 text-lg">✓</span>
+                          ) : (
+                            <span class="text-dark-300">—</span>
+                          )
+                        ) : (
+                          <span class="text-sm font-medium text-primary-600">{item.yet}</span>
+                        )}
+                      </td>
+                      <td class="py-3 px-4 text-center">
+                        {typeof item.competitor === 'boolean' ? (
+                          item.competitor ? (
+                            <span class="text-accent-500 text-lg">✓</span>
+                          ) : (
+                            <span class="text-dark-300">—</span>
+                          )
+                        ) : (
+                          <span class="text-sm text-dark-600">{item.competitor}</span>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Use Both -->
+      <div class="bg-accent-50 rounded-2xl p-8 lg:p-12 mb-16 border border-accent-200">
+        <h2 class="text-2xl font-bold text-dark-900 mb-4">Why Not Both?</h2>
+        <p class="text-dark-600 mb-6">
+          Many teams use Notion for documentation and Yet.Project for task management. They're complementary tools:
+        </p>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-white rounded-xl p-6">
+            <h3 class="font-semibold text-dark-900 mb-2">Use Notion for:</h3>
+            <ul class="space-y-2 text-dark-600 text-sm">
+              <li>• Company wiki and documentation</li>
+              <li>• Meeting notes and agendas</li>
+              <li>• Product specs and PRDs</li>
+              <li>• Team knowledge base</li>
+            </ul>
+          </div>
+          <div class="bg-white rounded-xl p-6">
+            <h3 class="font-semibold text-primary-700 mb-2">Use Yet.Project for:</h3>
+            <ul class="space-y-2 text-dark-600 text-sm">
+              <li>• AI-integrated task management</li>
+              <li>• Development workflow tracking</li>
+              <li>• AI memory and context (Knowledge Base)</li>
+              <li>• CLI/API-based automation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Verdict -->
+      <div class="bg-primary-50 rounded-2xl p-8 lg:p-12 mb-16">
+        <h2 class="text-2xl font-bold text-dark-900 mb-4">Our Verdict</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="font-semibold text-dark-900 mb-2">Choose Notion if:</h3>
+            <ul class="space-y-2 text-dark-600">
+              <li class="flex items-start gap-2">
+                <span class="text-dark-400 mt-1">•</span>
+                <span>You need an all-in-one workspace</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-dark-400 mt-1">•</span>
+                <span>Documentation is your primary use case</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-dark-400 mt-1">•</span>
+                <span>You want maximum flexibility</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-semibold text-primary-700 mb-2">Choose Yet.Project if:</h3>
+            <ul class="space-y-2 text-dark-600">
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-accent-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>You need AI assistants to manage tasks</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-accent-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>You want purpose-built task management</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-accent-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>CLI and API access are important</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center">
+        <h2 class="text-2xl font-bold text-dark-900 mb-4">Ready to try AI-native task management?</h2>
+        <p class="text-dark-600 mb-8">Start free, no credit card required.</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="https://app.yet.watch/auth/register"
+            class="inline-flex items-center gap-2 bg-primary-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-primary-700 transition-colors shadow-lg shadow-primary-500/25"
+            data-track-cta="start_free"
+            data-track-location="compare_notion"
+          >
+            Start Free Trial
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+          <a
+            href="/compare"
+            class="inline-flex items-center gap-2 bg-dark-100 text-dark-700 px-8 py-4 rounded-xl font-semibold hover:bg-dark-200 transition-colors"
+          >
+            View All Comparisons
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

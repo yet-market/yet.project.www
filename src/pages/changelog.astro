@@ -1,0 +1,230 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const changelog = [
+  {
+    version: '1.5.0',
+    date: 'December 2025',
+    type: 'feature',
+    title: 'Knowledge Base 2.0',
+    description: 'Completely redesigned Knowledge Base with semantic search, better organization, and improved AI context retrieval.',
+    items: [
+      'Semantic search powered by embeddings',
+      'Folder organization for knowledge items',
+      'Improved MCP tools for knowledge access',
+      'Bulk import from Markdown files',
+    ],
+  },
+  {
+    version: '1.4.0',
+    date: 'November 2025',
+    type: 'feature',
+    title: 'Activity Dashboard',
+    description: 'New activity dashboard showing human vs AI contributions across your projects.',
+    items: [
+      'Visual breakdown of AI vs human actions',
+      'Agent-specific activity reports',
+      'Time-based activity charts',
+      'Export activity data via API',
+    ],
+  },
+  {
+    version: '1.3.2',
+    date: 'November 2025',
+    type: 'improvement',
+    title: 'MCP Server Performance',
+    description: 'Significant performance improvements to the MCP server for faster AI interactions.',
+    items: [
+      '50% faster tool response times',
+      'Reduced memory usage',
+      'Better error messages for AI tools',
+      'New batch operations support',
+    ],
+  },
+  {
+    version: '1.3.0',
+    date: 'October 2025',
+    type: 'feature',
+    title: 'CLI Tool v2',
+    description: 'Major update to the CLI with new commands and improved developer experience.',
+    items: [
+      'Interactive mode for task creation',
+      'Project switching without re-auth',
+      'Output formatting options (JSON, table, plain)',
+      'Shell completions for bash/zsh/fish',
+    ],
+  },
+  {
+    version: '1.2.0',
+    date: 'October 2025',
+    type: 'feature',
+    title: 'GitHub Integration',
+    description: 'Connect your GitHub repositories for automatic issue syncing and PR tracking.',
+    items: [
+      'Two-way sync with GitHub Issues',
+      'Link PRs to tasks automatically',
+      'GitHub Actions integration',
+      'Branch-based task updates',
+    ],
+  },
+  {
+    version: '1.1.0',
+    date: 'September 2025',
+    type: 'feature',
+    title: 'Team Workspaces',
+    description: 'Collaborate with your team in shared workspaces with role-based permissions.',
+    items: [
+      'Create multiple workspaces',
+      'Invite team members',
+      'Role-based access control',
+      'Workspace-level API keys',
+    ],
+  },
+  {
+    version: '1.0.0',
+    date: 'August 2025',
+    type: 'feature',
+    title: 'Public Launch',
+    description: 'Yet.Project launches with MCP Server, REST API, CLI, and Knowledge Base.',
+    items: [
+      'MCP Server with 27+ tools',
+      'REST API with 68+ endpoints',
+      'CLI tool for terminal workflows',
+      'Knowledge Base for AI memory',
+      'Free and Pro plans available',
+    ],
+  },
+];
+
+const typeColors = {
+  feature: 'bg-accent-100 text-accent-700',
+  improvement: 'bg-primary-100 text-primary-700',
+  fix: 'bg-yellow-100 text-yellow-700',
+  security: 'bg-red-100 text-red-700',
+};
+
+const typeLabels = {
+  feature: 'New Feature',
+  improvement: 'Improvement',
+  fix: 'Bug Fix',
+  security: 'Security',
+};
+---
+
+<Layout
+  title="Changelog - Yet.Project"
+  description="See what's new in Yet.Project. Latest features, improvements, and updates to our AI-native project management platform."
+>
+  <Header />
+
+  <main class="pt-24 pb-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <span class="inline-block text-sm font-semibold text-primary-600 tracking-wide uppercase mb-4">Changelog</span>
+        <h1 class="text-4xl lg:text-display-md font-bold text-dark-900 mb-6">
+          What's New in<br />
+          <span class="gradient-text">Yet.Project</span>
+        </h1>
+        <p class="text-lg text-dark-600">
+          Stay up to date with the latest features, improvements, and updates.
+        </p>
+      </div>
+
+      <!-- Subscribe -->
+      <div class="bg-dark-50 rounded-2xl p-6 mb-12 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          <h3 class="font-semibold text-dark-900">Get notified of updates</h3>
+          <p class="text-sm text-dark-600">Subscribe to our changelog RSS feed or newsletter.</p>
+        </div>
+        <div class="flex gap-3">
+          <a
+            href="/changelog.xml"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-white border border-dark-200 rounded-lg text-sm font-medium text-dark-700 hover:bg-dark-50 transition-colors"
+          >
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z" />
+            </svg>
+            RSS Feed
+          </a>
+        </div>
+      </div>
+
+      <!-- Changelog Entries -->
+      <div class="space-y-12">
+        {changelog.map((entry, index) => (
+          <article class="relative">
+            {/* Timeline line */}
+            {index < changelog.length - 1 && (
+              <div class="absolute left-6 top-16 bottom-0 w-px bg-dark-200 -mb-12"></div>
+            )}
+
+            {/* Entry */}
+            <div class="relative flex gap-6">
+              {/* Timeline dot */}
+              <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center z-10">
+                <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  {entry.type === 'feature' && (
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                  )}
+                  {entry.type === 'improvement' && (
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                  )}
+                  {entry.type === 'fix' && (
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                  )}
+                </svg>
+              </div>
+
+              {/* Content */}
+              <div class="flex-1 bg-white rounded-2xl p-6 shadow-card border border-dark-100">
+                <div class="flex flex-wrap items-center gap-3 mb-4">
+                  <span class="font-mono text-sm font-semibold text-primary-600">v{entry.version}</span>
+                  <span class="text-dark-400">•</span>
+                  <span class="text-sm text-dark-500">{entry.date}</span>
+                  <span class={`px-2 py-0.5 rounded-full text-xs font-medium ${typeColors[entry.type]}`}>
+                    {typeLabels[entry.type]}
+                  </span>
+                </div>
+
+                <h2 class="text-xl font-bold text-dark-900 mb-2">{entry.title}</h2>
+                <p class="text-dark-600 mb-4">{entry.description}</p>
+
+                <ul class="space-y-2">
+                  {entry.items.map(item => (
+                    <li class="flex items-start gap-2 text-sm text-dark-600">
+                      <svg class="w-4 h-4 text-accent-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <!-- Load More / Archive -->
+      <div class="text-center mt-16">
+        <p class="text-dark-500 mb-4">Showing latest releases</p>
+        <a
+          href="https://github.com/yet-market/yet-project/releases"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-primary-600 font-semibold hover:text-primary-700 transition-colors"
+        >
+          View all releases on GitHub
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

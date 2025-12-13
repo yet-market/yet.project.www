@@ -153,6 +153,42 @@ const stats = [
   { value: '10k+', label: 'Developers' },
   { value: '99.9%', label: 'Uptime' },
 ];
+
+// FAQ data
+const faqs = [
+  {
+    question: 'What is Yet.Project and how is it different from Jira or Linear?',
+    answer: 'Yet.Project is an AI-native project management platform built specifically for developers working with AI assistants. Unlike Jira or Linear, we provide native MCP (Model Context Protocol) support, a REST API with 68+ endpoints, and a CLI tool. This means AI tools like Claude Code, Cursor, and Windsurf can directly create tasks, update progress, and access project context without any copy-paste.',
+  },
+  {
+    question: 'How does the MCP Server work with Claude Code?',
+    answer: 'The MCP Server exposes 27+ tools that Claude Code can use directly. After adding our MCP server to your claude_desktop_config.json, Claude can create tasks, update task status, log time, search your knowledge base, and more. It\'s like giving Claude direct access to your project management system.',
+  },
+  {
+    question: 'What is the Knowledge Base and why do I need it?',
+    answer: 'The Knowledge Base is persistent AI memory. AI assistants typically forget everything between sessions. Our Knowledge Base lets you store project context, architectural decisions, coding conventions, and other important information that AI can access in future conversations. Think of it as giving your AI a long-term memory.',
+  },
+  {
+    question: 'Is my data secure?',
+    answer: 'Yes. We use end-to-end encryption for all data in transit (TLS 1.3), encryption at rest (AES-256), and follow SOC 2 compliance practices. Your data is hosted in secure EU data centers. We never use your data to train AI models. See our Security page for full details.',
+  },
+  {
+    question: 'Can I use Yet.Project with my existing tools?',
+    answer: 'Absolutely. Our REST API integrates with any tool that can make HTTP requests. We have native integrations with GitHub, and our MCP server works with any MCP-compatible AI tool. The CLI works in any terminal, and we\'re adding more integrations regularly.',
+  },
+  {
+    question: 'What happens if I exceed the free tier limits?',
+    answer: 'The free tier includes 3 projects and 100 tasks. If you need more, you can upgrade to Pro at any time. We\'ll notify you when you\'re approaching limits. Your data is never deleted - you just can\'t create new items until you upgrade or delete existing ones.',
+  },
+  {
+    question: 'Do you offer a free trial for Pro features?',
+    answer: 'Yes! When you sign up for Pro, you get a 14-day free trial with full access to all features including MCP Server, Knowledge Base, and unlimited projects. No credit card required to start the trial.',
+  },
+  {
+    question: 'Can AI agents have their own API keys?',
+    answer: 'Yes, and this is a key feature. You can create separate API keys for each AI agent with granular permissions (read-only, write, admin). This gives you full visibility into what each agent is doing and the ability to revoke access if needed.',
+  },
+];
 ---
 
 <Layout
@@ -561,6 +597,89 @@ const stats = [
       </div>
     </section>
 
+    <!-- Video Demo Section -->
+    <section id="demo" class="py-24 lg:py-32 bg-gradient-to-b from-white to-dark-50">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12" data-animate>
+          <span class="inline-block text-sm font-semibold text-primary-600 tracking-wide uppercase mb-4">See It In Action</span>
+          <h2 class="text-3xl lg:text-display-md font-bold text-dark-900 mb-4">
+            Watch How AI<br />
+            <span class="gradient-text">Manages Your Projects</span>
+          </h2>
+          <p class="text-lg text-dark-600 max-w-2xl mx-auto">
+            See Claude Code create tasks, update progress, and access project context in real-time.
+          </p>
+        </div>
+
+        <!-- Video Player -->
+        <div class="relative rounded-2xl overflow-hidden shadow-2xl shadow-dark-900/20" data-animate data-delay="100">
+          <!-- Video Thumbnail / Placeholder -->
+          <div class="relative aspect-video bg-dark-900 group cursor-pointer" id="video-container">
+            <!-- Thumbnail Image -->
+            <img
+              src="/demo-thumbnail.jpg"
+              alt="Yet.Project Demo Video"
+              class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+              onerror="this.style.display='none'"
+            />
+
+            <!-- Gradient Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-dark-900/80 via-dark-900/20 to-transparent"></div>
+
+            <!-- Play Button -->
+            <button
+              id="play-demo-btn"
+              class="absolute inset-0 flex items-center justify-center group/play"
+              aria-label="Play demo video"
+              data-track-cta="play_demo_video"
+              data-track-location="demo_section"
+            >
+              <div class="relative">
+                <div class="w-20 h-20 lg:w-24 lg:h-24 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-xl group-hover/play:scale-110 transition-transform duration-300">
+                  <svg class="w-8 h-8 lg:w-10 lg:h-10 text-primary-600 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+                <div class="absolute inset-0 rounded-full bg-white/30 animate-ping"></div>
+              </div>
+            </button>
+
+            <!-- Duration Badge -->
+            <div class="absolute bottom-4 right-4 bg-dark-900/80 backdrop-blur-sm text-white text-sm font-medium px-3 py-1 rounded-lg">
+              2:34
+            </div>
+
+            <!-- Caption -->
+            <div class="absolute bottom-4 left-4 text-white">
+              <p class="font-semibold">Quick Demo: AI-Powered Project Management</p>
+              <p class="text-sm text-dark-300">See the MCP Server, CLI, and API in action</p>
+            </div>
+          </div>
+
+          <!-- Video iframe (hidden until play) -->
+          <div id="video-player" class="hidden aspect-video">
+            <!-- YouTube or Vimeo embed will go here -->
+          </div>
+        </div>
+
+        <!-- Feature highlights below video -->
+        <div class="grid grid-cols-3 gap-4 mt-8" data-animate data-delay="200">
+          <div class="text-center p-4">
+            <div class="text-2xl font-bold text-dark-900">2 min</div>
+            <div class="text-sm text-dark-500">Setup Time</div>
+          </div>
+          <div class="text-center p-4 border-x border-dark-200">
+            <div class="text-2xl font-bold text-dark-900">Zero</div>
+            <div class="text-sm text-dark-500">Copy-Paste</div>
+          </div>
+          <div class="text-center p-4">
+            <div class="text-2xl font-bold text-dark-900">Real-time</div>
+            <div class="text-sm text-dark-500">Sync</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Pricing Section -->
     <section id="pricing" class="py-24 lg:py-32 bg-dark-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -640,6 +759,61 @@ const stats = [
       </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section id="faq" class="py-24 lg:py-32">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-animate>
+          <span class="inline-block text-sm font-semibold text-primary-600 tracking-wide uppercase mb-4">FAQ</span>
+          <h2 class="text-3xl lg:text-display-md font-bold text-dark-900 mb-4">
+            Frequently Asked<br />
+            <span class="gradient-text">Questions</span>
+          </h2>
+          <p class="text-lg text-dark-600 max-w-2xl mx-auto">
+            Everything you need to know about Yet.Project and AI-native project management.
+          </p>
+        </div>
+
+        <div class="space-y-4" data-animate data-delay="100">
+          {faqs.map((faq, index) => (
+            <div class="faq-item border border-dark-200 rounded-xl overflow-hidden bg-white hover:border-primary-300 transition-colors">
+              <button
+                class="faq-trigger w-full flex items-center justify-between gap-4 p-6 text-left"
+                aria-expanded="false"
+                data-track-cta={`faq_${index + 1}`}
+                data-track-location="faq"
+              >
+                <span class="font-semibold text-dark-900 pr-4">{faq.question}</span>
+                <svg class="faq-icon w-5 h-5 text-dark-400 flex-shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div class="faq-content hidden">
+                <div class="px-6 pb-6 text-dark-600 leading-relaxed">
+                  {faq.answer}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- More questions CTA -->
+        <div class="text-center mt-12" data-animate data-delay="200">
+          <p class="text-dark-600 mb-4">Still have questions?</p>
+          <a
+            href="/contact"
+            class="inline-flex items-center gap-2 text-primary-600 font-semibold hover:text-primary-700 transition-colors"
+            data-track-cta="contact_from_faq"
+            data-track-location="faq"
+          >
+            Contact our team
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- Final CTA Section -->
     <section class="relative py-24 lg:py-32 bg-dark-900 overflow-hidden">
       <!-- Background effects -->
@@ -688,3 +862,48 @@ const stats = [
 
   <Footer />
 </Layout>
+
+<script>
+  // FAQ Accordion
+  document.querySelectorAll('.faq-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const item = trigger.closest('.faq-item');
+      const content = item?.querySelector('.faq-content');
+      const icon = item?.querySelector('.faq-icon');
+      const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+
+      // Close all other items
+      document.querySelectorAll('.faq-item').forEach(otherItem => {
+        if (otherItem !== item) {
+          const otherTrigger = otherItem.querySelector('.faq-trigger');
+          const otherContent = otherItem.querySelector('.faq-content');
+          const otherIcon = otherItem.querySelector('.faq-icon');
+          otherTrigger?.setAttribute('aria-expanded', 'false');
+          otherContent?.classList.add('hidden');
+          otherIcon?.classList.remove('rotate-180');
+        }
+      });
+
+      // Toggle current item
+      trigger.setAttribute('aria-expanded', String(!isOpen));
+      content?.classList.toggle('hidden');
+      icon?.classList.toggle('rotate-180');
+    });
+  });
+
+  // Video Demo Player
+  const playBtn = document.getElementById('play-demo-btn');
+  const videoContainer = document.getElementById('video-container');
+  const videoPlayer = document.getElementById('video-player');
+
+  playBtn?.addEventListener('click', () => {
+    // Replace with your actual video embed URL
+    const videoUrl = 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0';
+
+    if (videoPlayer && videoContainer) {
+      videoPlayer.innerHTML = `<iframe src="${videoUrl}" class="w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+      videoContainer.classList.add('hidden');
+      videoPlayer.classList.remove('hidden');
+    }
+  });
+</script>

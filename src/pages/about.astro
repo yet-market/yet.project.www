@@ -1,0 +1,226 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const values = [
+  {
+    icon: 'lightning',
+    title: 'Developer-First',
+    description: 'We build for developers, not against them. CLI, API, and MCP - tools that fit your workflow.',
+  },
+  {
+    icon: 'shield',
+    title: 'Privacy by Design',
+    description: 'Your data stays yours. End-to-end encryption, EU hosting, and we never train AI on your data.',
+  },
+  {
+    icon: 'code',
+    title: 'Open Standards',
+    description: 'We embrace open protocols like MCP. No vendor lock-in, just interoperability.',
+  },
+  {
+    icon: 'users',
+    title: 'Human + AI',
+    description: 'AI should augment humans, not replace them. Full visibility into what AI does.',
+  },
+];
+---
+
+<Layout
+  title="About Us - Yet.Project"
+  description="Meet the team behind Yet.Project. We're building the future of AI-native project management from Luxembourg."
+>
+  <Header />
+
+  <main class="pt-24 pb-20">
+    <!-- Hero -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="text-center max-w-3xl mx-auto">
+        <span class="inline-block text-sm font-semibold text-primary-600 tracking-wide uppercase mb-4">About Us</span>
+        <h1 class="text-4xl lg:text-display-lg font-bold text-dark-900 mb-6">
+          Building the Future of<br />
+          <span class="gradient-text">AI-Native Development</span>
+        </h1>
+        <p class="text-xl text-dark-600">
+          We started Yet.Project because we were tired of copy-pasting between AI assistants and project management tools. There had to be a better way.
+        </p>
+      </div>
+    </section>
+
+    <!-- Story -->
+    <section class="bg-dark-50 py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <h2 class="text-3xl font-bold text-dark-900 mb-6">Our Story</h2>
+            <div class="space-y-4 text-dark-600 leading-relaxed">
+              <p>
+                In early 2024, while building software with Claude Code and Cursor, we kept hitting the same frustration: AI assistants are incredibly powerful, but they forget everything between sessions and can't interact with our existing tools.
+              </p>
+              <p>
+                We tried every project management tool out there. Jira, Linear, Notion, Asana — none of them were built for the way we work with AI. They required constant copy-pasting, had no programmatic access, and couldn't give AI the context it needed.
+              </p>
+              <p>
+                So we built Yet.Project: the first project management platform designed from the ground up for developers working with AI assistants. With native MCP support, a comprehensive API, CLI, and a Knowledge Base for persistent AI memory.
+              </p>
+              <p>
+                Today, Yet.Project helps thousands of developers work more effectively with AI tools. And we're just getting started.
+              </p>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="bg-gradient-to-br from-primary-100 to-secondary-100 rounded-2xl p-8 lg:p-12">
+              <div class="grid grid-cols-2 gap-8">
+                <div class="text-center">
+                  <div class="text-4xl font-bold text-primary-600 mb-2">2024</div>
+                  <div class="text-sm text-dark-600">Founded in Luxembourg</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-4xl font-bold text-primary-600 mb-2">10k+</div>
+                  <div class="text-sm text-dark-600">Developers</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-4xl font-bold text-primary-600 mb-2">68+</div>
+                  <div class="text-sm text-dark-600">API Endpoints</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-4xl font-bold text-primary-600 mb-2">27+</div>
+                  <div class="text-sm text-dark-600">MCP Tools</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section class="py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold text-dark-900 mb-4">Our Values</h2>
+          <p class="text-lg text-dark-600 max-w-2xl mx-auto">
+            The principles that guide everything we build.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {values.map(value => (
+            <div class="bg-white rounded-2xl p-6 shadow-card border border-dark-100 hover:shadow-xl transition-shadow">
+              <div class="w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center mb-4">
+                {value.icon === 'lightning' && (
+                  <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                )}
+                {value.icon === 'shield' && (
+                  <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                )}
+                {value.icon === 'code' && (
+                  <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                  </svg>
+                )}
+                {value.icon === 'users' && (
+                  <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                  </svg>
+                )}
+              </div>
+              <h3 class="text-lg font-semibold text-dark-900 mb-2">{value.title}</h3>
+              <p class="text-dark-600 text-sm">{value.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Company -->
+    <section class="bg-dark-900 text-white py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <h2 class="text-3xl font-bold mb-6">Based in Luxembourg</h2>
+            <p class="text-dark-300 leading-relaxed mb-6">
+              Yet.Project is built by Yet Another Artificial Intelligence Company (SARL-S), headquartered in Luxembourg. Being in the heart of Europe gives us access to top talent and strict EU data protection standards.
+            </p>
+            <div class="space-y-4">
+              <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-dark-200">GDPR compliant by design</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-dark-200">EU data residency available</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-dark-200">SOC 2 compliance practices</span>
+              </div>
+            </div>
+          </div>
+          <div class="bg-dark-800 rounded-2xl p-8">
+            <h3 class="font-semibold text-lg mb-4">Company Details</h3>
+            <dl class="space-y-3 text-sm">
+              <div class="flex justify-between">
+                <dt class="text-dark-400">Legal Name</dt>
+                <dd class="text-dark-200">Yet Another Artificial Intelligence Company (SARL-S)</dd>
+              </div>
+              <div class="flex justify-between">
+                <dt class="text-dark-400">Registration</dt>
+                <dd class="text-dark-200">RCS Luxembourg B232060</dd>
+              </div>
+              <div class="flex justify-between">
+                <dt class="text-dark-400">VAT</dt>
+                <dd class="text-dark-200">LU36410809</dd>
+              </div>
+              <div class="flex justify-between">
+                <dt class="text-dark-400">Founded</dt>
+                <dd class="text-dark-200">2024</dd>
+              </div>
+              <div class="flex justify-between">
+                <dt class="text-dark-400">Location</dt>
+                <dd class="text-dark-200">Mondorf-les-Bains, Luxembourg</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-bold text-dark-900 mb-4">Want to join our journey?</h2>
+        <p class="text-lg text-dark-600 mb-8">
+          We're always looking for talented people who want to shape the future of AI-powered development.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="https://app.yet.watch/auth/register"
+            class="inline-flex items-center gap-2 bg-primary-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-primary-700 transition-colors shadow-lg shadow-primary-500/25"
+          >
+            Try Yet.Project Free
+          </a>
+          <a
+            href="/contact"
+            class="inline-flex items-center gap-2 bg-dark-100 text-dark-700 px-8 py-4 rounded-xl font-semibold hover:bg-dark-200 transition-colors"
+          >
+            Get in Touch
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

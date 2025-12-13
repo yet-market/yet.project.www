@@ -1,0 +1,276 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const features = [
+  {
+    category: 'AI Integration',
+    items: [
+      { feature: 'Native MCP Server', yet: true, competitor: false, note: 'Direct AI assistant integration' },
+      { feature: 'AI Knowledge Base', yet: true, competitor: false, note: 'Persistent AI memory across sessions' },
+      { feature: 'Per-Agent API Keys', yet: true, competitor: false, note: 'Granular AI access control' },
+      { feature: 'AI Activity Tracking', yet: true, competitor: false, note: 'See what AI did vs humans' },
+    ],
+  },
+  {
+    category: 'Developer Experience',
+    items: [
+      { feature: 'CLI Tool', yet: true, competitor: false, note: 'Full-featured terminal access' },
+      { feature: 'REST API', yet: '68+', competitor: true, note: 'Comprehensive programmatic access' },
+      { feature: 'Setup Time', yet: '< 5 min', competitor: '1-4 weeks', note: 'Time to first task' },
+      { feature: 'Learning Curve', yet: 'Low', competitor: 'High', note: 'Complexity for new users' },
+    ],
+  },
+  {
+    category: 'Pricing & Access',
+    items: [
+      { feature: 'Free Tier', yet: 'Unlimited tasks', competitor: '10 users', note: 'Free plan limits' },
+      { feature: 'Starting Price', yet: '$12/user', competitor: '$8.15/user', note: 'Paid plan starting point' },
+      { feature: 'No Credit Card Required', yet: true, competitor: true, note: 'Free trial access' },
+    ],
+  },
+];
+---
+
+<Layout
+  title="Yet.Project vs Jira - AI-Native Alternative | Comparison"
+  description="Compare Yet.Project and Jira. See why developers choose Yet.Project for AI-native project management over Jira's enterprise complexity."
+>
+  <Header />
+
+  <main class="pt-24 pb-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <span class="inline-block text-sm font-semibold text-primary-600 tracking-wide uppercase mb-4">Comparison</span>
+        <h1 class="text-4xl lg:text-display-lg font-bold text-dark-900 mb-6">
+          Yet.Project vs<br />
+          <span class="gradient-text">Jira</span>
+        </h1>
+        <p class="text-xl text-dark-600 max-w-2xl mx-auto">
+          Jira is powerful for enterprise workflows, but wasn't built for AI-native development. See how Yet.Project compares.
+        </p>
+      </div>
+
+      <!-- Quick Summary -->
+      <div class="grid md:grid-cols-2 gap-8 mb-16">
+        <div class="bg-primary-50 rounded-2xl p-8 border-2 border-primary-200">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-lg bg-primary-600 flex items-center justify-center">
+              <span class="text-white font-bold text-lg">Y</span>
+            </div>
+            <h3 class="text-xl font-bold text-dark-900">Yet.Project</h3>
+          </div>
+          <p class="text-dark-600 mb-4">AI-native project management built for developers working with AI assistants.</p>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-center gap-2 text-dark-700">
+              <svg class="w-4 h-4 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Native MCP integration
+            </li>
+            <li class="flex items-center gap-2 text-dark-700">
+              <svg class="w-4 h-4 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Setup in minutes, not weeks
+            </li>
+            <li class="flex items-center gap-2 text-dark-700">
+              <svg class="w-4 h-4 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Built for small teams
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-dark-50 rounded-2xl p-8 border border-dark-200">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-lg bg-blue-600 flex items-center justify-center">
+              <span class="text-white font-bold text-lg">J</span>
+            </div>
+            <h3 class="text-xl font-bold text-dark-900">Jira</h3>
+          </div>
+          <p class="text-dark-600 mb-4">Enterprise project management with complex workflows and extensive customization.</p>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-center gap-2 text-dark-700">
+              <svg class="w-4 h-4 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Enterprise-grade features
+            </li>
+            <li class="flex items-center gap-2 text-dark-700">
+              <svg class="w-4 h-4 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Extensive marketplace
+            </li>
+            <li class="flex items-center gap-2 text-dark-700">
+              <svg class="w-4 h-4 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Atlassian ecosystem
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- The Problem with Jira for AI -->
+      <div class="bg-gradient-to-br from-dark-900 to-dark-800 rounded-2xl p-8 lg:p-12 text-white mb-16">
+        <h2 class="text-2xl lg:text-3xl font-bold mb-6">Why Developers Switch from Jira</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <div class="text-4xl mb-4">🐌</div>
+            <h3 class="font-semibold text-lg mb-2">Too Complex</h3>
+            <p class="text-dark-300 text-sm">
+              Jira's enterprise features create overhead for small teams. Most developers use 10% of features but pay for 100%.
+            </p>
+          </div>
+          <div>
+            <div class="text-4xl mb-4">🤖</div>
+            <h3 class="font-semibold text-lg mb-2">No AI Integration</h3>
+            <p class="text-dark-300 text-sm">
+              Jira wasn't built for AI workflows. No MCP support means copy-pasting between AI and your issue tracker.
+            </p>
+          </div>
+          <div>
+            <div class="text-4xl mb-4">⏱️</div>
+            <h3 class="font-semibold text-lg mb-2">Weeks to Configure</h3>
+            <p class="text-dark-300 text-sm">
+              Setting up Jira "the right way" takes weeks of configuration. Yet.Project is ready in minutes.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Comparison -->
+      <div class="mb-16">
+        <h2 class="text-2xl font-bold text-dark-900 mb-8 text-center">Detailed Feature Comparison</h2>
+
+        {features.map(category => (
+          <div class="mb-8">
+            <h3 class="text-lg font-semibold text-dark-900 mb-4 px-4">{category.category}</h3>
+            <div class="bg-white rounded-xl border border-dark-200 overflow-hidden">
+              <table class="w-full">
+                <thead class="bg-dark-50">
+                  <tr>
+                    <th class="text-left py-3 px-4 font-medium text-dark-600 text-sm">Feature</th>
+                    <th class="text-center py-3 px-4 font-medium text-primary-600 text-sm w-32">Yet.Project</th>
+                    <th class="text-center py-3 px-4 font-medium text-dark-500 text-sm w-32">Jira</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-dark-100">
+                  {category.items.map(item => (
+                    <tr>
+                      <td class="py-3 px-4">
+                        <div class="font-medium text-dark-900 text-sm">{item.feature}</div>
+                        <div class="text-xs text-dark-500">{item.note}</div>
+                      </td>
+                      <td class="py-3 px-4 text-center">
+                        {typeof item.yet === 'boolean' ? (
+                          item.yet ? (
+                            <span class="text-accent-500 text-lg">✓</span>
+                          ) : (
+                            <span class="text-dark-300">—</span>
+                          )
+                        ) : (
+                          <span class="text-sm font-medium text-primary-600">{item.yet}</span>
+                        )}
+                      </td>
+                      <td class="py-3 px-4 text-center">
+                        {typeof item.competitor === 'boolean' ? (
+                          item.competitor ? (
+                            <span class="text-accent-500 text-lg">✓</span>
+                          ) : (
+                            <span class="text-dark-300">—</span>
+                          )
+                        ) : (
+                          <span class="text-sm text-dark-600">{item.competitor}</span>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Verdict -->
+      <div class="bg-primary-50 rounded-2xl p-8 lg:p-12 mb-16">
+        <h2 class="text-2xl font-bold text-dark-900 mb-4">Our Verdict</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="font-semibold text-dark-900 mb-2">Choose Jira if:</h3>
+            <ul class="space-y-2 text-dark-600">
+              <li class="flex items-start gap-2">
+                <span class="text-dark-400 mt-1">•</span>
+                <span>You need complex enterprise workflows with approvals</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-dark-400 mt-1">•</span>
+                <span>You're already invested in the Atlassian ecosystem</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-dark-400 mt-1">•</span>
+                <span>You need extensive compliance and audit features</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-semibold text-primary-700 mb-2">Choose Yet.Project if:</h3>
+            <ul class="space-y-2 text-dark-600">
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-accent-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>You work with AI assistants like Claude, Cursor, or Windsurf</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-accent-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>You want a simple tool that works out of the box</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-accent-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>You need CLI and API-first workflows</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center">
+        <h2 class="text-2xl font-bold text-dark-900 mb-4">Ready for AI-native project management?</h2>
+        <p class="text-dark-600 mb-8">Start free, no credit card required. Import from Jira coming soon.</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="https://app.yet.watch/auth/register"
+            class="inline-flex items-center gap-2 bg-primary-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-primary-700 transition-colors shadow-lg shadow-primary-500/25"
+            data-track-cta="start_free"
+            data-track-location="compare_jira"
+          >
+            Start Free Trial
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+          <a
+            href="/compare"
+            class="inline-flex items-center gap-2 bg-dark-100 text-dark-700 px-8 py-4 rounded-xl font-semibold hover:bg-dark-200 transition-colors"
+          >
+            View All Comparisons
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
