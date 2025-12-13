@@ -1,0 +1,227 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const lastUpdated = "December 13, 2025";
+---
+
+<Layout
+  title="Cookie Policy - Yet.Project"
+  description="Cookie Policy for Yet.Project - AI-Native Project Management. Learn about the cookies we use and how to manage your preferences."
+>
+  <Header />
+
+  <main class="pt-24 pb-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="mb-12">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Cookie Policy</h1>
+        <p class="text-gray-600">Last updated: {lastUpdated}</p>
+      </div>
+
+      <!-- Content -->
+      <div class="prose prose-lg max-w-none prose-headings:font-semibold prose-headings:text-gray-900 prose-p:text-gray-700 prose-li:text-gray-700 prose-a:text-primary-600 prose-a:no-underline hover:prose-a:underline">
+
+        <section class="mb-10">
+          <h2>1. What Are Cookies?</h2>
+          <p>Cookies are small text files that are stored on your device (computer, tablet, or mobile) when you visit a website. They are widely used to make websites work more efficiently, provide a better user experience, and give website owners information about how their site is being used.</p>
+          <p>Cookies can be "persistent" (remaining on your device for a set period) or "session" cookies (deleted when you close your browser).</p>
+        </section>
+
+        <section class="mb-10">
+          <h2>2. How We Use Cookies</h2>
+          <p>Yet.Project (yet.watch) uses cookies and similar technologies for the following purposes:</p>
+          <ul>
+            <li><strong>Essential Functionality:</strong> To enable core website features and remember your preferences</li>
+            <li><strong>Authentication:</strong> To keep you logged in and secure your session</li>
+            <li><strong>Analytics:</strong> To understand how visitors use our website and improve our services</li>
+            <li><strong>Performance:</strong> To optimize website speed and performance</li>
+          </ul>
+        </section>
+
+        <section class="mb-10">
+          <h2>3. Types of Cookies We Use</h2>
+
+          <h3>3.1 Strictly Necessary Cookies</h3>
+          <p>These cookies are essential for the website to function and cannot be disabled. They include:</p>
+          <div class="overflow-x-auto not-prose mb-6">
+            <table class="min-w-full divide-y divide-gray-200 border border-gray-200 rounded-lg">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Cookie Name</th>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Purpose</th>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Duration</th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200">
+                <tr>
+                  <td class="px-4 py-3 text-sm font-mono text-gray-900">session_id</td>
+                  <td class="px-4 py-3 text-sm text-gray-700">Maintains your login session</td>
+                  <td class="px-4 py-3 text-sm text-gray-700">Session</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 text-sm font-mono text-gray-900">csrf_token</td>
+                  <td class="px-4 py-3 text-sm text-gray-700">Security token to prevent cross-site attacks</td>
+                  <td class="px-4 py-3 text-sm text-gray-700">Session</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 text-sm font-mono text-gray-900">cookie_consent</td>
+                  <td class="px-4 py-3 text-sm text-gray-700">Stores your cookie preferences</td>
+                  <td class="px-4 py-3 text-sm text-gray-700">1 year</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>3.2 Performance Cookies</h3>
+          <p>These cookies help us understand how visitors interact with our website by collecting anonymous information:</p>
+          <div class="overflow-x-auto not-prose mb-6">
+            <table class="min-w-full divide-y divide-gray-200 border border-gray-200 rounded-lg">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Cookie Name</th>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Purpose</th>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Duration</th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200">
+                <tr>
+                  <td class="px-4 py-3 text-sm font-mono text-gray-900">_ga</td>
+                  <td class="px-4 py-3 text-sm text-gray-700">Google Analytics - distinguishes users</td>
+                  <td class="px-4 py-3 text-sm text-gray-700">2 years</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 text-sm font-mono text-gray-900">_ga_*</td>
+                  <td class="px-4 py-3 text-sm text-gray-700">Google Analytics - maintains session state</td>
+                  <td class="px-4 py-3 text-sm text-gray-700">2 years</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>3.3 Functional Cookies</h3>
+          <p>These cookies enable enhanced functionality and personalization:</p>
+          <div class="overflow-x-auto not-prose mb-6">
+            <table class="min-w-full divide-y divide-gray-200 border border-gray-200 rounded-lg">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Cookie Name</th>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Purpose</th>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Duration</th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200">
+                <tr>
+                  <td class="px-4 py-3 text-sm font-mono text-gray-900">theme_preference</td>
+                  <td class="px-4 py-3 text-sm text-gray-700">Remembers your display preferences</td>
+                  <td class="px-4 py-3 text-sm text-gray-700">1 year</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 text-sm font-mono text-gray-900">language</td>
+                  <td class="px-4 py-3 text-sm text-gray-700">Stores your language preference</td>
+                  <td class="px-4 py-3 text-sm text-gray-700">1 year</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="mb-10">
+          <h2>4. Third-Party Cookies</h2>
+          <p>Some cookies are placed by third-party services that appear on our pages. We use the following third-party services:</p>
+
+          <h3>4.1 Google Analytics</h3>
+          <p>We use Google Analytics to analyze website traffic and improve our services. Google Analytics uses cookies to collect anonymous information about how visitors use our site.</p>
+          <p>Google's privacy policy: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></p>
+
+          <h3>4.2 Firebase</h3>
+          <p>Our website is hosted on Firebase, which may use cookies for performance and security purposes.</p>
+          <p>Firebase privacy policy: <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">firebase.google.com/support/privacy</a></p>
+        </section>
+
+        <section class="mb-10">
+          <h2>5. Managing Your Cookie Preferences</h2>
+
+          <h3>5.1 Cookie Consent Banner</h3>
+          <p>When you first visit our website, you will see a cookie consent banner that allows you to:</p>
+          <ul>
+            <li>Accept all cookies</li>
+            <li>Accept only necessary cookies</li>
+            <li>Customize your preferences</li>
+          </ul>
+          <p>You can change your preferences at any time by clicking the "Cookie Settings" link in the footer.</p>
+
+          <h3>5.2 Browser Settings</h3>
+          <p>Most web browsers allow you to control cookies through their settings. Here's how to manage cookies in popular browsers:</p>
+          <ul>
+            <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Google Chrome</a></li>
+            <li><a href="https://support.mozilla.org/en-US/kb/cookies-information-websites-store-on-your-computer" target="_blank" rel="noopener">Mozilla Firefox</a></li>
+            <li><a href="https://support.apple.com/guide/safari/manage-cookies-sfri11471/mac" target="_blank" rel="noopener">Safari</a></li>
+            <li><a href="https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener">Microsoft Edge</a></li>
+          </ul>
+
+          <h3>5.3 Opt-Out Tools</h3>
+          <p>You can opt out of Google Analytics by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out Browser Add-on</a>.</p>
+        </section>
+
+        <section class="mb-10">
+          <h2>6. Impact of Disabling Cookies</h2>
+          <p>If you disable or refuse cookies, please note that:</p>
+          <ul>
+            <li>Some features of the website may not function properly</li>
+            <li>You may need to manually adjust preferences each visit</li>
+            <li>Your login session will not persist</li>
+          </ul>
+          <p>Essential cookies cannot be disabled as they are necessary for the website to function.</p>
+        </section>
+
+        <section class="mb-10">
+          <h2>7. Similar Technologies</h2>
+          <p>In addition to cookies, we may use similar technologies:</p>
+          <ul>
+            <li><strong>Local Storage:</strong> To store data locally in your browser for faster performance</li>
+            <li><strong>Session Storage:</strong> To store temporary data during your browsing session</li>
+            <li><strong>Web Beacons:</strong> Small graphics used to track email opens (only in marketing emails with your consent)</li>
+          </ul>
+        </section>
+
+        <section class="mb-10">
+          <h2>8. Updates to This Policy</h2>
+          <p>We may update this Cookie Policy from time to time to reflect changes in our practices or for legal reasons. We will notify you of significant changes by posting a notice on our website.</p>
+        </section>
+
+        <section class="mb-10">
+          <h2>9. Your Rights</h2>
+          <p>Under GDPR and EU ePrivacy regulations, you have the right to:</p>
+          <ul>
+            <li>Be informed about the cookies we use</li>
+            <li>Choose which non-essential cookies to accept</li>
+            <li>Withdraw your consent at any time</li>
+            <li>Request information about data collected through cookies</li>
+          </ul>
+          <p>For more information about your data protection rights, please see our <a href="/privacy">Privacy Policy</a>.</p>
+        </section>
+
+        <section class="mb-10">
+          <h2>10. Contact Us</h2>
+          <p>If you have questions about our use of cookies, please contact us:</p>
+          <div class="bg-gray-50 rounded-xl p-6 not-prose">
+            <p class="font-semibold text-gray-900">Yet Another Artificial Intelligence Company (SARL-S)</p>
+            <p class="text-gray-700">15 Avenue Dr Klein</p>
+            <p class="text-gray-700">5630 Mondorf-les-Bains, Luxembourg</p>
+            <p class="text-gray-700 mt-4">
+              Email: <a href="mailto:privacy@yet.lu" class="text-primary-600 hover:underline">privacy@yet.lu</a>
+            </p>
+            <p class="text-gray-700">
+              Phone: <a href="tel:+352621436580" class="text-primary-600 hover:underline">+352 621 436 580</a>
+            </p>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

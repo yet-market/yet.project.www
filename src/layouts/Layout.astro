@@ -1,4 +1,6 @@
 ---
+import CookieConsent from '../components/CookieConsent.astro';
+
 interface Props {
   title: string;
   description?: string;
@@ -189,6 +191,9 @@ const faqSchema = {
     </a>
 
     <slot />
+
+    <!-- Cookie Consent Banner (GDPR) -->
+    <CookieConsent />
 
     <!-- Smooth scroll behavior and other global scripts -->
     <script>
