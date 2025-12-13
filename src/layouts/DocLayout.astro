@@ -70,8 +70,46 @@ const navigation = [
 const currentPath = Astro.url.pathname;
 ---
 
-<Layout title={`${title} - Docs`} description={description}>
+<Layout title={`${title} - Docs`} description={description} type="article">
   <Header />
+
+  <!-- Documentation-specific structured data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": title,
+    "description": description,
+    "author": {
+      "@type": "Organization",
+      "name": "Yet.Project"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Yet.Project",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://yet.watch/logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://yet.watch${Astro.url.pathname}`
+    },
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Yet.Project Documentation",
+      "url": "https://yet.watch/docs"
+    }
+  })} />
+
+  <!-- Track documentation page view -->
+  <script define:vars={{ docTitle: title, docSection: Astro.url.pathname.split('/')[2] || 'getting-started' }}>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.YetAnalytics) {
+        window.YetAnalytics.trackDocView(docSection, docTitle);
+      }
+    });
+  </script>
 
   <div class="pt-20 min-h-screen bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -87,6 +125,8 @@ const currentPath = Astro.url.pathname;
                     <li>
                       <a
                         href={item.href}
+                        data-track-doc={item.title}
+                        data-track-section={group.title}
                         class={`block px-3 py-2 text-sm rounded-lg transition-colors ${
                           currentPath === item.href || currentPath === item.href + '/'
                             ? 'bg-primary-50 text-primary-700 font-medium'
@@ -186,3 +226,34 @@ const currentPath = Astro.url.pathname;
     @apply mb-0 text-dark-700;
   }
 </style>
+
+<script>
+  // Track documentation navigation clicks
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('[data-track-doc]').forEach(function(el) {
+      el.addEventListener('click', function() {
+        const docTitle = el.getAttribute('data-track-doc');
+        const section = el.getAttribute('data-track-section');
+        if (window.YetAnalytics) {
+          window.YetAnalytics.track('doc_navigation', {
+            event_category: 'documentation',
+            doc_title: docTitle,
+            doc_section: section
+          });
+        }
+      });
+    });
+
+    // Track code block copy (if any copy buttons exist)
+    document.querySelectorAll('pre code').forEach(function(codeBlock) {
+      codeBlock.addEventListener('click', function() {
+        if (window.YetAnalytics) {
+          window.YetAnalytics.track('code_block_interaction', {
+            event_category: 'documentation',
+            event_label: 'code_selected'
+          });
+        }
+      });
+    });
+  });
+</script>
