@@ -1,0 +1,40 @@
+/* TEAM */
+
+Product: Yet.Project
+Company: Yet Another Artificial Intelligence Company (SARL-S)
+Location: Luxembourg
+Website: https://yet.watch
+Parent: https://yet.lu
+
+/* THANKS */
+
+Built with love for developers who embrace AI.
+Special thanks to all AI coding assistants that helped build this.
+
+/* TECHNOLOGY */
+
+Platform: Astro
+Styling: Tailwind CSS
+Hosting: Firebase Hosting
+Analytics: Google Analytics 4
+Fonts: Inter, JetBrains Mono, Cal Sans
+
+/* AI INTEGRATION */
+
+MCP Server: Native Model Context Protocol support
+Supported: Claude Code, Cursor, Windsurf, GitHub Copilot
+API: RESTful with 68+ endpoints
+CLI: Cross-platform command-line tool
+
+/* SITE */
+
+Last update: 2025-12-13
+Language: English
+Standards: HTML5, CSS3, ES2023
+Accessibility: WCAG 2.1 AA target
+
+/* CONTACT */
+
+Contact: https://yet.watch/contact
+GitHub: https://github.com/yet-market
+Twitter: @yetproject

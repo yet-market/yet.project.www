@@ -31,55 +31,142 @@ const fullTitle = title === 'Yet.Project' ? title : `${title} | Yet.Project`;
 const ogImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
 const canonical = canonicalUrl || Astro.url.href;
 
-// Structured Data - Organization
+// Structured Data - Organization (enhanced with parent company)
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Yet.Project",
+  "alternateName": "Yet Project",
   "description": "AI-Native Project Management Platform for Developers and AI Agents",
   "url": siteUrl,
   "logo": `${siteUrl}/logo.png`,
+  "image": `${siteUrl}/og-image.png`,
   "sameAs": [
     "https://github.com/yet-market",
-    "https://twitter.com/yetproject"
+    "https://twitter.com/yetproject",
+    "https://linkedin.com/company/yetproject",
+    "https://discord.gg/yetproject"
   ],
   "contactPoint": {
     "@type": "ContactPoint",
     "contactType": "customer service",
-    "url": `${siteUrl}/contact`
-  }
+    "url": `${siteUrl}/contact`,
+    "availableLanguage": ["English", "French", "German"]
+  },
+  "parentOrganization": {
+    "@type": "Organization",
+    "name": "Yet Another Artificial Intelligence Company",
+    "legalName": "Yet Another Artificial Intelligence Company SARL-S",
+    "url": "https://yet.lu",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "LU",
+      "addressLocality": "Luxembourg"
+    },
+    "taxID": "LU36410809"
+  },
+  "foundingDate": "2024",
+  "areaServed": "Worldwide"
 };
 
-// Structured Data - Software Application
+// Structured Data - Software Application (enhanced with pricing tiers)
 const softwareSchema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "Yet.Project",
+  "alternateName": "Yet Project AI PM",
   "description": description,
-  "applicationCategory": "Project Management",
+  "applicationCategory": "DeveloperApplication",
+  "applicationSubCategory": "Project Management",
   "operatingSystem": "Web, macOS, Windows, Linux",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD",
-    "description": "Free tier available"
-  },
+  "url": siteUrl,
+  "downloadUrl": "https://www.npmjs.com/package/@yet/cli",
+  "softwareVersion": "1.0",
+  "releaseNotes": `${siteUrl}/changelog`,
+  "screenshot": `${siteUrl}/og-image.png`,
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Free",
+      "price": "0",
+      "priceCurrency": "USD",
+      "description": "1 project, unlimited tasks, 2 team members"
+    },
+    {
+      "@type": "Offer",
+      "name": "Pro",
+      "price": "5",
+      "priceCurrency": "USD",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "5",
+        "priceCurrency": "USD",
+        "billingDuration": "P1M"
+      },
+      "description": "Unlimited projects, 10 members included, pay-as-you-go extras"
+    }
+  ],
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "4.9",
-    "ratingCount": "127"
+    "ratingCount": "127",
+    "bestRating": "5",
+    "worstRating": "1"
   },
   "featureList": [
-    "MCP Server Integration",
+    "MCP Server with 27+ tools for AI assistants",
     "REST API with 68+ endpoints",
     "CLI Tool for terminal workflows",
-    "AI Agent Integration",
-    "Knowledge Base for AI memory",
-    "Kanban and Gantt views"
-  ]
+    "Knowledge Base for AI persistent memory",
+    "Claude Code integration",
+    "Cursor IDE integration",
+    "Windsurf IDE integration",
+    "GitHub webhooks and automation",
+    "Team collaboration",
+    "Time tracking"
+  ],
+  "keywords": "AI project management, MCP server, Claude Code, Cursor, developer tools"
 };
 
-// Structured Data - FAQ (for homepage)
+// Structured Data - WebSite with SearchAction
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Yet.Project",
+  "alternateName": "Yet Project Documentation",
+  "url": siteUrl,
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": `${siteUrl}/docs?q={search_term_string}`
+    },
+    "query-input": "required name=search_term_string"
+  }
+};
+
+// Structured Data - Breadcrumb (dynamic based on URL)
+const pathParts = Astro.url.pathname.split('/').filter(Boolean);
+const breadcrumbSchema = pathParts.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": siteUrl
+    },
+    ...pathParts.map((part, index) => ({
+      "@type": "ListItem",
+      "position": index + 2,
+      "name": part.charAt(0).toUpperCase() + part.slice(1).replace(/-/g, ' '),
+      "item": `${siteUrl}/${pathParts.slice(0, index + 1).join('/')}`
+    }))
+  ]
+} : null;
+
+// Structured Data - FAQ (for homepage) - expanded with more questions
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -114,6 +201,38 @@ const faqSchema = {
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Yet.Project works with any AI tool that supports MCP or REST APIs, including Claude Code, Claude Desktop, Cursor, Windsurf, GitHub Copilot, and custom AI agents. The API-first design ensures compatibility with current and future AI tools."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is MCP (Model Context Protocol)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "MCP (Model Context Protocol) is a standard protocol that allows AI assistants to interact with external tools and services. Yet.Project's MCP server provides 27+ tools for task management, knowledge base access, and project operations that AI assistants can use directly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is Yet.Project different from Jira, Linear, or Asana?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yet.Project is built API-first for AI agents, not humans-first with APIs added later. Traditional tools require copy-paste to share context with AI. Yet.Project lets AI assistants read tasks, update progress, and access project knowledge directly through MCP, API, or CLI."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the Knowledge Base feature?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Knowledge Base is persistent memory for AI assistants. Store project context, coding standards, architecture decisions, and any information AI should remember across sessions. AI can read and write knowledge entries, making it smarter about your specific project over time."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Yet.Project have a CLI tool?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! The Yet CLI (npm install -g @yet/cli) provides full task management from your terminal. Create tasks, list projects, mark items done, and integrate with git workflows. Perfect for developers who prefer command-line tools."
       }
     }
   ]
@@ -176,10 +295,12 @@ const faqSchema = {
     <!-- Preload Critical Assets -->
     <link rel="preload" href="/fonts/CalSans-SemiBold.woff2" as="font" type="font/woff2" crossorigin />
 
-    <!-- Structured Data -->
+    <!-- Structured Data for SEO and AI -->
     <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    {breadcrumbSchema && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />}
 
     <!-- Google Analytics 4 - GDPR Compliant with Consent Mode -->
     <script is:inline>

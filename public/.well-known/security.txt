@@ -1,0 +1,32 @@
+# Security Policy for Yet.Project
+# https://yet.watch/.well-known/security.txt
+
+Contact: mailto:security@yet.lu
+Contact: https://yet.watch/contact
+
+Expires: 2026-12-31T23:59:59.000Z
+
+Encryption: https://yet.watch/pgp-key.txt
+
+Preferred-Languages: en, fr, de
+
+Canonical: https://yet.watch/.well-known/security.txt
+
+Policy: https://yet.watch/security
+
+Hiring: https://yet.watch/contact
+
+# Acknowledgments
+# We appreciate responsible security researchers who help us
+# keep Yet.Project secure. If you discover a vulnerability,
+# please report it to security@yet.lu
+
+# Scope
+# - yet.watch (marketing website)
+# - app.yet.watch (application)
+# - api.yet.watch (API endpoints)
+
+# Out of Scope
+# - Social engineering attacks
+# - Denial of service attacks
+# - Physical security attacks

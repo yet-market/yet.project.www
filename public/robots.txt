@@ -1,31 +1,84 @@
 # Robots.txt for yet.watch
+# AI-Native Project Management Platform
 # https://yet.watch
 
+# Allow all crawlers by default
 User-agent: *
 Allow: /
+Crawl-delay: 1
 
 # Sitemap location
 Sitemap: https://yet.watch/sitemap.xml
 
-# Block sensitive paths
+# LLMs.txt for AI systems
+# See: https://yet.watch/llms.txt
+
+# Block internal paths
 Disallow: /api/
 Disallow: /_astro/
 
-# Crawl delay (be nice to search engines)
-Crawl-delay: 1
+# ===========================================
+# AI Crawlers - ALLOWED (we're AI-native!)
+# ===========================================
 
-# Block AI training crawlers (optional - remove if you want AI indexing)
+# OpenAI
 User-agent: GPTBot
-Disallow: /
+Allow: /
 
 User-agent: ChatGPT-User
-Disallow: /
+Allow: /
 
-User-agent: CCBot
-Disallow: /
-
+# Anthropic
 User-agent: anthropic-ai
-Disallow: /
+Allow: /
 
 User-agent: Claude-Web
-Disallow: /
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+# Google AI
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+
+# Meta
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# Microsoft/Bing
+User-agent: Bingbot
+Allow: /
+
+# Common Crawl (used for AI training)
+User-agent: CCBot
+Allow: /
+
+# Apple
+User-agent: Applebot
+Allow: /
+
+# Amazon
+User-agent: Amazonbot
+Allow: /
+
+# Other AI assistants
+User-agent: YouBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
