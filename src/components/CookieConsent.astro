@@ -273,13 +273,30 @@
   }
 
   function applyPreferences(preferences: CookiePreferences): void {
-    // Apply analytics preferences
-    if (preferences.analytics) {
-      // Enable Google Analytics (if configured)
-      // window.gtag && window.gtag('consent', 'update', { analytics_storage: 'granted' });
-    } else {
-      // Disable Google Analytics
-      // window.gtag && window.gtag('consent', 'update', { analytics_storage: 'denied' });
+    // Update Google Analytics Consent Mode v2
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      const gtag = (window as any).gtag;
+
+      // Update analytics consent
+      gtag('consent', 'update', {
+        'analytics_storage': preferences.analytics ? 'granted' : 'denied'
+      });
+
+      // Update functional consent
+      gtag('consent', 'update', {
+        'functionality_storage': preferences.functional ? 'granted' : 'denied',
+        'personalization_storage': preferences.functional ? 'granted' : 'denied'
+      });
+
+      // Track consent event for analytics
+      if (preferences.analytics) {
+        gtag('event', 'consent_update', {
+          'event_category': 'consent',
+          'event_label': 'cookie_preferences',
+          'analytics_consent': preferences.analytics,
+          'functional_consent': preferences.functional
+        });
+      }
     }
 
     // Dispatch custom event for other scripts to listen to

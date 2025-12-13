@@ -203,6 +203,8 @@ const stats = [
             <a
               href="https://app.yet.watch/auth/register"
               class="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-primary-600 to-primary-500 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-xl shadow-primary-500/25 hover:shadow-primary-500/40 hover:from-primary-500 hover:to-primary-600 transition-all duration-300 btn-glow"
+              data-track-cta="start_free"
+              data-track-location="hero"
             >
               <span>Start Free</span>
               <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -212,6 +214,8 @@ const stats = [
             <a
               href="#how-it-works"
               class="group w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/80 backdrop-blur-sm border border-dark-200 text-dark-700 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white hover:border-dark-300 hover:shadow-lg transition-all duration-300"
+              data-track-cta="see_how_it_works"
+              data-track-location="hero"
             >
               <svg class="w-5 h-5 text-primary-500" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M8 5v14l11-7z"/>
@@ -625,6 +629,8 @@ const stats = [
                     ? 'bg-white text-primary-600 hover:bg-dark-50 shadow-lg'
                     : 'bg-dark-100 text-dark-700 hover:bg-dark-200'
                 }`}
+                data-track-cta={`pricing_${plan.name.toLowerCase()}`}
+                data-track-location="pricing"
               >
                 {plan.cta}
               </a>
@@ -655,6 +661,8 @@ const stats = [
           <a
             href="https://app.yet.watch/auth/register"
             class="group w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white text-dark-900 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-dark-100 transition-all duration-300 shadow-xl"
+            data-track-cta="get_started_free"
+            data-track-location="final_cta"
           >
             <span>Get Started Free</span>
             <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -664,6 +672,8 @@ const stats = [
           <a
             href="/contact"
             class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-dark-800 text-white border border-dark-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-dark-700 hover:border-dark-500 transition-all duration-300"
+            data-track-cta="talk_to_sales"
+            data-track-location="final_cta"
           >
             Talk to Sales
           </a>

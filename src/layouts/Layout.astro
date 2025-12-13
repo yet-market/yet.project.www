@@ -1,5 +1,6 @@
 ---
 import CookieConsent from '../components/CookieConsent.astro';
+import Analytics from '../components/Analytics.astro';
 
 interface Props {
   title: string;
@@ -180,8 +181,58 @@ const faqSchema = {
     <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
-    <!-- Analytics Placeholder (replace with actual) -->
-    <!-- Google Analytics would go here -->
+    <!-- Google Analytics 4 - GDPR Compliant with Consent Mode -->
+    <script is:inline>
+      // Google Analytics Consent Mode v2 - Default to denied until consent
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+
+      // Set default consent state (denied until user accepts)
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'functionality_storage': 'denied',
+        'personalization_storage': 'denied',
+        'security_storage': 'granted', // Always granted for security
+        'wait_for_update': 500
+      });
+
+      // Check for existing cookie consent
+      (function() {
+        try {
+          const consentCookie = document.cookie
+            .split('; ')
+            .find(row => row.startsWith('cookie_consent='));
+
+          if (consentCookie) {
+            const consent = JSON.parse(decodeURIComponent(consentCookie.split('=')[1]));
+            if (consent.analytics) {
+              gtag('consent', 'update', {
+                'analytics_storage': 'granted'
+              });
+            }
+            if (consent.functional) {
+              gtag('consent', 'update', {
+                'functionality_storage': 'granted',
+                'personalization_storage': 'granted'
+              });
+            }
+          }
+        } catch (e) {
+          // Consent cookie not found or invalid
+        }
+      })();
+
+      gtag('js', new Date());
+      gtag('config', 'G-ST79TGSX4E', {
+        'anonymize_ip': true,
+        'cookie_flags': 'SameSite=None;Secure',
+        'send_page_view': true
+      });
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ST79TGSX4E"></script>
   </head>
 
   <body class="bg-white text-dark-900 antialiased font-sans selection:bg-primary-100 selection:text-primary-900">
@@ -194,6 +245,9 @@ const faqSchema = {
 
     <!-- Cookie Consent Banner (GDPR) -->
     <CookieConsent />
+
+    <!-- Analytics Event Tracking -->
+    <Analytics />
 
     <!-- Smooth scroll behavior and other global scripts -->
     <script>

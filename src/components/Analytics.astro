@@ -1,0 +1,236 @@
+---
+// Analytics Event Tracking Component
+// This component adds event tracking for common interactions
+---
+
+<script is:inline>
+  // Analytics Helper Functions
+  window.YetAnalytics = {
+    // Track custom events
+    track: function(eventName, params = {}) {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', eventName, params);
+      }
+    },
+
+    // Track page views (automatic, but can be called manually for SPAs)
+    pageView: function(pagePath, pageTitle) {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'page_view', {
+          page_path: pagePath || window.location.pathname,
+          page_title: pageTitle || document.title
+        });
+      }
+    },
+
+    // Track CTA button clicks
+    trackCTA: function(ctaName, ctaLocation) {
+      this.track('cta_click', {
+        event_category: 'engagement',
+        event_label: ctaName,
+        cta_location: ctaLocation
+      });
+    },
+
+    // Track outbound links
+    trackOutbound: function(url, linkText) {
+      this.track('click', {
+        event_category: 'outbound',
+        event_label: linkText,
+        link_url: url
+      });
+    },
+
+    // Track sign up attempts
+    trackSignUp: function(method, location) {
+      this.track('sign_up', {
+        method: method,
+        sign_up_location: location
+      });
+    },
+
+    // Track demo/trial starts
+    trackDemoStart: function(source) {
+      this.track('generate_lead', {
+        event_category: 'conversion',
+        event_label: 'demo_start',
+        lead_source: source
+      });
+    },
+
+    // Track documentation views
+    trackDocView: function(docSection, docTitle) {
+      this.track('view_item', {
+        event_category: 'documentation',
+        item_name: docTitle,
+        item_category: docSection
+      });
+    },
+
+    // Track feature interest
+    trackFeatureInterest: function(featureName) {
+      this.track('select_content', {
+        event_category: 'feature_interest',
+        content_type: 'feature',
+        item_id: featureName
+      });
+    },
+
+    // Track pricing view
+    trackPricingView: function(planName) {
+      this.track('view_item', {
+        event_category: 'pricing',
+        item_name: planName,
+        content_type: 'pricing_plan'
+      });
+    },
+
+    // Track newsletter signup
+    trackNewsletter: function(source) {
+      this.track('sign_up', {
+        method: 'newsletter',
+        sign_up_location: source
+      });
+    },
+
+    // Track scroll depth
+    trackScrollDepth: function(percentage) {
+      this.track('scroll', {
+        event_category: 'engagement',
+        event_label: percentage + '%',
+        percent_scrolled: percentage
+      });
+    },
+
+    // Track time on page
+    trackTimeOnPage: function(seconds) {
+      this.track('timing_complete', {
+        event_category: 'engagement',
+        name: 'time_on_page',
+        value: seconds
+      });
+    },
+
+    // Track video engagement
+    trackVideo: function(action, videoTitle, percentWatched) {
+      this.track('video_' + action, {
+        event_category: 'video',
+        video_title: videoTitle,
+        percent_watched: percentWatched
+      });
+    },
+
+    // Track search queries
+    trackSearch: function(searchTerm) {
+      this.track('search', {
+        search_term: searchTerm
+      });
+    },
+
+    // Track errors
+    trackError: function(errorType, errorMessage) {
+      this.track('exception', {
+        description: errorMessage,
+        fatal: false,
+        error_type: errorType
+      });
+    },
+
+    // Track file downloads
+    trackDownload: function(fileName, fileType) {
+      this.track('file_download', {
+        file_name: fileName,
+        file_extension: fileType
+      });
+    }
+  };
+
+  // Auto-track CTA buttons
+  document.addEventListener('DOMContentLoaded', function() {
+    // Track all CTA buttons with data-track-cta attribute
+    document.querySelectorAll('[data-track-cta]').forEach(function(el) {
+      el.addEventListener('click', function() {
+        var ctaName = el.getAttribute('data-track-cta');
+        var ctaLocation = el.getAttribute('data-track-location') || 'unknown';
+        window.YetAnalytics.trackCTA(ctaName, ctaLocation);
+      });
+    });
+
+    // Track all outbound links
+    document.querySelectorAll('a[href^="http"]').forEach(function(el) {
+      var href = el.getAttribute('href');
+      if (href && !href.includes(window.location.hostname)) {
+        el.addEventListener('click', function() {
+          window.YetAnalytics.trackOutbound(href, el.textContent || href);
+        });
+      }
+    });
+
+    // Track pricing section views
+    var pricingSection = document.getElementById('pricing');
+    if (pricingSection) {
+      var pricingObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            window.YetAnalytics.track('view_item_list', {
+              event_category: 'pricing',
+              item_list_name: 'pricing_plans'
+            });
+            pricingObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      pricingObserver.observe(pricingSection);
+    }
+
+    // Track scroll depth milestones
+    var scrollMilestones = [25, 50, 75, 90];
+    var reachedMilestones = [];
+
+    function checkScrollDepth() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      var scrollPercent = Math.round((scrollTop / docHeight) * 100);
+
+      scrollMilestones.forEach(function(milestone) {
+        if (scrollPercent >= milestone && reachedMilestones.indexOf(milestone) === -1) {
+          reachedMilestones.push(milestone);
+          window.YetAnalytics.trackScrollDepth(milestone);
+        }
+      });
+    }
+
+    // Debounce scroll tracking
+    var scrollTimeout;
+    window.addEventListener('scroll', function() {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(checkScrollDepth, 150);
+    });
+
+    // Track time on page
+    var startTime = Date.now();
+    var timeIntervals = [30, 60, 120, 300]; // seconds
+    var trackedIntervals = [];
+
+    setInterval(function() {
+      var timeOnPage = Math.floor((Date.now() - startTime) / 1000);
+      timeIntervals.forEach(function(interval) {
+        if (timeOnPage >= interval && trackedIntervals.indexOf(interval) === -1) {
+          trackedIntervals.push(interval);
+          window.YetAnalytics.trackTimeOnPage(interval);
+        }
+      });
+    }, 5000);
+
+    // Track page exit
+    window.addEventListener('beforeunload', function() {
+      var timeOnPage = Math.floor((Date.now() - startTime) / 1000);
+      if (timeOnPage > 5) {
+        window.YetAnalytics.track('page_exit', {
+          event_category: 'engagement',
+          time_on_page: timeOnPage
+        });
+      }
+    });
+  });
+</script>
