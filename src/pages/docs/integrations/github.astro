@@ -2,11 +2,11 @@
 import DocLayout from '../../../layouts/DocLayout.astro';
 ---
 
-<DocLayout title="GitHub Integration" description="Connecting Yet.Project with GitHub for webhooks and automation.">
+<DocLayout title="GitHub Integration" description="Connecting Erold with GitHub for webhooks and automation.">
   <h1>GitHub Integration</h1>
 
   <p>
-    Connect Yet.Project with GitHub to automatically sync issues, link PRs to tasks, and automate workflows.
+    Connect Erold with GitHub to automatically sync issues, link PRs to tasks, and automate workflows.
   </p>
 
   <h2>Features</h2>
@@ -22,15 +22,15 @@ import DocLayout from '../../../layouts/DocLayout.astro';
 
   <h3>1. Connect GitHub</h3>
   <ol>
-    <li>Go to <strong>Settings → Integrations</strong> in Yet.Project</li>
+    <li>Go to <strong>Settings → Integrations</strong> in Erold</li>
     <li>Click <strong>"Connect GitHub"</strong></li>
-    <li>Authorize Yet.Project to access your repositories</li>
+    <li>Authorize Erold to access your repositories</li>
     <li>Select which repositories to connect</li>
   </ol>
 
   <h3>2. Configure Webhooks</h3>
   <p>
-    Yet.Project automatically configures webhooks for connected repositories. Events monitored:
+    Erold automatically configures webhooks for connected repositories. Events monitored:
   </p>
   <ul>
     <li>Pull request opened/closed/merged</li>
@@ -89,10 +89,10 @@ Closes MYAPP-45</code></pre>
 
   <h2>GitHub Actions</h2>
 
-  <p>Use Yet.Project in your CI/CD workflows:</p>
+  <p>Use Erold in your CI/CD workflows:</p>
 
   <pre><code># .github/workflows/yet.yml
-name: Update Yet.Project
+name: Update Erold
 
 on:
   pull_request:
@@ -112,14 +112,14 @@ jobs:
       - name: Update task status
         if: steps.task.outputs.task_id
         run: |
-          curl -X PATCH https://api.yet.watch/v1/tasks/$&#123;&#123; steps.task.outputs.task_id &#125;&#125; \
+          curl -X PATCH https://api.erold.dev/v1/tasks/$&#123;&#123; steps.task.outputs.task_id &#125;&#125; \
             -H "Authorization: Bearer $&#123;&#123; secrets.YET_API_KEY &#125;&#125;" \
             -H "Content-Type: application/json" \
             -d '&#123;"status": "done"&#125;'</code></pre>
 
   <h2>Creating Tasks from Issues</h2>
 
-  <p>Optionally sync GitHub Issues to Yet.Project tasks:</p>
+  <p>Optionally sync GitHub Issues to Erold tasks:</p>
 
   <ol>
     <li>Go to <strong>Settings → Integrations → GitHub</strong></li>
@@ -128,13 +128,13 @@ jobs:
   </ol>
 
   <p>
-    New GitHub issues with selected labels automatically create Yet.Project tasks.
+    New GitHub issues with selected labels automatically create Erold tasks.
   </p>
 
   <h2>Activity Feed</h2>
 
   <p>
-    GitHub activity appears in the Yet.Project activity feed:
+    GitHub activity appears in the Erold activity feed:
   </p>
 
   <ul>

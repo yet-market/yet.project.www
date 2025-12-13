@@ -9,12 +9,12 @@ const post = {
   date: '2025-01-10',
   readTime: '8 min read',
   category: 'AI Development',
-  author: 'Yet.Project Team',
+  author: 'Erold Team',
 };
 ---
 
 <Layout
-  title={`${post.title} - Yet.Project Blog`}
+  title={`${post.title} - Erold Blog`}
   description={post.excerpt}
 >
   <Header />
@@ -48,7 +48,7 @@ const post = {
         </p>
 
         <p>
-          <strong>Model Context Protocol (MCP)</strong> is changing that. It's an open protocol that lets AI assistants securely connect to external data sources and tools — including project management systems like Yet.Project.
+          <strong>Model Context Protocol (MCP)</strong> is changing that. It's an open protocol that lets AI assistants securely connect to external data sources and tools — including project management systems like Erold.
         </p>
 
         <h2>What Problem Does MCP Solve?</h2>
@@ -75,13 +75,13 @@ const post = {
         </p>
 
         <ol>
-          <li><strong>MCP Server:</strong> A service (like Yet.Project) that exposes data and actions via the MCP protocol</li>
+          <li><strong>MCP Server:</strong> A service (like Erold) that exposes data and actions via the MCP protocol</li>
           <li><strong>MCP Client:</strong> An AI assistant (like Claude) that connects to MCP servers</li>
           <li><strong>Protocol:</strong> JSON-RPC over stdio or HTTP, defining how data and actions are exposed</li>
         </ol>
 
         <p>
-          When you connect Claude Code to Yet.Project's MCP server, Claude can:
+          When you connect Claude Code to Erold's MCP server, Claude can:
         </p>
 
         <ul>
@@ -150,15 +150,15 @@ const post = {
         <h2>Getting Started with MCP</h2>
 
         <p>
-          Ready to try MCP? Here's how to connect Claude Code to Yet.Project:
+          Ready to try MCP? Here's how to connect Claude Code to Erold:
         </p>
 
         <div class="bg-dark-900 rounded-xl p-6 not-prose mb-6">
           <code class="text-sm text-dark-200">
-            <pre>{`# 1. Install the Yet.Project MCP server
+            <pre>{`# 1. Install the Erold MCP server
 npx @anthropic/yet-project-mcp
 
-# 2. Get your API key from Yet.Project
+# 2. Get your API key from Erold
 # Settings → API Keys → Create Key
 
 # 3. Configure Claude Code
@@ -176,7 +176,7 @@ npx @anthropic/yet-project-mcp
         </div>
 
         <p>
-          That's it! Claude Code can now access your Yet.Project tasks and Knowledge Base directly.
+          That's it! Claude Code can now access your Erold tasks and Knowledge Base directly.
         </p>
 
         <h2>The Future of AI-Tool Integration</h2>
@@ -186,16 +186,16 @@ npx @anthropic/yet-project-mcp
         </p>
 
         <p>
-          At Yet.Project, we've been building with MCP in mind from day one. Our MCP server provides 27+ tools for task management, knowledge base access, and activity tracking — all through the standard MCP protocol.
+          At Erold, we've been building with MCP in mind from day one. Our MCP server provides 27+ tools for task management, knowledge base access, and activity tracking — all through the standard MCP protocol.
         </p>
 
         <div class="bg-primary-50 rounded-xl p-6 not-prose mt-8">
           <h3 class="font-semibold text-dark-900 mb-2">Ready to try AI-native project management?</h3>
           <p class="text-dark-600 mb-4">
-            Yet.Project is built for developers working with AI. Native MCP support, Knowledge Base for AI memory, and full API access.
+            Erold is built for developers working with AI. Native MCP support, Knowledge Base for AI memory, and full API access.
           </p>
           <a
-            href="https://app.yet.watch/auth/register"
+            href="https://app.erold.dev/auth/register"
             class="inline-flex items-center gap-2 bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors"
           >
             Start Free
@@ -215,13 +215,13 @@ npx @anthropic/yet-project-mcp
             </div>
             <div>
               <div class="font-semibold text-dark-900">{post.author}</div>
-              <div class="text-sm text-dark-500">Yet.Project</div>
+              <div class="text-sm text-dark-500">Erold</div>
             </div>
           </div>
           <div class="flex items-center gap-4">
             <span class="text-sm text-dark-500">Share:</span>
             <a
-              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent('https://yet.watch/blog/what-is-mcp-model-context-protocol')}`}
+              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent('https://erold.dev/blog/what-is-mcp-model-context-protocol')}`}
               target="_blank"
               rel="noopener noreferrer"
               class="text-dark-400 hover:text-dark-600"
@@ -231,7 +231,7 @@ npx @anthropic/yet-project-mcp
               </svg>
             </a>
             <a
-              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://yet.watch/blog/what-is-mcp-model-context-protocol')}`}
+              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://erold.dev/blog/what-is-mcp-model-context-protocol')}`}
               target="_blank"
               rel="noopener noreferrer"
               class="text-dark-400 hover:text-dark-600"
@@ -256,7 +256,7 @@ npx @anthropic/yet-project-mcp
         </a>
         <a href="/blog/claude-code-mcp-integration-guide" class="group bg-white rounded-xl shadow-card border border-dark-100 p-6 hover:shadow-lg transition-all">
           <div class="text-sm text-dark-500 mb-2">Tutorial</div>
-          <h3 class="font-bold text-dark-900 group-hover:text-primary-600 transition-colors mb-2">How to Connect Claude Code to Yet.Project</h3>
+          <h3 class="font-bold text-dark-900 group-hover:text-primary-600 transition-colors mb-2">How to Connect Claude Code to Erold</h3>
           <p class="text-dark-600 text-sm">Step-by-step MCP integration guide.</p>
         </a>
         <a href="/blog/knowledge-base-ai-memory" class="group bg-white rounded-xl shadow-card border border-dark-100 p-6 hover:shadow-lg transition-all">

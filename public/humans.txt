@@ -1,9 +1,9 @@
 /* TEAM */
 
-Product: Yet.Project
+Product: Erold
 Company: Yet Another Artificial Intelligence Company (SARL-S)
 Location: Luxembourg
-Website: https://yet.watch
+Website: https://erold.dev
 Parent: https://yet.lu
 
 /* THANKS */
@@ -35,6 +35,6 @@ Accessibility: WCAG 2.1 AA target
 
 /* CONTACT */
 
-Contact: https://yet.watch/contact
-GitHub: https://github.com/yet-market
-Twitter: @yetproject
+Contact: https://erold.dev/contact
+GitHub: https://github.com/erold-dev
+Twitter: @erikibolern

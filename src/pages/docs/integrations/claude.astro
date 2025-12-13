@@ -2,18 +2,18 @@
 import DocLayout from '../../../layouts/DocLayout.astro';
 ---
 
-<DocLayout title="Claude Code Integration" description="Using Yet.Project with Claude Code via MCP.">
+<DocLayout title="Claude Code Integration" description="Using Erold with Claude Code via MCP.">
   <h1>Claude Code Integration</h1>
 
   <p>
-    Claude Code is Anthropic's AI coding assistant. Yet.Project integrates via the Model Context Protocol (MCP).
+    Claude Code is Anthropic's AI coding assistant. Erold integrates via the Model Context Protocol (MCP).
   </p>
 
   <h2>Setup</h2>
 
   <h3>1. Get Your API Key</h3>
   <p>
-    Create an API key in <a href="https://app.yet.watch">Yet.Project</a> under <strong>Settings → API Keys</strong>.
+    Create an API key in <a href="https://app.erold.dev">Erold</a> under <strong>Settings → API Keys</strong>.
   </p>
 
   <h3>2. Configure Claude Code</h3>
@@ -27,7 +27,7 @@ import DocLayout from '../../../layouts/DocLayout.astro';
   "mcpServers": {
     "yet": {
       "command": "npx",
-      "args": ["-y", "@yet/mcp-server"],
+      "args": ["-y", "@erold/mcp-server"],
       "env": {
         "YET_API_KEY": "yet_your_api_key_here"
       }
@@ -39,11 +39,11 @@ import DocLayout from '../../../layouts/DocLayout.astro';
   <p>Fully quit and restart Claude Code to load the new configuration.</p>
 
   <h3>4. Verify</h3>
-  <p>Ask Claude: "List my Yet.Project projects"</p>
+  <p>Ask Claude: "List my Erold projects"</p>
 
   <h2>What Claude Can Do</h2>
 
-  <p>With the Yet.Project MCP server, Claude can:</p>
+  <p>With the Erold MCP server, Claude can:</p>
 
   <ul>
     <li><strong>Manage tasks</strong> - Create, update, search, and complete tasks</li>
@@ -113,7 +113,7 @@ Claude: [Lists in-progress tasks]
     <li>Verify the config file path is correct for your OS</li>
     <li>Check JSON syntax - missing commas are common</li>
     <li>Fully quit Claude (not just close window)</li>
-    <li>Try running <code>npx @yet/mcp-server</code> manually to check for errors</li>
+    <li>Try running <code>npx @erold/mcp-server</code> manually to check for errors</li>
   </ul>
 
   <h3>Authentication errors</h3>

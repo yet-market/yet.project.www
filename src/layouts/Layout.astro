@@ -16,18 +16,18 @@ interface Props {
 
 const {
   title,
-  description = 'AI-Native Project Management for Developers. Let Claude Code, Cursor, and AI tools manage your projects directly via MCP, API, and CLI.',
+  description = 'AI-Native Project Management for Developers. Let Claude Code, Cursor, and AI tools manage your projects directly via MCP, API, and CLI. Built by Erold.',
   image = '/og-image.png',
   type = 'website',
   publishedDate,
   modifiedDate,
-  author = 'Yet.Project',
+  author = 'Erold',
   canonicalUrl,
   noindex = false,
 } = Astro.props;
 
-const siteUrl = 'https://yet.watch';
-const fullTitle = title === 'Yet.Project' ? title : `${title} | Yet.Project`;
+const siteUrl = 'https://erold.dev';
+const fullTitle = title === 'Erold' ? title : `${title} | Erold`;
 const ogImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
 const canonical = canonicalUrl || Astro.url.href;
 
@@ -35,17 +35,17 @@ const canonical = canonicalUrl || Astro.url.href;
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Yet.Project",
-  "alternateName": "Yet Project",
+  "name": "Erold",
+  "alternateName": "Erold Dev",
   "description": "AI-Native Project Management Platform for Developers and AI Agents",
   "url": siteUrl,
   "logo": `${siteUrl}/logo.png`,
   "image": `${siteUrl}/og-image.png`,
   "sameAs": [
-    "https://github.com/yet-market",
-    "https://twitter.com/yetproject",
-    "https://linkedin.com/company/yetproject",
-    "https://discord.gg/yetproject"
+    "https://github.com/erold-dev",
+    "https://twitter.com/erold",
+    "https://linkedin.com/company/erold",
+    "https://discord.gg/erold"
   ],
   "contactPoint": {
     "@type": "ContactPoint",
@@ -73,14 +73,14 @@ const organizationSchema = {
 const softwareSchema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "Yet.Project",
+  "name": "Erold",
   "alternateName": "Yet Project AI PM",
   "description": description,
   "applicationCategory": "DeveloperApplication",
   "applicationSubCategory": "Project Management",
   "operatingSystem": "Web, macOS, Windows, Linux",
   "url": siteUrl,
-  "downloadUrl": "https://www.npmjs.com/package/@yet/cli",
+  "downloadUrl": "https://www.npmjs.com/package/@erold/cli",
   "softwareVersion": "1.0",
   "releaseNotes": `${siteUrl}/changelog`,
   "screenshot": `${siteUrl}/og-image.png`,
@@ -132,7 +132,7 @@ const softwareSchema = {
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "Yet.Project",
+  "name": "Erold",
   "alternateName": "Yet Project Documentation",
   "url": siteUrl,
   "potentialAction": {
@@ -173,34 +173,34 @@ const faqSchema = {
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "What is Yet.Project?",
+      "name": "What is Erold?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yet.Project is an AI-native project management platform built specifically for developers and AI agents to collaborate. It features MCP server integration, REST API, CLI tool, and a knowledge base that gives AI persistent memory across sessions."
+        "text": "Erold is an AI-native project management platform built specifically for developers and AI agents to collaborate. It features MCP server integration, REST API, CLI tool, and a knowledge base that gives AI persistent memory across sessions."
       }
     },
     {
       "@type": "Question",
-      "name": "How does Yet.Project integrate with Claude Code?",
+      "name": "How does Erold integrate with Claude Code?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yet.Project provides a native MCP (Model Context Protocol) server with 27+ tools that Claude Code can use directly. This allows Claude to create tasks, update progress, access project knowledge, and manage your projects without any copy-paste."
+        "text": "Erold provides a native MCP (Model Context Protocol) server with 27+ tools that Claude Code can use directly. This allows Claude to create tasks, update progress, access project knowledge, and manage your projects without any copy-paste."
       }
     },
     {
       "@type": "Question",
-      "name": "Is Yet.Project free?",
+      "name": "Is Erold free?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes! Yet.Project offers a free tier with 1 project and unlimited tasks. Pro is $5/month with pay-as-you-go pricing for extra resources. Only pay for what you use beyond included allocations."
+        "text": "Yes! Erold offers a free tier with 1 project and unlimited tasks. Pro is $5/month with pay-as-you-go pricing for extra resources. Only pay for what you use beyond included allocations."
       }
     },
     {
       "@type": "Question",
-      "name": "What AI tools does Yet.Project support?",
+      "name": "What AI tools does Erold support?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yet.Project works with any AI tool that supports MCP or REST APIs, including Claude Code, Claude Desktop, Cursor, Windsurf, GitHub Copilot, and custom AI agents. The API-first design ensures compatibility with current and future AI tools."
+        "text": "Erold works with any AI tool that supports MCP or REST APIs, including Claude Code, Claude Desktop, Cursor, Windsurf, GitHub Copilot, and custom AI agents. The API-first design ensures compatibility with current and future AI tools."
       }
     },
     {
@@ -208,15 +208,15 @@ const faqSchema = {
       "name": "What is MCP (Model Context Protocol)?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "MCP (Model Context Protocol) is a standard protocol that allows AI assistants to interact with external tools and services. Yet.Project's MCP server provides 27+ tools for task management, knowledge base access, and project operations that AI assistants can use directly."
+        "text": "MCP (Model Context Protocol) is a standard protocol that allows AI assistants to interact with external tools and services. Erold's MCP server provides 27+ tools for task management, knowledge base access, and project operations that AI assistants can use directly."
       }
     },
     {
       "@type": "Question",
-      "name": "How is Yet.Project different from Jira, Linear, or Asana?",
+      "name": "How is Erold different from Jira, Linear, or Asana?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yet.Project is built API-first for AI agents, not humans-first with APIs added later. Traditional tools require copy-paste to share context with AI. Yet.Project lets AI assistants read tasks, update progress, and access project knowledge directly through MCP, API, or CLI."
+        "text": "Erold is built API-first for AI agents, not humans-first with APIs added later. Traditional tools require copy-paste to share context with AI. Erold lets AI assistants read tasks, update progress, and access project knowledge directly through MCP, API, or CLI."
       }
     },
     {
@@ -229,10 +229,10 @@ const faqSchema = {
     },
     {
       "@type": "Question",
-      "name": "Does Yet.Project have a CLI tool?",
+      "name": "Does Erold have a CLI tool?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes! The Yet CLI (npm install -g @yet/cli) provides full task management from your terminal. Create tasks, list projects, mark items done, and integrate with git workflows. Perfect for developers who prefer command-line tools."
+        "text": "Yes! The Yet CLI (npm install -g @erold/cli) provides full task management from your terminal. Create tasks, list projects, mark items done, and integrate with git workflows. Perfect for developers who prefer command-line tools."
       }
     }
   ]
@@ -265,15 +265,15 @@ const faqSchema = {
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:site_name" content="Yet.Project" />
+    <meta property="og:site_name" content="Erold" />
     <meta property="og:locale" content="en_US" />
     {publishedDate && <meta property="article:published_time" content={publishedDate} />}
     {modifiedDate && <meta property="article:modified_time" content={modifiedDate} />}
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@yetproject" />
-    <meta name="twitter:creator" content="@yetproject" />
+    <meta name="twitter:site" content="@erikibolern" />
+    <meta name="twitter:creator" content="@erikibolern" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
@@ -347,13 +347,13 @@ const faqSchema = {
       })();
 
       gtag('js', new Date());
-      gtag('config', 'G-ST79TGSX4E', {
+      gtag('config', 'G-D4WGC51J8C', {
         'anonymize_ip': true,
         'cookie_flags': 'SameSite=None;Secure',
         'send_page_view': true
       });
     </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ST79TGSX4E"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D4WGC51J8C"></script>
   </head>
 
   <body class="bg-white text-dark-900 antialiased font-sans selection:bg-primary-100 selection:text-primary-900">

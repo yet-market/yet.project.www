@@ -2,7 +2,7 @@
 import DocLayout from '../../../layouts/DocLayout.astro';
 ---
 
-<DocLayout title="Tasks API" description="REST API endpoints for managing tasks in Yet.Project.">
+<DocLayout title="Tasks API" description="REST API endpoints for managing tasks in Erold.">
   <h1>Tasks API</h1>
 
   <p>
@@ -62,7 +62,7 @@ import DocLayout from '../../../layouts/DocLayout.astro';
   </table>
 
   <h3>Example</h3>
-  <pre><code>{`curl "https://api.yet.watch/v1/tasks?projectId=proj_abc&status=todo" \\
+  <pre><code>{`curl "https://api.erold.dev/v1/tasks?projectId=proj_abc&status=todo" \\
   -H "Authorization: Bearer yet_xxx"`}</code></pre>
 
   <h2>Get Task</h2>
@@ -70,7 +70,7 @@ import DocLayout from '../../../layouts/DocLayout.astro';
   <pre><code>GET /v1/tasks/:taskId</code></pre>
 
   <h3>Example</h3>
-  <pre><code>{`curl https://api.yet.watch/v1/tasks/MYAPP-123 \\
+  <pre><code>{`curl https://api.erold.dev/v1/tasks/MYAPP-123 \\
   -H "Authorization: Bearer yet_xxx"`}</code></pre>
 
   <h3>Response</h3>
@@ -159,7 +159,7 @@ import DocLayout from '../../../layouts/DocLayout.astro';
   </table>
 
   <h3>Example</h3>
-  <pre><code>{`curl -X POST https://api.yet.watch/v1/tasks \\
+  <pre><code>{`curl -X POST https://api.erold.dev/v1/tasks \\
   -H "Authorization: Bearer yet_xxx" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -177,7 +177,7 @@ import DocLayout from '../../../layouts/DocLayout.astro';
   <p>Update any task fields. Only include fields you want to change.</p>
 
   <h3>Example</h3>
-  <pre><code>{`curl -X PATCH https://api.yet.watch/v1/tasks/MYAPP-123 \\
+  <pre><code>{`curl -X PATCH https://api.erold.dev/v1/tasks/MYAPP-123 \\
   -H "Authorization: Bearer yet_xxx" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -190,7 +190,7 @@ import DocLayout from '../../../layouts/DocLayout.astro';
   <pre><code>DELETE /v1/tasks/:taskId</code></pre>
 
   <h3>Example</h3>
-  <pre><code>{`curl -X DELETE https://api.yet.watch/v1/tasks/MYAPP-123 \\
+  <pre><code>{`curl -X DELETE https://api.erold.dev/v1/tasks/MYAPP-123 \\
   -H "Authorization: Bearer yet_xxx"`}</code></pre>
 
   <h2>Search Tasks</h2>
@@ -221,7 +221,7 @@ import DocLayout from '../../../layouts/DocLayout.astro';
   </table>
 
   <h3>Example</h3>
-  <pre><code>{`curl "https://api.yet.watch/v1/tasks/search?q=authentication" \\
+  <pre><code>{`curl "https://api.erold.dev/v1/tasks/search?q=authentication" \\
   -H "Authorization: Bearer yet_xxx"`}</code></pre>
 
   <h2>Next Steps</h2>

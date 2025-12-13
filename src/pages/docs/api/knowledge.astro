@@ -2,7 +2,7 @@
 import DocLayout from '../../../layouts/DocLayout.astro';
 ---
 
-<DocLayout title="Knowledge API" description="REST API endpoints for the Yet.Project Knowledge Base.">
+<DocLayout title="Knowledge API" description="REST API endpoints for the Erold Knowledge Base.">
   <h1>Knowledge API</h1>
 
   <p>
@@ -37,7 +37,7 @@ import DocLayout from '../../../layouts/DocLayout.astro';
   </table>
 
   <h3>Example</h3>
-  <pre><code>{`curl https://api.yet.watch/v1/knowledge \\
+  <pre><code>{`curl https://api.erold.dev/v1/knowledge \\
   -H "Authorization: Bearer yet_xxx"`}</code></pre>
 
   <h3>Response</h3>
@@ -63,7 +63,7 @@ import DocLayout from '../../../layouts/DocLayout.astro';
   <pre><code>GET /v1/knowledge/:key</code></pre>
 
   <h3>Example</h3>
-  <pre><code>{`curl https://api.yet.watch/v1/knowledge/architecture \\
+  <pre><code>{`curl https://api.erold.dev/v1/knowledge/architecture \\
   -H "Authorization: Bearer yet_xxx"`}</code></pre>
 
   <h2>Set Knowledge Item</h2>
@@ -99,7 +99,7 @@ import DocLayout from '../../../layouts/DocLayout.astro';
   </table>
 
   <h3>Example</h3>
-  <pre><code>{`curl -X PUT https://api.yet.watch/v1/knowledge/architecture \\
+  <pre><code>{`curl -X PUT https://api.erold.dev/v1/knowledge/architecture \\
   -H "Authorization: Bearer yet_xxx" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -111,7 +111,7 @@ import DocLayout from '../../../layouts/DocLayout.astro';
   <pre><code>DELETE /v1/knowledge/:key</code></pre>
 
   <h3>Example</h3>
-  <pre><code>{`curl -X DELETE https://api.yet.watch/v1/knowledge/old-docs \\
+  <pre><code>{`curl -X DELETE https://api.erold.dev/v1/knowledge/old-docs \\
   -H "Authorization: Bearer yet_xxx"`}</code></pre>
 
   <h2>Search Knowledge</h2>
@@ -147,7 +147,7 @@ import DocLayout from '../../../layouts/DocLayout.astro';
   </table>
 
   <h3>Example</h3>
-  <pre><code>{`curl "https://api.yet.watch/v1/knowledge/search?q=authentication" \\
+  <pre><code>{`curl "https://api.erold.dev/v1/knowledge/search?q=authentication" \\
   -H "Authorization: Bearer yet_xxx"`}</code></pre>
 
   <h3>Response</h3>

@@ -1,30 +1,30 @@
-# Security Policy for Yet.Project
-# https://yet.watch/.well-known/security.txt
+# Security Policy for Erold
+# https://erold.dev/.well-known/security.txt
 
 Contact: mailto:security@yet.lu
-Contact: https://yet.watch/contact
+Contact: https://erold.dev/contact
 
 Expires: 2026-12-31T23:59:59.000Z
 
-Encryption: https://yet.watch/pgp-key.txt
+Encryption: https://erold.dev/pgp-key.txt
 
 Preferred-Languages: en, fr, de
 
-Canonical: https://yet.watch/.well-known/security.txt
+Canonical: https://erold.dev/.well-known/security.txt
 
-Policy: https://yet.watch/security
+Policy: https://erold.dev/security
 
-Hiring: https://yet.watch/contact
+Hiring: https://erold.dev/contact
 
 # Acknowledgments
 # We appreciate responsible security researchers who help us
-# keep Yet.Project secure. If you discover a vulnerability,
+# keep Erold secure. If you discover a vulnerability,
 # please report it to security@yet.lu
 
 # Scope
-# - yet.watch (marketing website)
-# - app.yet.watch (application)
-# - api.yet.watch (API endpoints)
+# - erold.dev (marketing website)
+# - app.erold.dev (application)
+# - api.erold.dev (API endpoints)
 
 # Out of Scope
 # - Social engineering attacks

@@ -2,16 +2,16 @@
 import DocLayout from '../../../layouts/DocLayout.astro';
 ---
 
-<DocLayout title="REST API" description="REST API authentication and getting started with the Yet.Project API.">
+<DocLayout title="REST API" description="REST API authentication and getting started with the Erold API.">
   <h1>REST API</h1>
 
   <p>
-    The Yet.Project REST API provides 68+ endpoints for full programmatic access to your workspace. Build integrations, automate workflows, or create custom tools.
+    The Erold REST API provides 68+ endpoints for full programmatic access to your workspace. Build integrations, automate workflows, or create custom tools.
   </p>
 
   <h2>Base URL</h2>
 
-  <pre><code>https://api.yet.watch/v1</code></pre>
+  <pre><code>https://api.erold.dev/v1</code></pre>
 
   <h2>Authentication</h2>
 
@@ -19,7 +19,7 @@ import DocLayout from '../../../layouts/DocLayout.astro';
     All API requests require authentication via API key. Include your key in the <code>Authorization</code> header:
   </p>
 
-  <pre><code>{`curl https://api.yet.watch/v1/projects \\
+  <pre><code>{`curl https://api.erold.dev/v1/projects \\
   -H "Authorization: Bearer yet_your_api_key_here"`}</code></pre>
 
   <p>
@@ -120,11 +120,11 @@ import DocLayout from '../../../layouts/DocLayout.astro';
   <h2>Quick Examples</h2>
 
   <h3>List Projects</h3>
-  <pre><code>{`curl https://api.yet.watch/v1/projects \\
+  <pre><code>{`curl https://api.erold.dev/v1/projects \\
   -H "Authorization: Bearer yet_xxx"`}</code></pre>
 
   <h3>Create a Task</h3>
-  <pre><code>{`curl -X POST https://api.yet.watch/v1/tasks \\
+  <pre><code>{`curl -X POST https://api.erold.dev/v1/tasks \\
   -H "Authorization: Bearer yet_xxx" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -134,7 +134,7 @@ import DocLayout from '../../../layouts/DocLayout.astro';
   }'`}</code></pre>
 
   <h3>Update Task Status</h3>
-  <pre><code>{`curl -X PATCH https://api.yet.watch/v1/tasks/MYAPP-123 \\
+  <pre><code>{`curl -X PATCH https://api.erold.dev/v1/tasks/MYAPP-123 \\
   -H "Authorization: Bearer yet_xxx" \\
   -H "Content-Type: application/json" \\
   -d '{"status": "done"}'`}</code></pre>

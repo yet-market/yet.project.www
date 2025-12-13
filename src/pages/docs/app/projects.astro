@@ -2,11 +2,11 @@
 import DocLayout from '../../../layouts/DocLayout.astro';
 ---
 
-<DocLayout title="Projects" description="Creating and managing projects in Yet.Project.">
+<DocLayout title="Projects" description="Creating and managing projects in Erold.">
   <h1>Projects</h1>
 
   <p>
-    Projects are the main organizational unit in Yet.Project. Each project contains tasks, has its own settings, and can have specific team access.
+    Projects are the main organizational unit in Erold. Each project contains tasks, has its own settings, and can have specific team access.
   </p>
 
   <h2>Creating a Project</h2>
@@ -50,7 +50,7 @@ import DocLayout from '../../../layouts/DocLayout.astro';
 
   <h2>Project Views</h2>
 
-  <p>Yet.Project supports multiple views:</p>
+  <p>Erold supports multiple views:</p>
 
   <ul>
     <li><strong>List View</strong> - Traditional list with sorting and filtering</li>
@@ -70,13 +70,13 @@ import DocLayout from '../../../layouts/DocLayout.astro';
   <h2>API & CLI</h2>
 
   <pre><code>{`# Create a project via CLI
-yet project create "My Project" --key MYPROJ
+erold project create "My Project" --key MYPROJ
 
 # List projects
-yet project list
+erold project list
 
 # Via API
-curl -X POST https://api.yet.watch/v1/projects \\
+curl -X POST https://api.erold.dev/v1/projects \\
   -H "Authorization: Bearer your_api_key" \\
   -H "Content-Type: application/json" \\
   -d '{"name": "My Project", "key": "MYPROJ"}'`}</code></pre>

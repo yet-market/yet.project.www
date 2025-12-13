@@ -2,7 +2,7 @@
 import DocLayout from '../../../layouts/DocLayout.astro';
 ---
 
-<DocLayout title="Git Integration" description="Linking git branches to tasks with the Yet.Project CLI.">
+<DocLayout title="Git Integration" description="Linking git branches to tasks with the Erold CLI.">
   <h1>Git Integration</h1>
 
   <p>
@@ -24,23 +24,23 @@ git checkout -b MYAPP-123`}</code></pre>
 
   <p>Create a branch for a task automatically:</p>
 
-  <pre><code>{`yet task start MYAPP-123
+  <pre><code>{`erold task start MYAPP-123
 
 # Creates branch: MYAPP-123-implement-auth
 # Sets task status to: in_progress`}</code></pre>
 
   <p>Options:</p>
   <pre><code>{`# Custom branch name
-yet task start MYAPP-123 --branch feature/auth
+erold task start MYAPP-123 --branch feature/auth
 
 # Don't change task status
-yet task start MYAPP-123 --no-status`}</code></pre>
+erold task start MYAPP-123 --no-status`}</code></pre>
 
   <h2>Finishing a Task</h2>
 
   <p>Mark a task as done from the current branch:</p>
 
-  <pre><code>{`yet task finish
+  <pre><code>{`erold task finish
 
 # If on branch MYAPP-123-implement-auth:
 # - Sets MYAPP-123 status to: done
@@ -62,7 +62,7 @@ yet commit "Add login endpoint"
     Set up git hooks to automatically update task status:
   </p>
 
-  <pre><code>{`yet git hooks install
+  <pre><code>{`erold git hooks install
 
 # Installs hooks that:
 # - Set task to in_progress when branch created
@@ -73,7 +73,7 @@ yet commit "Add login endpoint"
 
   <p>Create a pull request linked to the task:</p>
 
-  <pre><code>{`yet pr create
+  <pre><code>{`erold pr create
 
 # Creates PR with:
 # - Title from task
@@ -124,7 +124,7 @@ yet commit "Add login endpoint"
 
   <p>See git activity for a task:</p>
 
-  <pre><code>{`yet task show MYAPP-123 --git
+  <pre><code>{`erold task show MYAPP-123 --git
 
 # Shows:
 # - Linked branches
@@ -134,8 +134,8 @@ yet commit "Add login endpoint"
   <h2>Example Workflow</h2>
 
   <pre><code>{`# 1. Pick up a task
-yet task list --status todo
-yet task start MYAPP-123
+erold task list --status todo
+erold task start MYAPP-123
 
 # 2. Work on it, commit
 git add .
@@ -146,7 +146,7 @@ git add .
 yet commit "Add validation"
 
 # 4. Finish and create PR
-yet task finish
+erold task finish
 yet pr create
 
 # 5. After PR merged, task auto-completes (if configured)`}</code></pre>

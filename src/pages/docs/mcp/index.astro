@@ -2,11 +2,11 @@
 import DocLayout from '../../../layouts/DocLayout.astro';
 ---
 
-<DocLayout title="MCP Setup" description="Setting up the Yet.Project MCP Server for Claude Code and other AI tools.">
+<DocLayout title="MCP Setup" description="Setting up the Erold MCP Server for Claude Code and other AI tools.">
   <h1>MCP Server Setup</h1>
 
   <p>
-    The Model Context Protocol (MCP) server allows AI assistants like Claude Code, Cursor, and Windsurf to interact directly with Yet.Project.
+    The Model Context Protocol (MCP) server allows AI assistants like Claude Code, Cursor, and Windsurf to interact directly with Erold.
   </p>
 
   <h2>What is MCP?</h2>
@@ -25,7 +25,7 @@ import DocLayout from '../../../layouts/DocLayout.astro';
   <h2>Prerequisites</h2>
 
   <ul>
-    <li>A Yet.Project account with an API key</li>
+    <li>A Erold account with an API key</li>
     <li>Node.js 18+ installed</li>
     <li>An MCP-compatible AI tool (Claude Code, Cursor, etc.)</li>
   </ul>
@@ -34,7 +34,7 @@ import DocLayout from '../../../layouts/DocLayout.astro';
 
   <h3>1. Get Your API Key</h3>
   <p>
-    Go to <strong>Settings → API Keys</strong> in the Yet.Project web app and create a new key with Write permissions.
+    Go to <strong>Settings → API Keys</strong> in the Erold web app and create a new key with Write permissions.
   </p>
 
   <h3>2. Configure Claude Code</h3>
@@ -49,7 +49,7 @@ import DocLayout from '../../../layouts/DocLayout.astro';
   "mcpServers": {
     "yet": {
       "command": "npx",
-      "args": ["-y", "@yet/mcp-server"],
+      "args": ["-y", "@erold/mcp-server"],
       "env": {
         "YET_API_KEY": "yet_your_api_key_here"
       }
@@ -64,7 +64,7 @@ import DocLayout from '../../../layouts/DocLayout.astro';
 
   <h3>4. Verify</h3>
   <p>
-    Ask Claude: "List my Yet.Project projects"
+    Ask Claude: "List my Erold projects"
   </p>
   <p>
     Claude should show your projects using the MCP tools.
@@ -82,7 +82,7 @@ import DocLayout from '../../../layouts/DocLayout.astro';
     "servers": {
       "yet": {
         "command": "npx",
-        "args": ["-y", "@yet/mcp-server"],
+        "args": ["-y", "@erold/mcp-server"],
         "env": {
           "YET_API_KEY": "yet_your_api_key_here"
         }
@@ -98,7 +98,7 @@ import DocLayout from '../../../layouts/DocLayout.astro';
   "mcpServers": {
     "yet": {
       "command": "npx",
-      "args": ["-y", "@yet/mcp-server"],
+      "args": ["-y", "@erold/mcp-server"],
       "env": {
         "YET_API_KEY": "yet_your_api_key_here"
       }
@@ -120,12 +120,12 @@ import DocLayout from '../../../layouts/DocLayout.astro';
       <tr>
         <td><code>YET_API_KEY</code></td>
         <td>Yes</td>
-        <td>Your Yet.Project API key</td>
+        <td>Your Erold API key</td>
       </tr>
       <tr>
         <td><code>YET_API_URL</code></td>
         <td>No</td>
-        <td>Custom API URL (default: https://api.yet.watch)</td>
+        <td>Custom API URL (default: https://api.erold.dev)</td>
       </tr>
       <tr>
         <td><code>YET_DEFAULT_PROJECT</code></td>
@@ -140,7 +140,7 @@ import DocLayout from '../../../layouts/DocLayout.astro';
   <h3>"MCP server not found"</h3>
   <ul>
     <li>Ensure Node.js 18+ is installed: <code>node --version</code></li>
-    <li>Try running manually: <code>npx -y @yet/mcp-server</code></li>
+    <li>Try running manually: <code>npx -y @erold/mcp-server</code></li>
   </ul>
 
   <h3>"Unauthorized" errors</h3>

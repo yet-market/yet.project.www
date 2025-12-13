@@ -2,17 +2,17 @@
 import DocLayout from '../../layouts/DocLayout.astro';
 ---
 
-<DocLayout title="Quick Start" description="Get up and running with Yet.Project in 5 minutes.">
+<DocLayout title="Quick Start" description="Get up and running with Erold in 5 minutes.">
   <h1>Quick Start Guide</h1>
 
   <p>
-    Get Yet.Project set up and connected to your AI assistant in just a few minutes.
+    Get Erold set up and connected to your AI assistant in just a few minutes.
   </p>
 
   <h2>Step 1: Create Your Account</h2>
 
   <p>
-    Sign up at <a href="https://app.yet.watch/auth/register">app.yet.watch</a>. No credit card required for the free tier.
+    Sign up at <a href="https://app.erold.dev/auth/register">app.erold.dev</a>. No credit card required for the free tier.
   </p>
 
   <h2>Step 2: Create Your First Project</h2>
@@ -40,7 +40,7 @@ import DocLayout from '../../layouts/DocLayout.astro';
 
   <h2>Step 4: Configure MCP (for Claude Code)</h2>
 
-  <p>Add Yet.Project to your Claude Code configuration:</p>
+  <p>Add Erold to your Claude Code configuration:</p>
 
   <pre><code>{`// ~/.config/claude/claude_desktop_config.json
 {
@@ -63,23 +63,23 @@ import DocLayout from '../../layouts/DocLayout.astro';
 
   <pre><code>"Create a task called 'Set up authentication' in my project"</code></pre>
 
-  <p>Claude will use the MCP tools to create the task directly in Yet.Project.</p>
+  <p>Claude will use the MCP tools to create the task directly in Erold.</p>
 
   <h2>Alternative: Use the CLI</h2>
 
   <p>If you prefer the command line:</p>
 
   <pre><code>{`# Install the CLI
-npm install -g @yet/cli
+npm install -g @erold/cli
 
 # Login with your API key
-yet login --key your_api_key_here
+erold login --key your_api_key_here
 
 # Create a task
-yet task create "Set up authentication" --project MYAPP
+erold task create "Set up authentication" --project MYAPP
 
 # List tasks
-yet task list`}</code></pre>
+erold task list`}</code></pre>
 
   <h2>What's Next?</h2>
 

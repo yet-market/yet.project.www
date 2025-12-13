@@ -2,7 +2,7 @@
 import DocLayout from '../../../layouts/DocLayout.astro';
 ---
 
-<DocLayout title="Projects API" description="REST API endpoints for managing projects in Yet.Project.">
+<DocLayout title="Projects API" description="REST API endpoints for managing projects in Erold.">
   <h1>Projects API</h1>
 
   <p>
@@ -14,7 +14,7 @@ import DocLayout from '../../../layouts/DocLayout.astro';
   <pre><code>GET /v1/projects</code></pre>
 
   <h3>Example</h3>
-  <pre><code>{`curl https://api.yet.watch/v1/projects \\
+  <pre><code>{`curl https://api.erold.dev/v1/projects \\
   -H "Authorization: Bearer yet_xxx"`}</code></pre>
 
   <h3>Response</h3>
@@ -36,7 +36,7 @@ import DocLayout from '../../../layouts/DocLayout.astro';
   <pre><code>GET /v1/projects/:projectId</code></pre>
 
   <h3>Example</h3>
-  <pre><code>{`curl https://api.yet.watch/v1/projects/proj_abc123 \\
+  <pre><code>{`curl https://api.erold.dev/v1/projects/proj_abc123 \\
   -H "Authorization: Bearer yet_xxx"`}</code></pre>
 
   <h2>Create Project</h2>
@@ -76,7 +76,7 @@ import DocLayout from '../../../layouts/DocLayout.astro';
   </table>
 
   <h3>Example</h3>
-  <pre><code>{`curl -X POST https://api.yet.watch/v1/projects \\
+  <pre><code>{`curl -X POST https://api.erold.dev/v1/projects \\
   -H "Authorization: Bearer yet_xxx" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -90,7 +90,7 @@ import DocLayout from '../../../layouts/DocLayout.astro';
   <pre><code>PATCH /v1/projects/:projectId</code></pre>
 
   <h3>Example</h3>
-  <pre><code>{`curl -X PATCH https://api.yet.watch/v1/projects/proj_abc123 \\
+  <pre><code>{`curl -X PATCH https://api.erold.dev/v1/projects/proj_abc123 \\
   -H "Authorization: Bearer yet_xxx" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -111,7 +111,7 @@ import DocLayout from '../../../layouts/DocLayout.astro';
   </p>
 
   <h3>Example</h3>
-  <pre><code>{`curl -X DELETE https://api.yet.watch/v1/projects/proj_abc123 \\
+  <pre><code>{`curl -X DELETE https://api.erold.dev/v1/projects/proj_abc123 \\
   -H "Authorization: Bearer yet_xxx"`}</code></pre>
 
   <h2>Get Project Statistics</h2>

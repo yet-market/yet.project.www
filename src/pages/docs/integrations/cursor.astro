@@ -2,18 +2,18 @@
 import DocLayout from '../../../layouts/DocLayout.astro';
 ---
 
-<DocLayout title="Cursor Integration" description="Using Yet.Project with Cursor IDE via MCP.">
+<DocLayout title="Cursor Integration" description="Using Erold with Cursor IDE via MCP.">
   <h1>Cursor Integration</h1>
 
   <p>
-    Cursor is an AI-powered IDE. Yet.Project integrates via MCP so you can manage tasks without leaving your editor.
+    Cursor is an AI-powered IDE. Erold integrates via MCP so you can manage tasks without leaving your editor.
   </p>
 
   <h2>Setup</h2>
 
   <h3>1. Get Your API Key</h3>
   <p>
-    Create an API key in <a href="https://app.yet.watch">Yet.Project</a> under <strong>Settings → API Keys</strong>.
+    Create an API key in <a href="https://app.erold.dev">Erold</a> under <strong>Settings → API Keys</strong>.
   </p>
 
   <h3>2. Configure Cursor</h3>
@@ -27,7 +27,7 @@ import DocLayout from '../../../layouts/DocLayout.astro';
     "servers": {
       "yet": {
         "command": "npx",
-        "args": ["-y", "@yet/mcp-server"],
+        "args": ["-y", "@erold/mcp-server"],
         "env": {
           "YET_API_KEY": "yet_your_api_key_here"
         }
@@ -40,16 +40,16 @@ import DocLayout from '../../../layouts/DocLayout.astro';
   <p>Restart Cursor or reload the window to activate the MCP server.</p>
 
   <h3>4. Verify</h3>
-  <p>Open the AI chat and ask: "List my Yet.Project projects"</p>
+  <p>Open the AI chat and ask: "List my Erold projects"</p>
 
-  <h2>Using Yet.Project in Cursor</h2>
+  <h2>Using Erold in Cursor</h2>
 
   <h3>While Coding</h3>
   <p>Ask Cursor's AI about your tasks while you code:</p>
 
   <pre><code>{`You: "What's the next task I should work on?"
 
-AI: [Checks Yet.Project]
+AI: [Checks Erold]
 
 "Your highest priority task is MYAPP-45: Fix database timeout.
 It's been in progress for 2 days. Would you like me to help
@@ -88,7 +88,7 @@ AI: [Searches knowledge base]
     "servers": {
       "yet": {
         "command": "npx",
-        "args": ["-y", "@yet/mcp-server"],
+        "args": ["-y", "@erold/mcp-server"],
         "env": {
           "YET_API_KEY": "yet_your_api_key_here",
           "YET_DEFAULT_PROJECT": "MYAPP"
@@ -122,7 +122,7 @@ AI: [Searches knowledge base]
   <ul>
     <li>Verify API key is correct</li>
     <li>Check key permissions</li>
-    <li>Ensure network access to api.yet.watch</li>
+    <li>Ensure network access to api.erold.dev</li>
   </ul>
 
   <h2>Next Steps</h2>

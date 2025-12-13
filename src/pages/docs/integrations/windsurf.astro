@@ -2,18 +2,18 @@
 import DocLayout from '../../../layouts/DocLayout.astro';
 ---
 
-<DocLayout title="Windsurf Integration" description="Using Yet.Project with Windsurf IDE via MCP.">
+<DocLayout title="Windsurf Integration" description="Using Erold with Windsurf IDE via MCP.">
   <h1>Windsurf Integration</h1>
 
   <p>
-    Windsurf is Codeium's AI-powered IDE. Yet.Project integrates via MCP for seamless task management.
+    Windsurf is Codeium's AI-powered IDE. Erold integrates via MCP for seamless task management.
   </p>
 
   <h2>Setup</h2>
 
   <h3>1. Get Your API Key</h3>
   <p>
-    Create an API key in <a href="https://app.yet.watch">Yet.Project</a> under <strong>Settings → API Keys</strong>.
+    Create an API key in <a href="https://app.erold.dev">Erold</a> under <strong>Settings → API Keys</strong>.
   </p>
 
   <h3>2. Configure Windsurf</h3>
@@ -25,7 +25,7 @@ import DocLayout from '../../../layouts/DocLayout.astro';
   "mcpServers": {
     "yet": {
       "command": "npx",
-      "args": ["-y", "@yet/mcp-server"],
+      "args": ["-y", "@erold/mcp-server"],
       "env": {
         "YET_API_KEY": "yet_your_api_key_here"
       }
@@ -37,12 +37,12 @@ import DocLayout from '../../../layouts/DocLayout.astro';
   <p>Restart Windsurf to load the MCP configuration.</p>
 
   <h3>4. Verify</h3>
-  <p>Ask the AI: "Show my Yet.Project tasks"</p>
+  <p>Ask the AI: "Show my Erold tasks"</p>
 
   <h2>Cascade Integration</h2>
 
   <p>
-    Windsurf's Cascade feature works seamlessly with Yet.Project. The AI can:
+    Windsurf's Cascade feature works seamlessly with Erold. The AI can:
   </p>
 
   <ul>
@@ -56,7 +56,7 @@ import DocLayout from '../../../layouts/DocLayout.astro';
 
   <pre><code>{`You: "Help me implement MYAPP-45"
 
-Cascade: [Reads task details from Yet.Project]
+Cascade: [Reads task details from Erold]
 
 "MYAPP-45 is about fixing database timeouts. Based on your
 knowledge base, you're using PostgreSQL with a pool size of 10.
@@ -68,15 +68,15 @@ I'll help you:
 
 Let me start with the connection pool configuration..."`}</code></pre>
 
-  <h2>Using Flows with Yet.Project</h2>
+  <h2>Using Flows with Erold</h2>
 
   <p>
-    Windsurf Flows can incorporate Yet.Project context:
+    Windsurf Flows can incorporate Erold context:
   </p>
 
   <pre><code>{`You: "Start a flow for implementing user authentication"
 
-Cascade: [Creates flow, checks Yet.Project for related tasks]
+Cascade: [Creates flow, checks Erold for related tasks]
 
 "I found these related tasks:
 - MYAPP-47: Implement JWT auth
@@ -101,7 +101,7 @@ Starting implementation flow..."`}</code></pre>
   "mcpServers": {
     "yet": {
       "command": "npx",
-      "args": ["-y", "@yet/mcp-server"],
+      "args": ["-y", "@erold/mcp-server"],
       "env": {
         "YET_API_KEY": "yet_your_api_key_here",
         "YET_DEFAULT_PROJECT": "MYAPP"
@@ -133,7 +133,7 @@ Starting implementation flow..."`}</code></pre>
 
   <h3>Connection issues</h3>
   <ul>
-    <li>Test API key with CLI: <code>yet whoami</code></li>
+    <li>Test API key with CLI: <code>erold whoami</code></li>
     <li>Check firewall settings</li>
   </ul>
 

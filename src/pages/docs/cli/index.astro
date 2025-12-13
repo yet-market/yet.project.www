@@ -2,37 +2,37 @@
 import DocLayout from '../../../layouts/DocLayout.astro';
 ---
 
-<DocLayout title="CLI Installation" description="Installing and configuring the Yet.Project CLI tool.">
+<DocLayout title="CLI Installation" description="Installing and configuring the Erold CLI tool.">
   <h1>CLI Installation</h1>
 
   <p>
-    The Yet.Project CLI lets you manage tasks and projects from your terminal without leaving your editor.
+    The Erold CLI lets you manage tasks and projects from your terminal without leaving your editor.
   </p>
 
   <h2>Installation</h2>
 
   <h3>npm (Recommended)</h3>
-  <pre><code>npm install -g @yet/cli</code></pre>
+  <pre><code>npm install -g @erold/cli</code></pre>
 
   <h3>yarn</h3>
-  <pre><code>yarn global add @yet/cli</code></pre>
+  <pre><code>yarn global add @erold/cli</code></pre>
 
   <h3>pnpm</h3>
-  <pre><code>pnpm add -g @yet/cli</code></pre>
+  <pre><code>pnpm add -g @erold/cli</code></pre>
 
   <h2>Verify Installation</h2>
 
-  <pre><code>{`yet --version
+  <pre><code>{`erold --version
 # yet-cli v1.0.0`}</code></pre>
 
   <h2>Authentication</h2>
 
   <p>Login with your API key:</p>
 
-  <pre><code>{`yet login --key yet_your_api_key_here
+  <pre><code>{`erold login --key yet_your_api_key_here
 
 # Or interactively
-yet login
+erold login
 # Paste your API key when prompted`}</code></pre>
 
   <p>The CLI stores your credentials in <code>~/.yet/config.json</code>.</p>
@@ -40,7 +40,7 @@ yet login
   <h2>Quick Test</h2>
 
   <pre><code>{`# List your projects
-yet project list
+erold project list
 
 # Should show your projects:
 # MYAPP  My Application  12 tasks
@@ -51,41 +51,41 @@ yet project list
   <h3>Default Project</h3>
   <p>Set a default project to avoid typing <code>--project</code> every time:</p>
 
-  <pre><code>{`yet config set defaultProject MYAPP
+  <pre><code>{`erold config set defaultProject MYAPP
 
 # Now you can run:
-yet task list
+erold task list
 # Instead of:
-yet task list --project MYAPP`}</code></pre>
+erold task list --project MYAPP`}</code></pre>
 
   <h3>Output Format</h3>
   <p>Choose your preferred output format:</p>
 
   <pre><code>{`# Table format (default)
-yet config set format table
+erold config set format table
 
 # JSON format (for scripting)
-yet config set format json
+erold config set format json
 
 # Minimal format
-yet config set format minimal`}</code></pre>
+erold config set format minimal`}</code></pre>
 
   <h2>Shell Completion</h2>
 
   <h3>Bash</h3>
-  <pre><code>{`yet completion bash >> ~/.bashrc
+  <pre><code>{`erold completion bash >> ~/.bashrc
 source ~/.bashrc`}</code></pre>
 
   <h3>Zsh</h3>
-  <pre><code>{`yet completion zsh >> ~/.zshrc
+  <pre><code>{`erold completion zsh >> ~/.zshrc
 source ~/.zshrc`}</code></pre>
 
   <h3>Fish</h3>
-  <pre><code>{`yet completion fish > ~/.config/fish/completions/yet.fish`}</code></pre>
+  <pre><code>{`erold completion fish > ~/.config/fish/completions/yet.fish`}</code></pre>
 
   <h2>Uninstalling</h2>
 
-  <pre><code>{`npm uninstall -g @yet/cli
+  <pre><code>{`npm uninstall -g @erold/cli
 
 # Remove config
 rm -rf ~/.yet`}</code></pre>

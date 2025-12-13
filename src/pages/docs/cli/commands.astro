@@ -2,7 +2,7 @@
 import DocLayout from '../../../layouts/DocLayout.astro';
 ---
 
-<DocLayout title="CLI Commands" description="Complete reference for all Yet.Project CLI commands.">
+<DocLayout title="CLI Commands" description="Complete reference for all Erold CLI commands.">
   <h1>CLI Commands Reference</h1>
 
   <p>
@@ -11,71 +11,71 @@ import DocLayout from '../../../layouts/DocLayout.astro';
 
   <h2>Task Commands</h2>
 
-  <h3>yet task list</h3>
+  <h3>erold task list</h3>
   <p>List tasks in a project.</p>
-  <pre><code>{`yet task list [--project PROJECT] [--status STATUS] [--assignee USER]
+  <pre><code>{`erold task list [--project PROJECT] [--status STATUS] [--assignee USER]
 
 # Examples
-yet task list
-yet task list --status todo
-yet task list --project MYAPP --status in_progress`}</code></pre>
+erold task list
+erold task list --status todo
+erold task list --project MYAPP --status in_progress`}</code></pre>
 
-  <h3>yet task create</h3>
+  <h3>erold task create</h3>
   <p>Create a new task.</p>
-  <pre><code>{`yet task create TITLE [--project PROJECT] [--priority PRIORITY] [--label LABEL]
+  <pre><code>{`erold task create TITLE [--project PROJECT] [--priority PRIORITY] [--label LABEL]
 
 # Examples
-yet task create "Implement auth"
-yet task create "Fix bug" --priority high --label bug
-yet task create "Add tests" --project MYAPP --assignee @me`}</code></pre>
+erold task create "Implement auth"
+erold task create "Fix bug" --priority high --label bug
+erold task create "Add tests" --project MYAPP --assignee @me`}</code></pre>
 
-  <h3>yet task show</h3>
+  <h3>erold task show</h3>
   <p>Show task details.</p>
-  <pre><code>{`yet task show TASK_ID
+  <pre><code>{`erold task show TASK_ID
 
 # Example
-yet task show MYAPP-123`}</code></pre>
+erold task show MYAPP-123`}</code></pre>
 
-  <h3>yet task update</h3>
+  <h3>erold task update</h3>
   <p>Update a task.</p>
-  <pre><code>{`yet task update TASK_ID [--status STATUS] [--priority PRIORITY] [--assignee USER]
+  <pre><code>{`erold task update TASK_ID [--status STATUS] [--priority PRIORITY] [--assignee USER]
 
 # Examples
-yet task update MYAPP-123 --status done
-yet task update MYAPP-123 --priority urgent --assignee john@example.com`}</code></pre>
+erold task update MYAPP-123 --status done
+erold task update MYAPP-123 --priority urgent --assignee john@example.com`}</code></pre>
 
-  <h3>yet task delete</h3>
+  <h3>erold task delete</h3>
   <p>Delete a task.</p>
-  <pre><code>{`yet task delete TASK_ID [--force]
+  <pre><code>{`erold task delete TASK_ID [--force]
 
 # Example
-yet task delete MYAPP-123`}</code></pre>
+erold task delete MYAPP-123`}</code></pre>
 
   <h2>Project Commands</h2>
 
-  <h3>yet project list</h3>
+  <h3>erold project list</h3>
   <p>List all projects.</p>
-  <pre><code>yet project list</code></pre>
+  <pre><code>erold project list</code></pre>
 
-  <h3>yet project create</h3>
+  <h3>erold project create</h3>
   <p>Create a new project.</p>
-  <pre><code>{`yet project create NAME --key KEY [--description DESC]
+  <pre><code>{`erold project create NAME --key KEY [--description DESC]
 
 # Example
-yet project create "My App" --key MYAPP --description "Main product"`}</code></pre>
+erold project create "My App" --key MYAPP --description "Main product"`}</code></pre>
 
-  <h3>yet project show</h3>
+  <h3>erold project show</h3>
   <p>Show project details and statistics.</p>
-  <pre><code>{`yet project show PROJECT_KEY
+  <pre><code>{`erold project show PROJECT_KEY
 
 # Example
-yet project show MYAPP`}</code></pre>
+erold project show MYAPP`}</code></pre>
 
   <h2>Knowledge Base Commands</h2>
 
   <h3>yet kb list</h3>
   <p>List knowledge items.</p>
-  <pre><code>{`yet kb list [--prefix PREFIX]
+  <pre><code>{`erold kb list [--prefix PREFIX]
 
 # Examples
 yet kb list
@@ -83,14 +83,14 @@ yet kb list --prefix api/`}</code></pre>
 
   <h3>yet kb get</h3>
   <p>Get a knowledge item.</p>
-  <pre><code>{`yet kb get KEY
+  <pre><code>{`erold kb get KEY
 
 # Example
 yet kb get architecture`}</code></pre>
 
   <h3>yet kb set</h3>
   <p>Create or update a knowledge item.</p>
-  <pre><code>{`yet kb set KEY CONTENT
+  <pre><code>{`erold kb set KEY CONTENT
 
 # Examples
 yet kb set architecture "Microservices with Node.js..."
@@ -101,55 +101,55 @@ yet kb set architecture --file ./docs/architecture.md`}</code></pre>
 
   <h3>yet kb delete</h3>
   <p>Delete a knowledge item.</p>
-  <pre><code>{`yet kb delete KEY
+  <pre><code>{`erold kb delete KEY
 
 # Example
 yet kb delete old-docs`}</code></pre>
 
   <h3>yet kb search</h3>
   <p>Search the knowledge base.</p>
-  <pre><code>{`yet kb search QUERY
+  <pre><code>{`erold kb search QUERY
 
 # Example
 yet kb search "authentication"`}</code></pre>
 
   <h2>Configuration Commands</h2>
 
-  <h3>yet config set</h3>
+  <h3>erold config set</h3>
   <p>Set a configuration value.</p>
-  <pre><code>{`yet config set KEY VALUE
+  <pre><code>{`erold config set KEY VALUE
 
 # Examples
-yet config set defaultProject MYAPP
-yet config set format json`}</code></pre>
+erold config set defaultProject MYAPP
+erold config set format json`}</code></pre>
 
-  <h3>yet config get</h3>
+  <h3>erold config get</h3>
   <p>Get a configuration value.</p>
-  <pre><code>yet config get defaultProject</code></pre>
+  <pre><code>erold config get defaultProject</code></pre>
 
-  <h3>yet config list</h3>
+  <h3>erold config list</h3>
   <p>List all configuration.</p>
-  <pre><code>yet config list</code></pre>
+  <pre><code>erold config list</code></pre>
 
   <h2>Other Commands</h2>
 
-  <h3>yet login</h3>
+  <h3>erold login</h3>
   <p>Authenticate with your API key.</p>
-  <pre><code>{`yet login [--key KEY]
+  <pre><code>{`erold login [--key KEY]
 
 # Interactive
-yet login
+erold login
 
 # With key
-yet login --key yet_xxx`}</code></pre>
+erold login --key yet_xxx`}</code></pre>
 
   <h3>yet logout</h3>
   <p>Remove stored credentials.</p>
   <pre><code>yet logout</code></pre>
 
-  <h3>yet whoami</h3>
+  <h3>erold whoami</h3>
   <p>Show current user and tenant.</p>
-  <pre><code>yet whoami</code></pre>
+  <pre><code>erold whoami</code></pre>
 
   <h2>Global Options</h2>
 
